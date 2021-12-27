@@ -1,5 +1,6 @@
 // --------------------------- Pipeline Global Variables ---------------------------
 import {pipelineType, boundType} from './DataPipeline' 
+import { WorkerMessageType } from '../types/Worker.types'
 
 // Ensure Proper Pipeline Format
 let pipeline:pipelineType = []
@@ -23,7 +24,7 @@ export let addTransform = (
 
 // --------------------------- Pipeline Construction ---------------------------
 
-self.onmessage = async (e) => {
+self.onmessage = async (e:WorkerMessageType) => {
     if (e.data.cmd === 'init') e.data.data.source.pipeThrough(e.data.data.transformer).pipeTo(e.data.data.sink)
     if (e.data.cmd === 'add') addTransform(e.data.data, pipeline, bound)
     if (e.data.cmd === 'source') addSource(e.data.data, bound)
