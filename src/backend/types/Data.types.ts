@@ -1,4 +1,4 @@
 export interface DataType {
-    data: any,
-    callbackId: string
+    data?: any,
+    callbackId?: string,
 }

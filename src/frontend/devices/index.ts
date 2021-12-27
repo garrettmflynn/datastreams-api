@@ -1,41 +1,10 @@
 
 import * as hegduino from './hegduino/index.js'
 import * as muse from './muse/index.js'
-import { Device } from './Device.js'
+import * as bci2000web from './bci2000web/index.js'
 
 // Supported Devices
 export default [
-
-     // ---------------------------------- Dummy Device ----------------------------------
-
-     {
-
-        // Generic 
-        label: 'Sine', 
-        ondata: (decoded:string) => {
-            let channelData = decoded.split(',').map(str => Number.parseFloat(str)) // Organize Decoder Output into a Float Array
-            return channelData // Pass Array to DataTracks
-        },
-        onconnect: (device: Device<any>) => {
-
-            // Create synthetic data stream
-            let freqs = [1,5,10]
-            let animate = () => {
-
-                let channels:number[] = []
-                freqs.forEach(f => {
-                    channels.push(Math.sin((2 * f * Math.PI) * Date.now() / 1000))
-                })
-                let encoded = channels.join(',') // simulate encoding
-                device.ondata(encoded)
-
-                setTimeout(animate, 1000/60)
-            }
-
-            animate()
-        },
-        kind: 'dummyinput', 
-    },
 
     // ----------------------------------  Device with Auto-Generated Connection Scripts ----------------------------------
 
@@ -68,5 +37,18 @@ export default [
             kind: 'eeginput',
             device: muse.device,
             onconnect: muse.onconnect,
+        },
+
+
+        // ----------------------------------  WebSocket "Device" ----------------------------------
+
+        {
+            // Generic 
+            label: 'Websocket', 
+            ondata: bci2000web.ondata,
+            kind: 'eegdata',
+    
+            // URL
+            url: 'https://localhost'
         },
 ]

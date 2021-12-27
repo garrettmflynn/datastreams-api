@@ -16,6 +16,7 @@ import {Device} from '../devices/Device.js';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
 import { DeviceType, DeviceConstraintsType } from '../types/Devices.types.js';
 import { DeviceRequestType } from '../types/Core.types.js';
+import WebsocketDevice from '../devices/Websocket.device.js';
 
 export class DataDevices extends EventTarget {
 
@@ -89,7 +90,10 @@ export class DataDevices extends EventTarget {
             else if (constraints.serviceUUID) device = new Bluetooth(constraints)
             else if (constraints.usbVendorId)  device = new Serial(constraints)
             // if () device = new USBDevice(constraints)
-            else if (constraints.url) device = new EventSourceDevice(constraints)
+            else if (constraints.url) {
+                if (constraints.wifi) device = new EventSourceDevice(constraints)
+                else device = new WebsocketDevice(constraints)
+            }
             else device = new Device(constraints)
         }
 
@@ -115,7 +119,7 @@ export class DataDevices extends EventTarget {
         }
         
         // Add Tracks from Connected DataStreams to Base DataStream
-        let connectedDevices = [constraints.dummy, constraints.eeg, constraints.fnirs, constraints.emg] // TODO: Allow more than one of each stream
+        let connectedDevices = [constraints.eeg, constraints.fnirs, constraints.emg] // TODO: Allow more than one of each stream
         connectedDevices = connectedDevices.filter(d => d instanceof DataStream)
 
         // Connect Devices through WebSerial, WebUSB, WebBLE, or Event Sources
@@ -126,7 +130,6 @@ export class DataDevices extends EventTarget {
             if (constraints.eeg) request.eeginput = true
             if (constraints.fnirs) request.fnirsinput = true
             if (constraints.emg) request.emginput = true
-            if (constraints.dummy) request.dummyinput = true
 
             // Format Request
             let keys = Object.keys(request)

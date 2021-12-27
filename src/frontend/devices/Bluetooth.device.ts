@@ -16,8 +16,6 @@ export default class Bluetooth<T=any> extends Device<T> { //This is formatted fo
     
             // Device-Specific Properties
             source?: BluetoothDevice
-            namePrefix: string = ''
-            serviceUUID: string = ''
             characteristics: {
                 [x: string]: BluetoothRemoteGATTCharacteristic
             } = {};

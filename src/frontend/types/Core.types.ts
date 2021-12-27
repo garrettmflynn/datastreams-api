@@ -9,6 +9,12 @@ export type DeviceRequestType = {
     eeginput?: boolean;
     emginput?: boolean;
     fnirsinput?: boolean;
-    dummyinput?: boolean;
+}
 
+
+export type MessageType = {
+    data: {
+        cmd: string
+        data: any
+    }
 }

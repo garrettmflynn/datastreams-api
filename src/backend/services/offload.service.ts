@@ -1,4 +1,4 @@
-import * as parseutils from '../utils/parse.node.js'
+import * as parseutils from '../../common/parse.utils.js'
 import { DataType } from '../types/Data.types.js';
 
 export default class OffloadService {

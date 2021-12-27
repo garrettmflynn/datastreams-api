@@ -1,7 +1,7 @@
 import {Room} from '../classes/Room'
 import {UserType} from '../types/User.types'
 import { DataType } from '../types/Data.types'
-import * as parseutils from '../utils/parse.node.js'
+import * as parseutils from '../../common/parse.utils.js'
 
 export default class WebRTCService {
 

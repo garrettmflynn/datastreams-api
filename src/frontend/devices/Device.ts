@@ -45,11 +45,11 @@ export class Device <T> {
    
     // Core Methods 
     connect = async () => {
-        if (!(this.device instanceof Device)) await this.device.connect()
+        if (!(this.device instanceof Device) && this.device.connect) await this.device.connect()
         this.onconnect(this)
     }        
     disconnect = async () => {
-        if (!(this.device instanceof Device)) await this.device.disconnect()
+        if (!(this.device instanceof Device) && this.device.disconnect) await this.device.disconnect()
         this.ondisconnect(this)
     }
 

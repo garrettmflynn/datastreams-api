@@ -1,22 +1,23 @@
 import { DataStream } from '../core/DataStream'
 import { Device } from '../devices/Device'
 
+// Only needs extension when the device is an externally specified class
 export type CoreDeviceType<T=any> = T & {
-    constructor: Function
-    connect: () => {},
-    disconnect: () => {}
+    constructor?: Function
+    connect?: Function,
+    disconnect?: Function
 }
 
 export type DeviceType<T=any> = CoreDeviceType<T> & {
     label: string;
     kind: string;
     
-    ondata?:<T=any> (data:any, name?: string) => T[];
-    encode?:<T=any> (data:any, name?: string) => T;
-    decode?:<T=any> (data:any, name?: string) => T;
-    onconnect?:<T=any> (target: any) => Promise<T>;
-    ondisconnect?:<T=any> (target: any) => Promise<T>;
-    onerror?:<T=any> (error: Error) => Promise<T>;
+    ondata?:(data:any, name?: string) => any[]; // T[]
+    encode?: (data:any, name?: string) => any;
+    decode?: (data:any, name?: string) => any;
+    onconnect?: (target: any) => Promise<any>;
+    ondisconnect?: (target: any) => Promise<any>;
+    onerror?: (error: Error) => Promise<any>;
 
     // Bluetooth
     namePrefix?: string;
@@ -29,7 +30,7 @@ export type DeviceType<T=any> = CoreDeviceType<T> & {
     usbVendorId?: number | string ;
     usbProductId?: number | string;
 
-    // Wifi
+    // Event Source / Websocket
     url?: string
     
 }
