@@ -8,16 +8,9 @@ let pipeline = []
 let bound = []
 
 // --------------------------- Pipeline Functions ---------------------------
-export let addSource = (
-    source:ReadableStream, 
-    bound:boundType
-    ) => bound.push(source) // Push source at the beginning
-export let addSink = (
-    sink: WritableStream, 
-    bound: boundType
-    ) => {
-    bound.push(bound[bound.length - 1].pipeTo(sink)) // Push sink at the end
-}
+export let addSource = (source:ReadableStream, bound:boundType) => bound.push(source) // Push source at the beginning
+export let addSink = (sink: WritableStream, bound: boundType) => bound[bound.length - 1].pipeTo(sink)
+
 export let addTransform = (
     o: TransformStream, 
     pipeline: pipelineType, 

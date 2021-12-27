@@ -10,7 +10,7 @@ export class DataStreamTrackGenerator extends DataStreamTrack {
 
     writable: WritableStream
 
-    constructor(){
+    constructor({kind}){
         super()
 
         this.writable = new WritableStream({
@@ -33,7 +33,7 @@ export class DataStreamTrackGenerator extends DataStreamTrack {
     }
 
     //  finalize writes to the underlying sink, and release access to it.
-    close = (controller) => {
+    close = () => {
         console.log("All data successfully read!");
     }
 

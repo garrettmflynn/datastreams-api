@@ -3,9 +3,7 @@
 
 import randomUUID from "../utils/id.js"
 
-// Webpack
-import worker from './pipeline.worker.js' // must export self
-import * as workerutils from './pipeline.worker.js' // must export self
+import worker, * as workerutils from './pipeline.worker.js' // must export self
 
 import { DataStreamTrackProcessor } from "./DataStreamTrackProcessor"
 import { DataStreamTrackGenerator } from "./DataStreamTrackGenerator.js"
@@ -21,7 +19,7 @@ export class DataPipeline {
     bound: boundType = []
     source: ReadableStream | null  = null
     sink: WritableStream | null  = null
-    output: DataStreamTrackGenerator | null = null
+    output: DataStreamTrackGenerator | MediaStreamTrackGenerator<any> | null = null
     kind: string = null
 
 
@@ -40,7 +38,7 @@ export class DataPipeline {
                 this.worker = new Worker("./src/pipeline.worker.js", { name: 'pipelineworker', type: 'module' });
             } catch {
                 try {
-                    this.worker = worker
+                    this.worker = worker as unknown as Worker // TODO: TypeScript issue working with workers
                 } catch (err) {
                     console.log("Error creating worker. ERROR:", err);
                 }
@@ -63,13 +61,14 @@ export class DataPipeline {
         this.kind = track.kind // Guess the kind of stream (and sink...)
 
         this.source = processor.readable
-        if (this.thread) this.worker.postMessage({ cmd: 'source', data: this.source}, [this.source])
+        if (this.thread) this.worker.postMessage({ cmd: 'source', data: this.source}, [this.source as any]) // TODO: TypeScript issue working with ReadableStreams
         else workerutils.addSource(this.source, this.bound)
     }
 
     setSink = (kind=this.kind) => {
-        if (kind === 'video' || kind === 'audio ') {
-            if ('MediaStreamTrackGenerator' in window) this.output = new MediaStreamTrackGenerator({ kind })
+
+        if (kind === 'video' || kind === 'audio') {
+            if ('MediaStreamTrackGenerator' in window) this.output = new MediaStreamTrackGenerator({ kind: kind as any }) 
             else alert('Your browser does not support the experimental MediaStreamTrack API for Insertable Streams of Media');
         } else {
             this.output = new DataStreamTrackGenerator({ kind })
@@ -77,7 +76,7 @@ export class DataPipeline {
 
         this.sink = this.output.writable
 
-        if (this.thread) this.worker.postMessage({ cmd: 'sink', data: this.sink }, [this.sink])
+        if (this.thread) this.worker.postMessage({ cmd: 'sink', data: this.sink }, [this.sink as any]) // TODO: TypeScript issue working with WritableStreams
         else workerutils.addSink(this.sink, this.bound)
     }
 
@@ -121,27 +120,27 @@ export class DataPipeline {
         else workerutils.addTransform(transformer, this.pipeline, this.bound)
     }
 
-    // Subscribe to Streamer Outputs
-    subscribe = (callback, args = [], forceSelf = false) => {
-        // let length = this.pipeline.length
-        // let tracks = this.getTracks()
-        // // Subscribe to Tracks in this DataStream Object
-        // if (length === 0 || forceSelf) {
-        //     tracks.forEach(t => {
-        //         if (t.kind === 'video' || t.kind === 'audio') {
-        //             console.warn('very loose implementation of audio / video streams')
-        //             let animate = () => {
-        //                 callback(args)
-        //                 setTimeout(animate, 1000 / 60)
-        //             }
-        //             animate()
-        //         }
-        //         else t.subscribe(callback) // run callback on each data track
-        //     })
-        // }
+    // // Subscribe to Streamer Outputs
+    // subscribe = (callback, args = [], forceSelf = false) => {
+    //     let length = this.pipeline.length
+    //     let tracks = this.getTracks()
+    //     // Subscribe to Tracks in this DataStream Object
+    //     if (length === 0 || forceSelf) {
+    //         tracks.forEach(t => {
+    //             if (t.kind === 'video' || t.kind === 'audio') {
+    //                 console.warn('very loose implementation of audio / video streams')
+    //                 let animate = () => {
+    //                     callback(args)
+    //                     setTimeout(animate, 1000 / 60)
+    //                 }
+    //                 animate()
+    //             }
+    //             else t.subscribe(callback) // run callback on each data track
+    //         })
+    //     }
 
-        // // Subscribe to Final Pipeline Node
-        // else 
-        this.pipeline[length - 1].subscribe(callback)
-    }
+    //     // Subscribe to Final Pipeline Node
+    //     else 
+    //     this.pipeline[length - 1].subscribe(callback)
+    // }
 }

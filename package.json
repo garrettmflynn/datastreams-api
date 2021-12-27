@@ -7,6 +7,7 @@
     "start": "node server.js",
     "build": "snowpack build",
     "webpack": "webpack --mode production",
+    "typecheck": "tsc --watch --preserveWatchOutput",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,9 +21,14 @@
   },
   "homepage": "https://github.com/brainsatplay/DataStreams-API#readme",
   "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
     "@snowpack/plugin-dotenv": "^2.2.0",
     "@snowpack/plugin-optimize": "^0.2.13",
+    "@types/dom-mediacapture-record": "^1.0.11",
+    "@types/dom-mediacapture-transform": "^0.1.2",
+    "@types/w3c-web-serial": "^1.0.2",
+    "@types/web": "^0.0.48",
+    "@types/webcrypto": "^0.0.28",
+    "awesome-typescript-loader": "^5.2.1",
     "html-webpack-plugin": "^5.5.0",
     "shx": "^0.3.3",
     "snowpack": "^3.8.8",
@@ -33,6 +39,8 @@
     "webpack-dev-server": "^4.5.0"
   },
   "dependencies": {
+    "@giveback007/util-lib": "^0.23.0",
+    "@types/w3c-web-usb": "^1.0.5",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",

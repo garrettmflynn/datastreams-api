@@ -1,5 +1,6 @@
 let coord = {
     count: 0,
+    startTime: null,
     times: [],
     red: [],
     ir: [],
@@ -9,7 +10,7 @@ let coord = {
     refuS: null
 }
 
-export const ondata = (newline, atlas) => {
+export const ondata = (newline:string) => {
 
     let latest = []
     if(newline.indexOf("|") > -1) {

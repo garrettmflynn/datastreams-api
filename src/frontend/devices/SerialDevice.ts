@@ -5,27 +5,25 @@ import {Device, deviceConstraints } from './Device.js'
 
 export default class SerialDevice extends Device {
 
-    constraints: deviceConstraints
     displayPorts: any[] = []
     encodedBuffer: string = ""
     connected: boolean = false
     recordData: boolean = false
     recorded: any[] = []
     port: any = null
-    decoder: TextDecoder = null
+    decoder: TextDecoder = new TextDecoder()
     subscribed: boolean = false
     readable: ReadableStream | null = null
-    writer: WritableStream = null
+    writer: WritableStream | null = null
     monitoring: boolean = false
     newSamples: number = 0
     monitorSamples: number = 10000 //Max 10000 samples visible in stream monitor by default
     monitorData: any[] = []
     monitorIdx: number = 0
 
-    constructor(constraints) {
+    constructor(constraints: deviceConstraints) {
 
         super(constraints)
-
 
         if (navigator.serial) this.decoder = new TextDecoder();
         else {
@@ -44,14 +42,16 @@ export default class SerialDevice extends Device {
         var re = /[0-9A-Fa-f]{6}/g;
 
         // Convert to Hexadecimal (assume strings are accurate)
-        if (typeof usbVendorId !== 'string') if(!re.test(usbVendorId)) usbVendorId = `0x${usbVendorId.toString(16)}`
-        if (typeof usbVendorId !== 'string') if(!re.test(usbProductId)) usbProductId = `0x${usbProductId.toString(16)}`
+        // TODO: TypeScript doesn't like when passing strings as a filter. Do the opposite.
+        if (!!usbVendorId && typeof usbVendorId !== 'string' && !re.test(usbVendorId + '')) usbVendorId = `0x${usbVendorId.toString(16)}` // test if this works
+        if (!!usbProductId && typeof usbProductId !== 'string' && !re.test(usbProductId + '')) usbProductId = `0x${usbProductId.toString(16)}` // test if this works
+        // if (typeof usbProductId === 'string' || typeof usbVendorId === 'string') throw new Error('WTF why is this a string?')
         
         const filters = [
             { 
                 usbVendorId, 
                 usbProductId
-            }
+            } as any
         ];
 
         
@@ -76,13 +76,13 @@ export default class SerialDevice extends Device {
 
     // ---------------------- INTERNAL UTILITIES ----------------------
 
-    subscribe = async (port) => {
-		if (this.port.readable && this.subscribed === true) {
+    subscribe = async (port: SerialPort = this.port) => {
+		if (port.readable && this.subscribed === true) {
 			this.readable = port.readable // TODO: Readable data handled externally
 
             // Internal Management of the Stream
             console.error('Managing the readable stream internally')
-            let transform = async (value, controller) => {
+            let transform = async (value:any) => {
                 // console.log('streaming')
                 this.onReceive(value);         
                 return value
@@ -99,13 +99,13 @@ export default class SerialDevice extends Device {
 		} else return false;
 	}
 
-    handleError = async (error) => {
+    handleError = async (error: Error) => {
         console.log(error);// TODO: Handle non-fatal read error.
                     if(error.message.includes('framing') || error.message.includes('overflow') || error.message.includes('overrun') || error.message.includes('Overflow') || error.message.includes('break')) {
                         this.subscribed = false;
                         setTimeout(async ()=>{
                             if (this.readable) {
-                                await this.readable.close();
+                                await this.readable.cancel();
                                 this.readable = null;
                             }
                             this.subscribed = true; 
@@ -117,7 +117,7 @@ export default class SerialDevice extends Device {
                             this.subscribed = false;
                             setTimeout(async () => {
                                 if (this.readable) {
-                                    await this.readable.close();
+                                    await this.readable.cancel();
                                     this.readable = null;
                                 }
                                 await this.port.close();
@@ -132,7 +132,7 @@ export default class SerialDevice extends Device {
                     }
                 }
 
-    onPortSelected = async (port) => {
+    onPortSelected = async (port: SerialPort) => {
 
         // Set in Class
         this.port = port
@@ -151,8 +151,8 @@ export default class SerialDevice extends Device {
         await this.subscribe(port);
     }
 
-    onReceive = (value) => {
-        this.encodedBuffer += this.decoder.decode(value);
+    onReceive = (input: ArrayBufferView | ArrayBuffer | undefined) => {
+        this.encodedBuffer += this.decoder.decode(input);
         var index;
         while ((index = this.encodedBuffer.indexOf('\n')) >= 0) {
             var line = this.encodedBuffer.substr(0, index + 1);
@@ -174,7 +174,7 @@ export default class SerialDevice extends Device {
 			setTimeout(async () => {
                 try{
                     if (this.readable) {
-                        await this.readable.close();
+                        await this.readable.cancel();
                         this.readable = null;
                     }
                     await port.close();

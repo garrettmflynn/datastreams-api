@@ -23,7 +23,3 @@ export const onconnect = async (dataDevice) => {
     });
 
 }
-
-export const ondata = (data) => {
-    return data
-}

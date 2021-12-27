@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
-const WebRTCService = require('./services/webrtc.service.js')
-const OffloadService = require('./services/offload.service.js')
+const WebRTCService = require('./dist/src/backend/services/webrtc.service.js')
+const OffloadService = require('./dist/src/backend/services/offload.service.js')
 
 // const webpack = require('webpack');
 // const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -25,7 +25,7 @@ const {startServer,loadConfiguration} = require('snowpack');
 })()
 
 // Websocket Imports
-const WebSocket = require('ws')
+const ws = require('ws')
 
 // Setting the port
 var port = normalizePort(process.env.PORT || '8080'); // Secure
@@ -36,7 +36,7 @@ app.listen(port, function () {
   console.log(`Example app listening on port ${port}!\n`);
 });
 
-const wss = new WebSocket.WebSocketServer({ port: 80 });
+const wss = new ws.WebSocketServer({ port: 80 });
 
 let webrtc = new WebRTCService(wss)
 let server = new OffloadService(wss)

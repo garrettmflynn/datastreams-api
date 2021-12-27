@@ -1,6 +1,7 @@
 
 import * as hegduino from './hegduino/index.js'
 import * as muse from './muse/index.js'
+import { Device } from './Device.js'
 
 // Supported Devices
 export default [
@@ -11,17 +12,17 @@ export default [
 
         // Generic 
         label: 'Sine', 
-        ondata: (decoded) => {
+        ondata: (decoded:string) => {
             let channelData = decoded.split(',').map(str => Number.parseFloat(str)) // Organize Decoder Output into a Float Array
             return channelData // Pass Array to DataTracks
         },
-        onconnect: (device) => {
+        onconnect: (device: Device) => {
 
             // Create synthetic data stream
             let freqs = [1,5,10]
             let animate = () => {
 
-                let channels = []
+                let channels:number[] = []
                 freqs.forEach(f => {
                     channels.push(Math.sin((2 * f * Math.PI) * Date.now() / 1000))
                 })
@@ -67,6 +68,5 @@ export default [
             kind: 'eeginput',
             device: muse.device,
             onconnect: muse.onconnect,
-            ondata: muse.ondata,
         },
 ]

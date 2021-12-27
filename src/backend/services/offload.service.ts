@@ -1,7 +1,7 @@
-let parseutils = require('../utils/parse.node.js')
+import * as parseutils from '../utils/parse.node.js'
+import { DataType } from '../types/Data.types.js';
 
-
-module.exports = class OffloadService {
+export default class OffloadService {
 
     users: Map<string,any> = new Map()
 
@@ -10,16 +10,16 @@ module.exports = class OffloadService {
         
     }
 
-    addUser = (ws) => {
+    addUser = (ws: any) => { // TODO: Specify ws as Websocket with ID added
         if (!ws.id) ws.id = Math.floor(Math.random() * 10000000);
-        this.users.set(ws.id, {id: ws.id, ws})
+        this.users.set(ws.id, {uuid: ws.id, ws})
     }
 
-     removeUser = (ws) => {
+     removeUser = (ws: any) => {
         this.users.delete(ws.id)
     }
 
-    onmessage = (o, ws) => {
+    onmessage = (o: DataType, ws: any) => {
 
         let data;
         o = parseutils.safeParse(o)
@@ -35,7 +35,8 @@ module.exports = class OffloadService {
         return data
     }
 
-    initialize = (o,id) => {
+    initialize = (o: DataType, id: string) => {
+
         // Set Settings Persistently
         let u = this.users.get(id)
         u.settings = o.data
@@ -44,7 +45,7 @@ module.exports = class OffloadService {
         return {cmd: 'ready'}
     }
 
-    ondata = (o, id) => {
+    ondata = (o: DataType, id: string) => {
 
         // Process
         let u = this.users.get(id)

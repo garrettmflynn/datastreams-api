@@ -1,5 +1,5 @@
     
-const safeParse = (input, first=true) => {
+export const safeParse = (input, first=true) => {
 
     if (first) input = JSON.parse(input)
     // Convert Stringified Functions to String
@@ -22,7 +22,7 @@ const safeParse = (input, first=true) => {
     return input
 }
 
-const safeStringify = (input) => {
+export const safeStringify = (input) => {
 
     // Stringify Functions
     for (let key in input){
@@ -34,6 +34,3 @@ const safeStringify = (input) => {
     return JSON.stringify(input)
 
 }
-
-module.exports = {safeParse, safeStringify}; 
-

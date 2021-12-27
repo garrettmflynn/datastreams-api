@@ -14,10 +14,11 @@ import SerialDevice from '../devices/SerialDevice.js'
 import EventSourceDevice from '../devices/EventSourceDevice.js'
 import {Device, deviceConstraints} from '../devices/Device.js';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
+import { DeviceType } from '../types/General.types.js';
 
 export class DataDevices extends EventTarget {
 
-    devices: []
+    devices: DeviceType[]
 
     get [Symbol.toStringTag]() { return 'DataDevices' }
 
@@ -49,7 +50,7 @@ export class DataDevices extends EventTarget {
        let serial = await navigator.serial.getPorts()
 
         // Get Previously Connected Devices from navigator.bluetooth.requestDevice({acceptAllDevices: true})
-        let bluetooth = await navigator.bluetooth.getDevices()
+        let bluetooth = []; //await navigator.bluetooth.getDevices()
 
         let media = await navigator.mediaDevices.enumerateDevices()
         

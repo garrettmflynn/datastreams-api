@@ -1,7 +1,8 @@
 import {DataTrackSettings} from "./DataTrackSettings.js"
 import {DataTrackCapabilities} from "./DataTrackCapabilities.js"
-import randomUUID from "./utils/id.js"
+import randomUUID from "../utils/id.js"
 import { DataTrackConstraints } from "./DataTrackConstraints.js"
+import { Device } from "../devices/Device.js"
 
 // NOTE: This class allows the conversion of independent data coming from Device classes
 // to a ReadableStream format.
@@ -26,18 +27,14 @@ export class DataStreamTrack extends EventTarget {
 
     get [Symbol.toStringTag]() { return 'DataStreamTrack' }
 
-    constructor (device={}) {
+    constructor (device?:Device) {
         super()
 
         this.contentHint = ''
-        this.enabled = ''
-        this.id = device.id ?? randomUUID()
-        this.kind = device.constraints?.kind
+        this.id = device.id
+        this.kind = device?.constraints?.kind
         if (this.kind) this.kind = this.kind.replace('input','').replace('output', '')
-        this.label = device.constraints?.label
-        this.muted = ''
-        this.readyState = ''
-        this.remote = ''
+        this.label = device?.constraints?.label
         this.callbacks = new Map()
         this.data = []
 
