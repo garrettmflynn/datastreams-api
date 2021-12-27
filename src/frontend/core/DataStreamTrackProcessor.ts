@@ -9,13 +9,12 @@ import { DataStreamTrack } from "./DataStreamTrack"
 export class DataStreamTrackProcessor {
 
     track: DataStreamTrack
-    subid: null | string
+    subid?: string
     readable: ReadableStream
 
-    constructor({track}){
+    constructor(o:{track: DataStreamTrack}){
 
-        this.track = track
-        this.subid = null
+        this.track = o.track
 
         this.readable = new ReadableStream({
             start: this.start,
@@ -31,7 +30,7 @@ export class DataStreamTrackProcessor {
 
 
 // --------------------------- Readable Stream Functions ---------------------------
-    start = (controller) => {
+    start = (controller:ReadableStreamController<any>) => {
     
         // Start Placing Track Data into the ReadableStream
         if (this.track){
@@ -41,11 +40,9 @@ export class DataStreamTrackProcessor {
         }
     }
 
-    pull = (controller) => {
-
-    }
+    pull = () => {}
 
     cancel = () => {
-        if (this.track) this.track.unsubscribe(this.subid)
+        if (this.track && this.subid) this.track.unsubscribe(this.subid)
     }
 }

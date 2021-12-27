@@ -5,8 +5,8 @@ import { DataStreamTrack } from "./DataStreamTrack"
 
 export class DataTrackConstraints {
 
-        deviceId: string | null = null
-        groupId: string | null = null
+        deviceId?: string | undefined
+        groupId?: string | undefined
 
         autoGainControl: null = null
         channelCount: null = null
@@ -48,6 +48,7 @@ export class DataTrackConstraints {
 
 
     constructor(track: DataStreamTrack) {
+        console.error('TODO: Get Constraints', track) // TODO: Get Constraints
         return this
     }
 }

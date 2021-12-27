@@ -1,29 +1,16 @@
 import { DataStreamTrack } from "../core/DataStreamTrack.js";
 import { DataStream } from "../core/DataStream.js";
-import { DeviceType } from "../types/General.types.js";
+import { CoreDeviceType, DeviceConstraintsType } from "../types/Devices.types.js";
 import randomUUID from "../utils/id.js";
 
-export type deviceConstraints = DeviceType & {
-    dataStream?: DataStream,
-    device?, // TODO: Should specify the requirements for external device classes
 
-    // BLE
-    ble?: boolean,
-
-    // USB / Serial
-    serial?: boolean,
-
-    // WiFi
-    wifi?: boolean,
-}
-
-export class Device {
+export class Device <T> {
 
     id: string = randomUUID()
     datacallbacks: Function[] = []
-    constraints: deviceConstraints
-    device: Device
-    dataStream: null | DataStream
+    constraints: DeviceConstraintsType<T>
+    device: CoreDeviceType<T>
+    dataStream?: DataStream
     encoder: TextEncoder | any
     decoder: TextDecoder | any
 
@@ -35,7 +22,7 @@ export class Device {
     set ondata(func){this.datacallbacks.push(func)}
     get ondata(){return this._ondata}
 
-    constructor(constraints: deviceConstraints){
+    constructor(constraints: DeviceConstraintsType<T>){
 
         this.constraints = constraints
         this.device = (constraints.device) ? new constraints.device(constraints) : this
@@ -58,28 +45,29 @@ export class Device {
    
     // Core Methods 
     connect = async () => {
-        if (this.device !== this) await this.device.connect()
+        if (!(this.device instanceof Device)) await this.device.connect()
         this.onconnect(this)
     }        
     disconnect = async () => {
-        if (this.device !== this) await this.device.disconnect()
+        if (!(this.device instanceof Device)) await this.device.disconnect()
         this.ondisconnect(this)
     }
-    send = async (arg1, arg2):Promise<any> => {this.onsend()}
+
+    send = async (msg:any,from:any):Promise<any> => {this.onsend(msg,from)}
 
     // Auxilliary Methods
-    encode = (msg, from) => this.encoder.encode(msg)
-    decode = (msg, from) => this.decoder.decode(msg)
+    encode = (msg:any, from:string) => this.encoder.encode(msg, from)
+    decode = (msg:any, from:string) => this.decoder.decode(msg, from)
 
     // Events
-    onconnect = async (target = this) => console.log(`${target.constructor.name} connected!`)
+    onconnect = async (target:Device<T> = this) => console.log(`${target.constructor.name} connected!`)
 
-    ondisconnect = async (target = this) => console.log(`${target.constructor.name} disconnected!`)
+    ondisconnect = async (target:Device<T> = this) => console.log(`${target.constructor.name} disconnected!`)
 
     // ondata = async (data, from) => console.log(`${this.constructor.name}: ${data}`)
 
-    onsend = async () => {}
-    onerror = async (err) => console.log(`${this.constructor.name} Error: ${err}`)
+    onsend = async (msg?:any, from?:any) => {console.log(`Sent ${msg} from ${from}`)}
+    onerror = async (err:Error) => console.log(`${this.constructor.name} Error: ${err}`)
 
     // --------------- Internal Methods ---------------
     _ondata(data:any, charName?:string){
@@ -90,11 +78,17 @@ export class Device {
             let arr = f(data, charName) // returns array
             
             // Add DataStreamTrack for each Data Channel
-            let tracks = this.dataStream.getDataTracks()
-            arr.forEach((val,i) => {
-                let track = tracks[i] ?? this.dataStream.addTrack(new DataStreamTrack(this.device))
-                if (track instanceof DataStreamTrack) track.addData(val)
-            })
+            if (this.dataStream){
+                
+                let tracks = this.dataStream.getDataTracks()
+                arr.forEach((val:any,i:number) => {
+                    if (this.dataStream){
+                        let track = tracks[i] ?? this.dataStream.addTrack(new DataStreamTrack(this))
+                        if (track instanceof DataStreamTrack) track.addData(val)
+                    }
+                })
+
+            }
         })
 
         return 

@@ -7,14 +7,15 @@ Based on https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API
 
 */
 
-import devices from '../devices/devices.registry.js';
+import devices from '../devices/index.js';
 import { DataStream } from './DataStream.js';
-import BluetoothDevice from '../devices/BluetoothDevice.js'
-import SerialDevice from '../devices/SerialDevice.js'
-import EventSourceDevice from '../devices/EventSourceDevice.js'
-import {Device, deviceConstraints} from '../devices/Device.js';
+import Bluetooth from '../devices/Bluetooth.device.js'
+import Serial from '../devices/Serial.device.js'
+import EventSourceDevice from '../devices/EventSource.device.js'
+import {Device} from '../devices/Device.js';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
-import { DeviceType } from '../types/General.types.js';
+import { DeviceType, DeviceConstraintsType } from '../types/Devices.types.js';
+import { DeviceRequestType } from '../types/Core.types.js';
 
 export class DataDevices extends EventTarget {
 
@@ -50,7 +51,7 @@ export class DataDevices extends EventTarget {
        let serial = await navigator.serial.getPorts()
 
         // Get Previously Connected Devices from navigator.bluetooth.requestDevice({acceptAllDevices: true})
-        let bluetooth = []; //await navigator.bluetooth.getDevices()
+        let bluetooth: any[] = []; //await navigator.bluetooth.getDevices()
 
         let media = await navigator.mediaDevices.enumerateDevices()
         
@@ -66,7 +67,7 @@ export class DataDevices extends EventTarget {
         return new DataTrackSupportedConstraints(this)
     }
 
-    startDataStream = async (constraints:deviceConstraints, dataStream=new DataStream() ) =>{
+    startDataStream = async (constraints:DeviceConstraintsType<any>, dataStream=new DataStream() ) =>{
 
         let device;
 
@@ -82,11 +83,11 @@ export class DataDevices extends EventTarget {
         else {
 
             // Request Device from User
-            if (constraints.ble) device = new BluetoothDevice(constraints)
-            else if (constraints.serial)  device = new SerialDevice(constraints)
+            if (constraints.ble) device = new Bluetooth(constraints)
+            else if (constraints.serial)  device = new Serial(constraints)
             else if (constraints.wifi) device = new EventSourceDevice(constraints)
-            else if (constraints.serviceUUID) device = new BluetoothDevice(constraints)
-            else if (constraints.usbVendorId)  device = new SerialDevice(constraints)
+            else if (constraints.serviceUUID) device = new Bluetooth(constraints)
+            else if (constraints.usbVendorId)  device = new Serial(constraints)
             // if () device = new USBDevice(constraints)
             else if (constraints.url) device = new EventSourceDevice(constraints)
             else device = new Device(constraints)
@@ -97,9 +98,9 @@ export class DataDevices extends EventTarget {
         return dataStream
     }
 
-    getUserStream = async (constraints) => {
+    getUserStream = async (constraints: DeviceConstraintsType) => {
 
-        delete constraints.audio // NOTE: Remove in production
+        // delete constraints.audio // NOTE: Remove in production
 
         let mediaStream;
         // Add MediaStream Tracks to DataStream
@@ -121,11 +122,11 @@ export class DataDevices extends EventTarget {
         if (connectedDevices.length === 0){
 
             // Boolean Requests
-            let request = {}
-            if (constraints.eeg) request['eeginput'] = true
-            if (constraints.fnirs) request['fnirsinput'] = true
-            if (constraints.emg) request['emginput'] = true
-            if (constraints.dummy) request['dummyinput'] = true
+            let request: DeviceRequestType = {}
+            if (constraints.eeg) request.eeginput = true
+            if (constraints.fnirs) request.fnirsinput = true
+            if (constraints.emg) request.emginput = true
+            if (constraints.dummy) request.dummyinput = true
 
             // Format Request
             let keys = Object.keys(request)
@@ -140,9 +141,9 @@ export class DataDevices extends EventTarget {
         connectedDevices.forEach(o =>  o.getTracks().forEach(stream.addTrack)) // NOTE: DataStreams will not initialize with any tracks. They are added dynamically when data is passed
 
         // Apply Constraints
-        stream.getTracks().forEach((t,i) => {
+        stream.getTracks().forEach((t,) => {
             t.applyConstraints(constraints)
-            let settings = t.getSettings() // Returns a dictionary currently set values for the constraints
+            // let settings = t.getSettings() // TODO: Returns a dictionary currently set values for the constraints
             // console.log(`Track ${i} Settings`,settings)
         })
     

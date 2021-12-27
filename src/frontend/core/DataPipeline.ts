@@ -7,6 +7,7 @@ import worker, * as workerutils from './pipeline.worker.js' // must export self
 
 import { DataStreamTrackProcessor } from "./DataStreamTrackProcessor"
 import { DataStreamTrackGenerator } from "./DataStreamTrackGenerator.js"
+import { DataStreamTrack } from './DataStreamTrack.js'
 
 
 export type pipelineType = (TransformStream | ReadableStream | WritableStream)[]
@@ -17,14 +18,14 @@ export class DataPipeline {
     id: string = randomUUID()
     pipeline: pipelineType = []
     bound: boundType = []
-    source: ReadableStream | null  = null
-    sink: WritableStream | null  = null
-    output: DataStreamTrackGenerator | MediaStreamTrackGenerator<any> | null = null
-    kind: string = null
+    source: ReadableStream<any> | null  = null
+    sink: WritableStream<any> | null  = null
+    output?: DataStreamTrackGenerator | MediaStreamTrackGenerator<any>
+    kind: string = ''
 
 
     thread: boolean = true
-    worker: Worker | null = null
+    worker?: Worker
 
 
     constructor({thread} = {thread: true}) {
@@ -43,26 +44,25 @@ export class DataPipeline {
                     console.log("Error creating worker. ERROR:", err);
                 }
             }
-            this.worker.postMessage({cmd: 'test'})
         }
 
     }
 
-    setSource = (track) => {
+    setSource = (track: DataStreamTrack | MediaStreamTrack) => {
 
         let processor
-        if (track.kind === 'video' || track.kind === 'audio ') {
-            if ('MediaStreamTrackProcessor' in window) processor = new MediaStreamTrackProcessor({ track })
+        if (track instanceof MediaStreamTrack && (track.kind === 'video' || track.kind === 'audio ')) {
+            if ('MediaStreamTrackProcessor' in window) processor = new MediaStreamTrackProcessor({ track: track as any})
             else alert('Your browser does not support the experimental MediaStreamTrack API for Insertable Streams of Media');
-        } else {
-            processor = new DataStreamTrackProcessor({ track })
-        }
+        } else if (track instanceof DataStreamTrack) processor = new DataStreamTrackProcessor({ track })
 
         this.kind = track.kind // Guess the kind of stream (and sink...)
 
-        this.source = processor.readable
-        if (this.thread) this.worker.postMessage({ cmd: 'source', data: this.source}, [this.source as any]) // TODO: TypeScript issue working with ReadableStreams
-        else workerutils.addSource(this.source, this.bound)
+        if (processor){
+            this.source = processor.readable
+            if (this.thread && this.worker) this.worker.postMessage({ cmd: 'source', data: this.source}, [this.source as any]) // TODO: TypeScript issue working with ReadableStreams
+            else workerutils.addSource(this.source, this.bound)
+        }
     }
 
     setSink = (kind=this.kind) => {
@@ -70,17 +70,18 @@ export class DataPipeline {
         if (kind === 'video' || kind === 'audio') {
             if ('MediaStreamTrackGenerator' in window) this.output = new MediaStreamTrackGenerator({ kind: kind as any }) 
             else alert('Your browser does not support the experimental MediaStreamTrack API for Insertable Streams of Media');
-        } else {
-            this.output = new DataStreamTrackGenerator({ kind })
+        } else this.output = new DataStreamTrackGenerator()
+
+        if (this.output){
+            this.sink = this.output.writable
+
+            if (this.thread && this.worker) this.worker.postMessage({ cmd: 'sink', data: this.sink }, [this.sink as any]) // TODO: TypeScript issue working with WritableStreams
+            else workerutils.addSink(this.sink, this.bound)
         }
-
-        this.sink = this.output.writable
-
-        if (this.thread) this.worker.postMessage({ cmd: 'sink', data: this.sink }, [this.sink as any]) // TODO: TypeScript issue working with WritableStreams
-        else workerutils.addSink(this.sink, this.bound)
     }
 
-    add = (settings) => {
+    // TODO: Specify formats acceptable for pipeline creation
+    add = (settings:any) => {
         let transformer;
 
         // Passed TransformStream
@@ -91,7 +92,7 @@ export class DataPipeline {
 
             let transform
             // Basic Function Transformation
-            if (settings instanceof Function) transform = { transform: async (chunk, controller) => controller.enqueue(settings(chunk)) }
+            if (settings instanceof Function) transform = { transform: async (chunk:any, controller:TransformStreamDefaultController) => controller.enqueue(settings(chunk)) }
 
             // Default Pipe Methods
             else {
@@ -103,7 +104,7 @@ export class DataPipeline {
                 //         transform = new Embedder(settings)
                 //         break;
                 //     default:
-                        transform = { transform: async (chunk, controller) => controller.enqueue(settings.function(chunk)) }
+                        transform = { transform: async (chunk:any, controller:TransformStreamDefaultController) => controller.enqueue(settings.function(chunk)) }
                         // break;
                 // }
             }
@@ -112,9 +113,9 @@ export class DataPipeline {
         }
 
         this.pipeline.push(transformer)
-        if (this.thread) {
+        if (this.thread && this.worker) {
             this.pipeline.push(transformer)
-            this.worker.postMessage({ cmd: 'add', data: transformer }, [transformer])
+            this.worker.postMessage({ cmd: 'add', data: transformer }, [transformer as any])
         }
         
         else workerutils.addTransform(transformer, this.pipeline, this.bound)

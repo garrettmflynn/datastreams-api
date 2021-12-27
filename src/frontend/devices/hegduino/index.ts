@@ -1,35 +1,32 @@
-let coord = {
-    count: 0,
-    startTime: null,
-    times: [],
-    red: [],
-    ir: [],
-    ratio: [],
-    ambient: [],
-    temp: [],
-    refuS: null
-}
+let times: number[] = []
+let red: number[] = []
+let ir: number[] = []
+let ratio: number[] = []
+let ambient: number[] = []
+let temp: number[] = []
+let refuS: number
 
 export const ondata = (newline:string) => {
 
     let latest = []
+
     if(newline.indexOf("|") > -1) {
         let data = newline.split("|");
         //console.log(data);
         if(data.length > 3) {
-            coord.count++;
-            if(coord.count === 1) { coord.startTime = Date.now(); }
-            if(coord.times.length === 0) {coord.times.push(Date.now()); coord.refuS = parseFloat(data[0]);} //Microseconds = parseFloat(data[0]). We are using date.now() in ms to keep the UI usage normalized
+            // count++;
+            // if(count === 1) { startTime = Date.now(); }
+            if(times.length === 0) {times.push(Date.now()); refuS = parseFloat(data[0]);} //Microseconds = parseFloat(data[0]). We are using date.now() in ms to keep the UI usage normalized
             else {
                 let t = parseFloat(data[0]);
-                coord.times.push(Math.floor(coord.times[coord.times.length-1]+(t-coord.refuS)*0.001))
-                coord.refuS = t; //keep times synchronous
+                times.push(Math.floor(times[times.length-1]+(t-refuS)*0.001))
+                refuS = t; //keep times synchronous
             }
-            coord.red.push(parseFloat(data[1]));
-            coord.ir.push(parseFloat(data[2]));
-            coord.ratio.push(parseFloat(data[3]));
-            coord.ambient.push(parseFloat(data[4]));
-            coord.temp.push(parseFloat(data[5])); // temp is on new firmware
+            red.push(parseFloat(data[1]));
+            ir.push(parseFloat(data[2]));
+            ratio.push(parseFloat(data[3]));
+            ambient.push(parseFloat(data[4]));
+            temp.push(parseFloat(data[5])); // temp is on new firmware
         }
         latest.push(parseFloat(data[3])) // stream latest ratio
 

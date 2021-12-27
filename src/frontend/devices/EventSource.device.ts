@@ -1,14 +1,15 @@
 // Adapted from Josh Brewster's implementation for the HEGduino
 // Garrett Flynn, Nov 2021 (AGPL License) | totally not tested...
 
-import { Device, deviceConstraints } from './Device.js'
+import { Device } from './Device.js'
+import { DeviceConstraintsType } from '../types/Devices.types.js'
 
 type customCallback = {
     tag: string,
     callback: () => {}
 }
 
-export default class EventSourceDevice extends Device {
+export default class EventSourceDevice<T=any> extends Device<T> {
 
     url: string = ''
     source?: EventSource
@@ -17,7 +18,7 @@ export default class EventSourceDevice extends Device {
         [x: string]: Function
     } = {}
 
-    constructor(constraints: deviceConstraints) {
+    constructor(constraints: DeviceConstraintsType<T>) {
         super(constraints)
     }
 
@@ -65,7 +66,7 @@ createEventListeners = () => {
             this.source.addEventListener('error', this.onerror, false);
             this.source.addEventListener('message', this.ondata, false);
             if(this.customCallbacks.length > 0){
-                this.customCallbacks.forEach((item,i) => {
+                this.customCallbacks.forEach((item,) => {
                     if (this.source) this.source.addEventListener(item.tag, item.callback, false);
                 })
             }
@@ -80,7 +81,7 @@ removeEventListeners = () => {
         this.source.removeEventListener('error', this.onerror, false);
         this.source.removeEventListener('message', this.ondata, false);
         if(this.customCallbacks.length > 0){
-            this.customCallbacks.forEach((item,i) => {
+            this.customCallbacks.forEach((item,) => {
                 if (this.source) this.source.removeEventListener(item.tag, item.callback, false);
             });
         }

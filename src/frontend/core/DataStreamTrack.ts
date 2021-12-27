@@ -27,11 +27,11 @@ export class DataStreamTrack extends EventTarget {
 
     get [Symbol.toStringTag]() { return 'DataStreamTrack' }
 
-    constructor (device?:Device) {
+    constructor (device?:Device<any>) {
         super()
 
         this.contentHint = ''
-        this.id = device.id
+        this.id = device?.id ?? randomUUID()
         this.kind = device?.constraints?.kind
         if (this.kind) this.kind = this.kind.replace('input','').replace('output', '')
         this.label = device?.constraints?.label
@@ -45,7 +45,8 @@ export class DataStreamTrack extends EventTarget {
         this.dispatchEvent(new Event('ended'))
     }
 
-    applyConstraints = async (constraint) => {
+    // TODO: Allow constraints to apply to the selected track
+    applyConstraints = async () => {
         // if (constraint.mute) this.dispatchEvent(new Event('mute'))
         // else this.dispatchEvent(new Event('unmute'))
     }
@@ -70,26 +71,26 @@ export class DataStreamTrack extends EventTarget {
 
     }
 
-    addData = (val) => {
+    addData = (val:any) => {
         if (Array.isArray(val)) this.data.push(...val)
         else this.data.push(val)
         this.ondata(val)
     }
 
     // Data Readout
-    ondata = (data) => {
+    ondata = (data:any) => {
         this.callbacks.forEach((f) => {
             f(data)
         })
     }
 
-    subscribe = (callback) => {
+    subscribe = (callback:Function) => {
         let id = randomUUID()
         this.callbacks.set(id,callback)
         return id
     }
 
-    unsubscribe = (id) => {
+    unsubscribe = (id:string) => {
         this.callbacks.delete(id)
     }
 

@@ -1,9 +1,11 @@
 // webSerial utils developed by Diego Schmaedech (MIT License) for chrome. 
 // Modified/Generalized and updated for web Serial by Joshua Brewster (MIT License) 
 // Modified and updated for device filtering by Garrett Flynn (AGPL License)
-import {Device, deviceConstraints } from './Device.js'
+import {Device } from './Device.js'
+import { DeviceConstraintsType } from '../types/Devices.types.js'
 
-export default class SerialDevice extends Device {
+
+export default class Serial<T=any> extends Device<T> {
 
     displayPorts: any[] = []
     encodedBuffer: string = ""
@@ -21,7 +23,7 @@ export default class SerialDevice extends Device {
     monitorData: any[] = []
     monitorIdx: number = 0
 
-    constructor(constraints: deviceConstraints) {
+    constructor(constraints: DeviceConstraintsType) {
 
         super(constraints)
 
@@ -58,7 +60,7 @@ export default class SerialDevice extends Device {
         this.port = await navigator.serial.requestPort({ filters }).then(this.onPortSelected)
     }
 
-    send = async (msg) => {
+    send = async (msg: string) => {
 
         msg+="\n";
         var encodedString = unescape(encodeURIComponent(msg));
@@ -93,7 +95,7 @@ export default class SerialDevice extends Device {
             .pipeThrough(transformer)
             .pipeTo(new WritableStream({}))
             .then(() => console.log("All data successfully written!"))
-            .catch(e => this.handleError);
+            .catch(e => this.handleError(e));
 
             return true;
 		} else return false;

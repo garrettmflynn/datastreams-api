@@ -8,12 +8,12 @@ export class DataStreamTrackTransform {
 
     transform: TransformStream
 
-    constructor({transform}){
+    constructor(dict: {transform: (value:any, controller:TransformStreamDefaultController) => Promise<any>}){
 
         this.transform = new TransformStream({
             start,
             flush,
-            transform
+            transform: dict.transform
         })
     }
 }
@@ -23,11 +23,6 @@ export class DataStreamTrackTransform {
 // --------------------------- Transform Stream Functions ---------------------------
 
 //beginning generation of data or otherwise getting access to the source
-function start(controller) {
-    // Called immediately when the TransformStream is created
+function start() {}
 
-}
-
-function flush(controller) {
-// Called when chunks are no longer being forwarded to the transformer
-}
+function flush() {}

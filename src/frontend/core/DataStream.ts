@@ -10,16 +10,18 @@ export class DataStream extends MediaStream {// has problems with getting/settin
 
     // Mirror Attributes from MediaStreams
     tracks: (MediaStreamTrack | DataStreamTrack)[] = []
+    
 
     // Functions
+    addTrack: (track: DataStreamTrack | MediaStreamTrack) => DataStreamTrack | MediaStreamTrack = this.addTrack
     _addTrack: Function
     _getTracks: Function
 
 
     get [Symbol.toStringTag]() { return 'DataStream' }
 
-    constructor(arg:[] = []) { // can be empty, stream, or tracks
-        super(arg)
+    constructor(arg: DataStream | DataStreamTrack[] | MediaStream | MediaStreamTrack[] = []) { // can be empty, stream, or tracks
+        super(arg as any)
 
         // ----------------- Event Listeners -----------------
         // this.ontrack
@@ -37,6 +39,7 @@ export class DataStream extends MediaStream {// has problems with getting/settin
         // this.getTracks
         this._addTrack = this.addTrack // save original
         this._getTracks = this.getTracks // save original
+
         this.addTrack = (track: DataStreamTrack | MediaStreamTrack) => {
             if (!this.tracks.includes(track)){ // don't duplicate tracks
                 try {this._addTrack(track)} catch {} // Try adding using the MediaStreams API

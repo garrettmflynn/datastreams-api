@@ -10,7 +10,7 @@ export class DataStreamTrackGenerator extends DataStreamTrack {
 
     writable: WritableStream
 
-    constructor({kind}){
+    constructor(){
         super()
 
         this.writable = new WritableStream({
@@ -22,48 +22,18 @@ export class DataStreamTrackGenerator extends DataStreamTrack {
 
     }
 
+    // --------------------------- Writable Stream Methods ---------------------------
+
     // sets up the stream functionality, e.g. getting access to the underlying sink
-     start = (controller) => {
-        // console.log("Chunk received", chunk);
-    }
+     start = () => {}
+
     //  called repeatedly every time a new chunk is ready to be written to the underlying sink
-     write = (chunk, controller) => {
-        // console.log("Chunk received", chunk);
-        this.addData(chunk)
-    }
+     write = (chunk:any) => this.addData(chunk)
 
     //  finalize writes to the underlying sink, and release access to it.
-    close = () => {
-        console.log("All data successfully read!");
-    }
+    close = () => console.log("All data successfully read!");
 
     // will be called if the app signals that it wishes to abruptly close the stream and put it in an errored state
-    abort = (reason) => {
-        console.error("Something went wrong!", reason);
-    }
+    abort = (reason:any) => console.error("Something went wrong!", reason);
 
-}
-
-
-
-// --------------------------- Writable Stream Functions ---------------------------
-
-// sets up the stream functionality, e.g. getting access to the underlying sink
-function start(controller) {
-    // console.log("Chunk received", chunk);
-}
-//  called repeatedly every time a new chunk is ready to be written to the underlying sink
-function write(chunk, controller) {
-    console.log("Chunk received", chunk);
-    this.data.push(chunk)
-}
-
-//  finalize writes to the underlying sink, and release access to it.
-function close(controller) {
-    console.log("All data successfully read!");
-}
-
-// will be called if the app signals that it wishes to abruptly close the stream and put it in an errored state
-function abort(reason) {
-    console.error("Something went wrong!", reason);
 }

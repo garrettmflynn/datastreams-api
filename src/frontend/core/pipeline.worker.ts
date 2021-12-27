@@ -2,10 +2,10 @@
 import {pipelineType, boundType} from './DataPipeline' 
 
 // Ensure Proper Pipeline Format
-let pipeline = []
+let pipeline:pipelineType = []
 
 // Bind Pipeline
-let bound = []
+let bound:boundType = []
 
 // --------------------------- Pipeline Functions ---------------------------
 export let addSource = (source:ReadableStream, bound:boundType) => bound.push(source) // Push source at the beginning

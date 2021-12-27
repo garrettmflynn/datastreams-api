@@ -27,7 +27,7 @@ export class Room {
             name: this.name,
             initiator: this.initiator.uuid,
             restrictions: this.restrictions,
-            peers: Array.from(this.peers, ([key,peer]) => peer.uuid)
+            peers: Array.from(this.peers, ([,peer]) => peer.uuid)
         }
     }
 

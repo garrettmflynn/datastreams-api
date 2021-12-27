@@ -5,7 +5,7 @@ export default class DataChannel extends DataStreamTrack{
 
     id: string = ''
     label: string = ''
-    parent: DataChannel | null
+    parent: DataChannel
 
     constructor(parent: DataChannel){
         super()
@@ -15,6 +15,6 @@ export default class DataChannel extends DataStreamTrack{
     }
 
 
-    send = (data) => this.parent.send(data)
+    send = (data:any):void => this.parent.send(data)
     sendMessage = () => {}
 }

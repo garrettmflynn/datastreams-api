@@ -16,7 +16,7 @@ export default [
             let channelData = decoded.split(',').map(str => Number.parseFloat(str)) // Organize Decoder Output into a Float Array
             return channelData // Pass Array to DataTracks
         },
-        onconnect: (device: Device) => {
+        onconnect: (device: Device<any>) => {
 
             // Create synthetic data stream
             let freqs = [1,5,10]

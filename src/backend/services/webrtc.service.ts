@@ -24,7 +24,7 @@ export default class WebRTCService {
     getRoomsByAuth = (auth:string) => this.getRooms((r) => r.restrictions?.users == null || r.restrictions.users.includes(auth))
 
     getRooms = (filter:(arg:Room) => boolean) => {
-        return Array.from(this.rooms, ([name, value]) => value.export()).filter(filter)
+        return Array.from(this.rooms, ([, value]) => value.export()).filter(filter)
     }
 
     removeUser = (ws: any) => {
@@ -32,7 +32,7 @@ export default class WebRTCService {
         this.users.delete(ws.id)
     }
 
-    onmessage = (o: DataType, ws:any) => {
+    onmessage = async (o: DataType, ws:any) => {
 
         let data
         o = parseutils.safeParse(o)
@@ -44,7 +44,7 @@ export default class WebRTCService {
             let res = this.getRoomsByAuth(input.data)
             data = {cmd:'rooms', data: res}
         }
-        if (input.cmd === 'createroom') data = this.createroom(input.data, id)
+        if (input.cmd === 'createroom') data = await this.createRoom(input.data, id)
 
         // Room Management
         else if (input.cmd === 'connect') data = this.connect(input, id)
@@ -79,7 +79,7 @@ export default class WebRTCService {
         return room.export()
     }
 
-    createroom = (settings={},origin=0) => {
+    createRoom = async (settings={},origin=0) => {
 
         // Get Room Initiator
         let initiator = this.users.get(origin)
@@ -106,7 +106,7 @@ export default class WebRTCService {
             }
 
             return data
-        }
+        } else return Promise.reject()
     }
 
     disconnect = (o: DataType, origin: number) => {
