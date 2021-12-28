@@ -1,7 +1,7 @@
 import * as parseutils from '../../common/parse.utils.js'
 import { DataType } from '../types/Data.types.js';
 
-export default class OffloadService {
+export class OffloadService {
 
     users: Map<string,any> = new Map()
 

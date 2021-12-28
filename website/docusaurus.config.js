@@ -6,15 +6,44 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'Data Capture and Streams API',
+  tagline: 'Real-Time Data on the Browser',
+  url: 'https://datastreams.brainsatplay.com',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'brainsatplay',
+  projectName: 'datastreams-api',
+
+  themes: ['@docusaurus/theme-live-codeblock'],
+
+
+  // ---------------------- TypeDoc Configuration ----------------------
+  plugins: [
+    [
+      'docusaurus-plugin-typedoc',
+
+      // Plugin / TypeDoc options
+      {
+        tsconfig: '../tsconfig.json',
+        entryPoints: ["../src"],
+        entryPointStrategy: "Expand",
+        exclude: [
+            "./"
+        ],
+        readme: "none",
+
+        // Plugin options
+        out: 'reference',
+        sidebar: {
+          categoryLabel: 'Reference',
+          position: 1,
+          fullNames: false
+        },
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -22,17 +51,14 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: '../docs',
+          // path: '../docs',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // routeBasePath: '/', // Serve the docs at the site's root
+          editUrl: 'https://github.com/brainsatplay/datastreams-api',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/brainsatplay/datastreams-api',
+
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -44,31 +70,36 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: true,
+      },
       navbar: {
-        title: 'My Site',
+        title: 'DataStreams API',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Brains@Play Logo',
+          src: 'img/logo_colorized-min.png',
         },
         items: [
           {
             type: 'doc',
-            docId: 'tutorials/intro',
+            docId: 'index',
             position: 'left',
             label: 'Docs',
           },
           { 
             type: 'doc',
-            docId: 'reference/README',
+            docId: 'reference/index',
             label: "Reference", 
             position: 'left'
           },
           // { href: repoUrl, label: "GitHub", external: true },
           // { blog: true, label: "Blog" },
           // { href: helpUrl, label: "Need Help?", external: true }
-          {to: 'blog', label: 'Blog', position: 'left'},
+          // {to: 'blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/brainsatplay/datastreams-api',
             label: 'GitHub',
             position: 'right',
           },
@@ -81,8 +112,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Tutorials',
+                to: '/docs',
               },
             ],
           },
@@ -91,33 +122,33 @@ const config = {
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                href: 'https://stackoverflow.com/questions/tagged/datastreams',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.com/invite/tQ8P79tw8j',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/brainsatplay',
               },
             ],
           },
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
+              // {
+              //   label: 'Blog',
+              //   to: '/blog',
+              // },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/brainsatplay/datastreams-api',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} DataStreams API. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} DataStreams API.`,
       },
       prism: {
         theme: lightCodeTheme,

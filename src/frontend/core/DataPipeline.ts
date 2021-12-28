@@ -1,7 +1,7 @@
 // import Embedder from "./pipes/Embedder.js";
 // import Offloader from "./pipes/Offloader.js";
 
-import randomUUID from "../utils/id.js"
+import {randomUUID} from "../utils/id.js"
 
 import worker, * as workerutils from './pipeline.worker.js' // must export self
 

@@ -1,6 +1,6 @@
 import {DataTrackSettings} from "./DataTrackSettings.js"
 import {DataTrackCapabilities} from "./DataTrackCapabilities.js"
-import randomUUID from "../utils/id.js"
+import {randomUUID} from "../utils/id.js"
 import { DataTrackConstraints } from "./DataTrackConstraints.js"
 import { Device } from "../devices/Device.js"
 

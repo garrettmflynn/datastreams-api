@@ -1,6 +1,6 @@
 import { uiid } from '@giveback007/util-lib';
 
-const randomUUID = () => {
+export const randomUUID = () => {
 
     // // Use Crypto API
     // if (window.crypto) return window.crypto.randomUUID()
@@ -9,5 +9,3 @@ const randomUUID = () => {
     // else 
     return uiid()
 }
-
-export default randomUUID

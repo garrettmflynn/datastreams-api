@@ -12,7 +12,7 @@ BSD license, all text above must be included in any redistribution.
 import {Device} from "./Device.js"
 import { DeviceConstraintsType } from '../types/Devices.types.js';
 
-export default class Bluetooth<T=any> extends Device<T> { //This is formatted for the way the HEG sends/receives information. Other BLE devices will likely need changes to this to be interactive.
+export class Bluetooth<T=any> extends Device<T> { //This is formatted for the way the HEG sends/receives information. Other BLE devices will likely need changes to this to be interactive.
     
             // Device-Specific Properties
             source?: BluetoothDevice

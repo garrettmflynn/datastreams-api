@@ -1,7 +1,7 @@
 import { DataStreamTrack } from "./DataStreamTrack"
 
 // Data Channels Behave Just Like Tracks
-export default class DataChannel extends DataStreamTrack{
+export class DataChannel extends DataStreamTrack{
 
     id: string = ''
     label: string = ''

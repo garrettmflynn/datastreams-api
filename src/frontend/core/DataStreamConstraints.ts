@@ -1,6 +1,6 @@
 import { DataTrackConstraints } from "./DataTrackConstraints"
 
-export default class DataStreamConstraints {
+export class DataStreamConstraints {
 
     audio: boolean | DataTrackConstraints = false
     video: boolean | DataTrackConstraints = false

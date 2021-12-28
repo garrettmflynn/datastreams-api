@@ -1,7 +1,7 @@
 
 import { UserType } from '../types/User.types'
 
-export default class Room {
+export class Room {
 
     // Core Properties
     uuid: number = Math.floor(Math.random() * 10000000)

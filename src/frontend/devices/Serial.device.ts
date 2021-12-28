@@ -1,11 +1,11 @@
 // webSerial utils developed by Diego Schmaedech (MIT License) for chrome. 
 // Modified/Generalized and updated for web Serial by Joshua Brewster (MIT License) 
 // Modified and updated for device filtering by Garrett Flynn (AGPL License)
-import {Device } from './Device.js'
+import { Device } from './Device.js'
 import { DeviceConstraintsType } from '../types/Devices.types.js'
 
 
-export default class Serial<T=any> extends Device<T> {
+export class Serial<T=any> extends Device<T> {
 
     displayPorts: any[] = []
     encodedBuffer: string = ""

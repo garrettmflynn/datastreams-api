@@ -9,10 +9,10 @@
     "webpack": "webpack --mode production",
     "typecheck": "tsc --watch --preserveWatchOutput",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:docs": "npm run build:typedoc && cd website && npm install && npm run build",
+    "build:docs": "cd website && npm install && npm run build",
     "build:typedoc": "typedoc",
-    "serve:docs": "npm run build:docs && cd website && npm install && npm run serve",
-    "start:docs": "cd website && npm install && npm run start"
+    "serve:docs": "cd website && yarn && yarn run serve",
+    "start:docs": "cd website && yarn && yarn run start"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/brainsatplay/DataStreams-API#readme",
   "devDependencies": {
-    "@docusaurus/types": "^2.0.0-beta.14",
     "@snowpack/plugin-dotenv": "^2.2.0",
     "@snowpack/plugin-optimize": "^0.2.13",
     "@types/dom-mediacapture-record": "^1.0.11",
@@ -34,6 +33,7 @@
     "@types/web": "^0.0.48",
     "@types/webcrypto": "^0.0.28",
     "awesome-typescript-loader": "^5.2.1",
+    "docusaurus-plugin-typedoc": "^0.16.6",
     "html-webpack-plugin": "^5.5.0",
     "shx": "^0.3.3",
     "snowpack": "^3.8.8",

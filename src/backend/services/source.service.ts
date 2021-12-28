@@ -1,7 +1,7 @@
 import * as source from '../../common/source.device'
 import { Device } from 'src/frontend/devices/Device'
 
-export default class SourceService {
+export class SourceService {
 
     users: Map<string,any> = new Map()
     device?: Device<any>

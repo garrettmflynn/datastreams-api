@@ -4,7 +4,7 @@ import * as muse from './muse/index.js'
 import * as bci2000web from './bci2000web/index.js'
 
 // Supported Devices
-export default [
+export const devices = [
 
     // ----------------------------------  Device with Auto-Generated Connection Scripts ----------------------------------
 

@@ -4,12 +4,12 @@
 import { Device } from './Device.js'
 import { DeviceConstraintsType } from '../types/Devices.types.js'
 
-type customCallback = {
+export type customCallback = {
     tag: string,
     callback: () => {}
 }
 
-export default class EventSourceDevice<T = any> extends Device<T> {
+export class EventSourceDevice<T = any> extends Device<T> {
 
     url: string = ''
     source?: EventSource

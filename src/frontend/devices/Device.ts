@@ -1,7 +1,7 @@
 import { DataStreamTrack } from "../core/DataStreamTrack.js";
 import { DataStream } from "../core/DataStream.js";
 import { CoreDeviceType, DeviceConstraintsType } from "../types/Devices.types.js";
-import randomUUID from "../utils/id.js";
+import {randomUUID} from "../utils/id.js";
 
 
 export class Device <T> {

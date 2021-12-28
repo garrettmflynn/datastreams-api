@@ -37,6 +37,8 @@
       "importHelpers": true, /* Import emit helpers from 'tslib'. */
       "pretty": true, /* Stylize errors and messages using color and context (experimental). */
       "jsx": "react", /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    "jsxFactory": "JSX.createElement",
+    "jsxFragmentFactory": "JSX.Fragment",
       "downlevelIteration": true,
       "allowJs": true,
       "experimentalDecorators": true,
@@ -59,6 +61,7 @@
       "strictPropertyInitialization": true, /* Ensure non-undefined class properties are initialized in the constructor. */
       "esModuleInterop": true,
 
+      
       /* -- Module Resolution Options -- */
       "moduleResolution": "node",
       "typeRoots": [
