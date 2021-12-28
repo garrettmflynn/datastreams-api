@@ -1,0 +1,11 @@
+{
+    "tsconfig": "./tsconfig.json",
+    "entryPoints": ["./src/frontend/index.ts"],
+    "out": "./docs/reference",
+    "exclude": [
+        "./website"
+    ],
+    "readme": "none",
+    "plugin": "typedoc-plugin-markdown"
+
+}
