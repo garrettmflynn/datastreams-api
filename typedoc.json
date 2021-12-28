@@ -6,6 +6,6 @@
         "./website"
     ],
     "readme": "none",
-    "plugin": "typedoc-plugin-markdown"
-
+    "plugin": "typedoc-plugin-markdown",
+    "emit": "docs"
 }

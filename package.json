@@ -10,7 +10,9 @@
     "typecheck": "tsc --watch --preserveWatchOutput",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:docs": "npm run build:typedoc && cd website && npm install && npm run build",
-    "build:typedoc": "typedoc"
+    "build:typedoc": "typedoc",
+    "serve:docs": "npm run build:docs && cd website && npm install && npm run serve",
+    "start:docs": "cd website && npm install && npm run start"
   },
   "repository": {
     "type": "git",

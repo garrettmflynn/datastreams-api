@@ -10,21 +10,11 @@ const config = {
   tagline: 'Dinosaurs are cool',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
-
-  // For no header links in the top nav bar -> headerLinks: [],
-  headerLinks: [
-    { doc: "getting-started", label: "Docs" },
-    { doc: "reference/classes/datastreams", label: "Reference" },
-    // { href: repoUrl, label: "GitHub", external: true },
-    // { blog: true, label: "Blog" },
-    // { href: helpUrl, label: "Need Help?", external: true }
-    { search: true }
-  ],
 
   presets: [
     [
@@ -32,9 +22,11 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: '../docs',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // routeBasePath: '/', // Serve the docs at the site's root
         },
         blog: {
           showReadingTime: true,
@@ -61,11 +53,20 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'tutorials/intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { 
+            type: 'doc',
+            docId: 'reference/README',
+            label: "Reference", 
+            position: 'left'
+          },
+          // { href: repoUrl, label: "GitHub", external: true },
+          // { blog: true, label: "Blog" },
+          // { href: helpUrl, label: "Need Help?", external: true }
+          {to: 'blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
@@ -116,7 +117,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} DataStreams API. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
