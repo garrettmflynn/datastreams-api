@@ -18,6 +18,16 @@ import { DeviceType, DeviceConstraintsType } from '../types/Devices.types.js';
 import { DeviceRequestType } from '../types/Core.types.js';
 import {WebsocketDevice} from '../devices/Websocket.device.js';
 
+
+/**
+ * The DataDevices interface provides access to data sources like webcams, microphones, and BLE / USB devices. 
+ * ```typescript
+ * import { DataDevices } from "datastreams-api";
+ *
+ * const dataDevices = new DataDevices();
+ * ```
+ */
+
 export class DataDevices extends EventTarget {
 
     devices: DeviceType[]

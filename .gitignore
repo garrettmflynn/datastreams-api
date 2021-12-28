@@ -5,3 +5,5 @@ node_modules
 lib
 lib-esm
 _bundles
+
+website/docs/reference
