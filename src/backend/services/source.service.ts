@@ -1,5 +1,6 @@
 import * as source from '../../common/source.device'
-import { Device } from 'src/frontend/devices/Device'
+import { Device } from '../../frontend/devices/Device'
+import { randomUUID } from '../../common/id'
 
 export class SourceService {
 
@@ -9,6 +10,7 @@ export class SourceService {
     constructor() {}
 
     addUser = (ws: any) => {
+        if (!ws.id) ws.id = randomUUID()
         if (this.users.size === 0) {
             this.device = new Device(source)
             this.device.ondata(this.onmessage)

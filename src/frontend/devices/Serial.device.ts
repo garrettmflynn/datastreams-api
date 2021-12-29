@@ -5,7 +5,7 @@ import { Device } from './Device.js'
 import { DeviceConstraintsType } from '../types/Devices.types.js'
 
 
-export class Serial<T=any> extends Device<T> {
+export class SerialDevice<T=any> extends Device<T> {
 
     displayPorts: any[] = []
     encodedBuffer: string = ""

@@ -1,12 +1,14 @@
 import {Room} from '../classes/Room'
 import {UserType} from '../types/User.types'
-import { DataType } from '../types/Data.types'
+import { DataType } from '../../common/types/Data.types'
 import * as parseutils from '../../common/parse.utils.js'
+import { RoomInterface } from '../../common/types/Room.types'
+import {randomUUID } from '../../common/id'
 
-export class WebRTCService {
+export class PeerService {
 
-    users: Map<number,UserType> = new Map()
-    rooms: Map<number,any> = new Map()
+    users: Map<string,UserType> = new Map()
+    rooms: Map<string,any> = new Map()
 
 
     constructor() {
@@ -14,7 +16,7 @@ export class WebRTCService {
     }
 
     addUser = (ws:any, auth:string) => {
-        if (!ws.id) ws.id = Math.floor(Math.random() * 10000000);
+        if (!ws.id) ws.id = randomUUID()
         this.users.set(ws.id, {uuid: ws.id, auth, ws, info: {}}) // Optionally includes a user-specified ID to be used as a filter
         let msg = this.getRoomsByAuth(auth)
         let data = JSON.stringify({cmd:'rooms', data: msg})
@@ -61,7 +63,7 @@ export class WebRTCService {
         return data
     }
 
-    connect = (o: DataType, origin: number) => {
+    connect = (o: DataType, origin: string) => {
 
         // Get Room
         let room = this.rooms.get(o.data.room.uuid)
@@ -79,7 +81,7 @@ export class WebRTCService {
         return room.export()
     }
 
-    createRoom = async (settings={},origin=0) => {
+    createRoom = async (settings:RoomInterface,origin='server') => {
 
         // Get Room Initiator
         let initiator = this.users.get(origin)
@@ -109,7 +111,7 @@ export class WebRTCService {
         } else return Promise.reject()
     }
 
-    disconnect = (o: DataType, origin: number) => {
+    disconnect = (o: DataType, origin: string) => {
 
         if (o.data) this.removePeerFromRoom(this.rooms.get(o.data.uuid), origin) // Remove from specified room
         else this.rooms.forEach(r => r.peers.has(origin) && this.removePeerFromRoom(r,origin)) // Remove from all rooms
@@ -117,7 +119,7 @@ export class WebRTCService {
         return {cmd: 'roomclosed'}
     }
 
-    removePeerFromRoom = (room: Room, origin: number) => {
+    removePeerFromRoom = (room: Room, origin: string) => {
         room.removePeer(origin) // remove peer from room
 
         if (room.empty === true){
@@ -131,11 +133,11 @@ export class WebRTCService {
     }
 
     // Macro for Passing Offers, Answers, and Candidates between Peers
-    pass = (cmd:string, origin: number, destination:number, msg:any) => {
+    pass = (cmd:string, origin: string, destination:string, msg:any) => {
         let recipient = this.users.get(destination)
         if (recipient?.ws) recipient.ws.send(JSON.stringify({cmd, data: {id: origin, msg}, id: origin, service: 'webrtc'}))
     }
 }
 
 
-module.exports = WebRTCService
+module.exports = PeerService

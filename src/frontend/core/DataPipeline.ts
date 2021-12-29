@@ -1,7 +1,7 @@
-// import Embedder from "./pipes/Embedder.js";
-// import Offloader from "./pipes/Offloader.js";
+// import { HardwarePipe } from "./pipes/Hardware.pipe.js";
+// import { ServerPipe } from "./pipes/Server.pipe.js";
 
-import {randomUUID} from "../utils/id.js"
+import {randomUUID} from "../../common/id.js"
 
 import worker, * as workerutils from './pipeline.worker.js' // must export self
 
@@ -98,10 +98,10 @@ export class DataPipeline {
             else {
                 // switch (settings.method) {
                 //     case 'offload':
-                //         transform = new Offloader(settings)
+                //         transform = new ServerPipe(settings)
                 //         break;
                 //     case 'embed':
-                //         transform = new Embedder(settings)
+                //         transform = new HardwarePipe(settings)
                 //         break;
                 //     default:
                         transform = { transform: async (chunk:any, controller:TransformStreamDefaultController) => controller.enqueue(settings.function(chunk)) }

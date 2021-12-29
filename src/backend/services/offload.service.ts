@@ -1,5 +1,6 @@
 import * as parseutils from '../../common/parse.utils.js'
-import { DataType } from '../types/Data.types.js';
+import { DataType } from '../../common/types/Data.types.js';
+import { randomUUID } from '../../common/id'
 
 export class OffloadService {
 
@@ -10,8 +11,8 @@ export class OffloadService {
         
     }
 
-    addUser = (ws: any) => { // TODO: Specify ws as Websocket with ID added
-        if (!ws.id) ws.id = Math.floor(Math.random() * 10000000);
+    addUser = (ws: any) => {
+        if (!ws.id) ws.id = randomUUID()
         this.users.set(ws.id, {uuid: ws.id, ws})
     }
 
@@ -27,7 +28,7 @@ export class OffloadService {
         let id = ws.id
         let input = o.data
 
-        // Offloader Utilities
+        // ServerPipe Utilities
         if (input.cmd === 'settings') data = this.initialize(input,id) 
         else if (input.cmd === 'data') data = this.ondata(input,id)
 

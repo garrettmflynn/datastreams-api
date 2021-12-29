@@ -50,6 +50,8 @@
     "cors": "^2.8.5",
     "create-docusaurus": "^2.0.0-beta.14",
     "express": "^4.17.1",
+    "gpujsutils": "^1.0.2",
+    "magicworker": "^1.0.3",
     "muse-js": "^3.2.0",
     "regenerator-runtime": "^0.13.9",
     "typedoc": "^0.22.10",

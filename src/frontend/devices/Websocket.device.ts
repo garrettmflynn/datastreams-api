@@ -1,8 +1,8 @@
 import { Device } from "./Device.js"
 import { DeviceConstraintsType } from '../types/Devices.types.js';
-import { Websocket } from '../pipes/WebSocket.js';
+import { Websocket } from '../utils/WebSocket.js';
 
-export class WebsocketDevice<T=any> extends Device<T> { //This is formatted for the way the HEG sends/receives information. Other BLE devices will likely need changes to this to be interactive.
+export class WebSocketDevice<T=any> extends Device<T> { //This is formatted for the way the HEG sends/receives information. Other BLE devices will likely need changes to this to be interactive.
                     
     socket?: Websocket
 

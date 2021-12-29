@@ -7,16 +7,16 @@ Based on https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API
 
 */
 
-import {devices} from '../devices/index.js';
+import {devices} from '../devices/device.registry.js';
 import { DataStream } from './DataStream.js';
-import {Bluetooth} from '../devices/Bluetooth.device.js'
-import {Serial} from '../devices/Serial.device.js'
+import { Bluetooth as BluetoothDevice } from '../devices/Bluetooth.device.js'
+import { SerialDevice } from '../devices/Serial.device.js'
 import {EventSourceDevice} from '../devices/EventSource.device.js'
 import {Device} from '../devices/Device.js';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
 import { DeviceType, DeviceConstraintsType } from '../types/Devices.types.js';
 import { DeviceRequestType } from '../types/Core.types.js';
-import {WebsocketDevice} from '../devices/Websocket.device.js';
+import {WebSocketDevice} from '../devices/WebSocket.device.js';
 
 
 /**
@@ -94,15 +94,15 @@ export class DataDevices extends EventTarget {
         else {
 
             // Request Device from User
-            if (constraints.ble) device = new Bluetooth(constraints)
-            else if (constraints.serial)  device = new Serial(constraints)
+            if (constraints.ble) device = new BluetoothDevice(constraints)
+            else if (constraints.serial)  device = new SerialDevice(constraints)
             else if (constraints.wifi) device = new EventSourceDevice(constraints)
-            else if (constraints.serviceUUID) device = new Bluetooth(constraints)
-            else if (constraints.usbVendorId)  device = new Serial(constraints)
+            else if (constraints.serviceUUID) device = new BluetoothDevice(constraints)
+            else if (constraints.usbVendorId)  device = new SerialDevice(constraints)
             // if () device = new USBDevice(constraints)
             else if (constraints.url) {
                 if (constraints.wifi) device = new EventSourceDevice(constraints)
-                else device = new WebsocketDevice(constraints)
+                else device = new WebSocketDevice(constraints)
             }
             else device = new Device(constraints)
         }

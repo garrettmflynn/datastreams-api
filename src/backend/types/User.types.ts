@@ -1,5 +1,5 @@
 export interface UserType {
-    uuid: number;
+    uuid: string;
     ws: any;
     auth?: any;
     info?: {

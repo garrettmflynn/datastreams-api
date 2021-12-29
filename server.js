@@ -2,8 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
-const WebRTCService = require('./dist/src/backend/services/webrtc.service.js')
-const OffloadService = require('./dist/src/backend/services/offload.service.js')
+const services = require('./dist/src/backend/services')
+const id = require('./dist/src/common/id')
+
+// const OffloadService = require('./dist/src/backend/services/offload.service.js')
+// const SourceService = require('./dist/src/backend/services/offload.service.js')
 
 // const webpack = require('webpack');
 // const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -38,8 +41,10 @@ app.listen(port, function () {
 
 const wss = new ws.WebSocketServer({ port: 80 });
 
-let webrtc = new WebRTCService(wss)
-let server = new OffloadService(wss)
+let webrtc = new services.PeerService(wss)
+let server = new services.OffloadService(wss)
+let source = new services.SourceService(wss)
+
 
 // Connect Websocket
 wss.on('connection', function (ws, msg, req) {
@@ -47,9 +52,10 @@ wss.on('connection', function (ws, msg, req) {
     let auth = ws.protocol
     // console.log(auth)
 
-    ws.id = Math.floor(Math.random() * 10000000);
+    ws.id = id.randomUUID()
     webrtc.addUser(ws, auth)
     server.addUser(ws)
+    source.addUser(ws)
 
     console.log('User added!');
 

@@ -1,20 +1,21 @@
 
 import { UserType } from '../types/User.types'
+import { RoomInterface } from '../../common/types/Room.types'
+import { randomUUID } from '../../common/id'
 
 export class Room {
 
     // Core Properties
-    uuid: number = Math.floor(Math.random() * 10000000)
+    uuid: string = randomUUID()
     name: string = ''
     initiator: UserType
     restrictions: any = {}
-    peers: Map<number,any> = new Map()
+    peers: Map<string,any> = new Map()
     empty:boolean = false
 
     constructor(initiator: UserType, settings:any = {name: null, restrictions: {}}){
 
         // Core Properties
-        this.uuid = Math.floor(Math.random() * 10000000)
         this.name = settings.name ?? this.uuid
         this.initiator = initiator
         this.restrictions = settings.restrictions
@@ -28,7 +29,7 @@ export class Room {
             initiator: this.initiator.uuid,
             restrictions: this.restrictions,
             peers: Array.from(this.peers, ([,peer]) => peer.uuid)
-        }
+        } as RoomInterface
     }
 
     addPeer = (o: UserType) => {
@@ -58,7 +59,7 @@ export class Room {
         
     }
 
-    removePeer = (origin: number) => {
+    removePeer = (origin: string) => {
         let peer = this.peers.get(origin)
         this.peers.delete(origin)
         this.peers.forEach(p => p.ws.send(JSON.stringify({cmd: "disconnectPeer", data: {id: peer.uuid, info: peer.info}, id: origin, service: 'webrtc'}))) // remove from peers

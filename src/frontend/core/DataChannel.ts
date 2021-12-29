@@ -1,20 +1,21 @@
 import { DataStreamTrack } from "./DataStreamTrack"
+import { randomUUID } from '../../common/id'
 
 // Data Channels Behave Just Like Tracks
 export class DataChannel extends DataStreamTrack{
 
     id: string = ''
     label: string = ''
-    parent: DataChannel
+    parent: RTCDataChannel
 
-    constructor(parent: DataChannel){
+    constructor(parent: RTCDataChannel){
         super()
-        this.id = parent.id
+        this.id = parent.id?.toString() ?? randomUUID()
         this.label = parent.label
         this.parent = parent 
     }
 
 
     send = (data:any):void => this.parent.send(data)
-    sendMessage = () => {}
+    sendMessage = (_:any):any => {}
 }

@@ -27,8 +27,15 @@ const config = {
       // Plugin / TypeDoc options
       {
         tsconfig: '../tsconfig.json',
-        entryPoints: ["../src"],
-        entryPointStrategy: "Expand",
+        entryPoints: [
+          "../src", 
+          "../src/frontend/core", 
+          "../src/frontend/devices", 
+          "../src/frontend/pipes", 
+          "../src/backend/services",
+          "../src/frontend/transforms", 
+        ],
+        // entryPointStrategy: "Expand",
         exclude: [
             "./"
         ],
