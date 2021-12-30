@@ -16,7 +16,7 @@ import {Device} from '../devices/Device.js';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
 import { DeviceType, DeviceConstraintsType } from '../types/Devices.types.js';
 import { DeviceRequestType } from '../types/Core.types.js';
-import {WebSocketDevice} from '../devices/WebSocket.device.js';
+import {WebSocketDevice} from '../devices/Websocket.device.js';
 
 
 /**
