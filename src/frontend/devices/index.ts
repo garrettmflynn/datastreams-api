@@ -7,4 +7,4 @@
 export {Bluetooth as BluetoothDevice} from './Bluetooth.device'
 export * from './EventSource.device'
 export * from './Serial.device'
-export * from './Websocket.device'
+export * from './WebSocket.device'
