@@ -22,5 +22,7 @@ The `datastreams-api` package allows developers to specify their own I/O require
 The official documentations for the `datastreams-api` package can be found at [https://streams.brainsatplay.com](https://datastreams.brainsatplay.com).
 
 ## Roadmap
-1. Complete documentation
-2. Create eye-tracking demo with WebGazer + blink to click
+1. Rewrite examples to conform to new API syntax
+2. Use new build tool to run backend and frontend together
+3. Complete documentation
+4. Create eye-tracking demo with WebGazer + blink to click
