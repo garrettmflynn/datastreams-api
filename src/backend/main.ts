@@ -2,30 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
-const services = require('./dist/src/backend/services')
-const id = require('./dist/src/common/id')
-
-// const OffloadService = require('./dist/src/backend/services/offload.service.js')
-// const SourceService = require('./dist/src/backend/services/offload.service.js')
-
-// const webpack = require('webpack');
-// const webpackDevMiddleware = require('webpack-dev-middleware');
+const services = require('./services')
+const id = require('../common/id')
 
 const app = express();
 app.use(cors()) // allow Cross-domain requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// const config = require('./webpack.config.js');
-// const compiler = webpack(config);
-
-// Snowpack
-const {startServer,loadConfiguration} = require('snowpack');
-(async () => {
-  const config = await loadConfiguration({},'snowpack.config.js')
-  // const config = await loadConfiguration({},'snowpack.config.cjs')
-  let snowServer = await startServer({config});
-})()
 
 // Websocket Imports
 const ws = require('ws')

@@ -6,4 +6,9 @@ lib
 lib-esm
 _bundles
 
+# Builder
+playground
+.temp
+.cache
+
 website/docs/reference

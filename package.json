@@ -12,7 +12,9 @@
     "build:docs": "cd website && yarn && yarn build",
     "build:typedoc": "typedoc",
     "serve:docs": "cd website && yarn && yarn run serve",
-    "start:docs": "cd website && yarn && yarn run start"
+    "start:docs": "cd website && yarn && yarn run start",
+
+    "run-ts": "node --trace-warnings -r esbuild-register build.config.ts"
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,9 @@
     "@types/web": "^0.0.48",
     "@types/webcrypto": "^0.0.28",
     "awesome-typescript-loader": "^5.2.1",
+    "build-dev": "^0.0.3",
     "docusaurus-plugin-typedoc": "^0.16.6",
+    "esbuild-register": "^3.3.1",
     "html-webpack-plugin": "^5.5.0",
     "shx": "^0.3.3",
     "snowpack": "^3.8.8",

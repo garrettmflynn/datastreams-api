@@ -8,6 +8,7 @@
 import * as core from "./frontend/core";
 import * as devices from "./frontend/devices";
 import * as pipes from "./frontend/pipes";
+import * as transforms from "./frontend/transforms";
 
 // Backend
 import * as services from "./backend/services";
@@ -16,5 +17,6 @@ export {
     core,
     devices,
     pipes,
-    services
+    services,
+    transforms
 }

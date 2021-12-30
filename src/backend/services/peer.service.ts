@@ -10,7 +10,6 @@ export class PeerService {
     users: Map<string,UserType> = new Map()
     rooms: Map<string,any> = new Map()
 
-
     constructor() {
 
     }
@@ -138,6 +137,3 @@ export class PeerService {
         if (recipient?.ws) recipient.ws.send(JSON.stringify({cmd, data: {id: origin, msg}, id: origin, service: 'webrtc'}))
     }
 }
-
-
-module.exports = PeerService

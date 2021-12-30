@@ -1,7 +1,7 @@
 
-import DataPipeline from "../src/DataPipeline.js"
-import { WebGLTransform } from '../src/transforms/video/swirl.js';
-import DataStream from "../src/DataStream.js";
+import {DataPipeline} from "../../src/frontend/core/DataPipeline.js"
+import { VideoSwirl } from '../../src/frontend/transforms/video/webgl.transforms.js';
+import {DataStream} from "../../src/frontend/core/DataStream.js";
 
 export const videoTransform = async (stream, video, context) => {
 
@@ -11,7 +11,7 @@ export const videoTransform = async (stream, video, context) => {
     pipeline.setSource(track)
 
     // ---------------- Skew (slow) ----------------
-    // let frametransform = new WebGLTransform()
+    // let frametransform = new VideoSwirl()
     // frametransform.init()
     // let transform = async (frame, controller) => {
     //     await frametransform.transform(frame, controller);
