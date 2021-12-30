@@ -10,7 +10,7 @@ The `datastreams-api` package allows developers to specify their own I/O require
 - [x] Web Bluetooth API
 - [x] EventSource API
 - [x] WebSockets API
-- [] Web USB
+- [ ] Web USB
 
 ### WebRTC
 - [x] P2P Data Streaming 
@@ -19,7 +19,7 @@ The `datastreams-api` package allows developers to specify their own I/O require
 - [x] Threaded stream transformations
 
 ## Documentation 
-The official documentations for the `datastreams-api` package can be found at [https://datastreams.brainsatplay.com](https://datastreams.brainsatplay.com).
+The official documentations for the `datastreams-api` package can be found at [https://streams.brainsatplay.com](https://datastreams.brainsatplay.com).
 
 ## Roadmap
 1. Complete documentation
