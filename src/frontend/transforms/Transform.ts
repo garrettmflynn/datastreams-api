@@ -35,8 +35,8 @@ export class Transform extends EventTarget {
         this.dispatchEvent(new Event('end'))
     }
 
-    onstart = (e:Event):any => {}
-    ontransform = (e:CustomEvent):any => {}
-    onend = (e:Event):any => {}
+    onstart = (e:Event):any => console.log('Transform started', e)
+    ontransform = (e:CustomEvent):any => console.log('Transforming', e)
+    onend = (e:Event):any => console.log('Transform ended', e)
   }
   
