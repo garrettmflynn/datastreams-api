@@ -1,5 +1,5 @@
 # Data Capture and Streams API (Data Streams)
-Simple MediaStreams API extension to handle arbitrary data streams acquired through the browser.
+Simple Media Capture and Streams API extension to handle arbitrary data streams acquired through the browser.
 
 ## Architecture
 The `datastreams-api` package allows developers to specify their own I/O requirements by allowing for custom decoders to be written for a particular application. Independent decoded inputs are organzized as `DataStreamTracks` for standardized consumption.
