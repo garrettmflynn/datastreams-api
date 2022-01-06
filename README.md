@@ -23,8 +23,9 @@ The official documentations for the `datastreams-api` package can be found at [h
 
 ## Roadmap
 1. Generalize the SerialDevice class with the FreeEEG32 driver. Thread it.
-2. Generalize the documentation generation for any future B@P repositories
-3. Rewrite examples to conform to new API syntax
-4. Use new build tool to run backend and frontend together
-5. Complete documentation
-6. Create eye-tracking demo with WebGazer + blink to click
+2. Remove device registry from being referenced by default
+3. Generalize the documentation generation for any future B@P repositories
+4. Rewrite examples to conform to new API syntax
+5. Use new build tool to run backend and frontend together. Split their builds...
+6. Complete documentation
+7. Create eye-tracking demo with WebGazer + blink to click

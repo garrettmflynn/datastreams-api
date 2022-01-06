@@ -56,8 +56,8 @@ export class Device <T> {
     send = async (msg:any,from:any):Promise<any> => {this.onsend(msg,from)}
 
     // Auxilliary Methods
-    encode = (msg:any, from:string) => this.encoder.encode(msg, from)
-    decode = (msg:any, from:string) => this.decoder.decode(msg, from)
+    encode = (msg:any, _:string) => this.encoder.encode(msg)
+    decode = (msg:any, _:string) => this.decoder.decode(msg)
 
     // Events
     onconnect = async (target:Device<T> = this) => console.log(`${target.constructor.name} connected!`)

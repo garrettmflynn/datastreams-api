@@ -13,7 +13,6 @@
     "build:typedoc": "typedoc",
     "serve:docs": "cd website && yarn && yarn run serve",
     "start:docs": "cd website && yarn && yarn run start",
-
     "run-ts": "node --trace-warnings -r esbuild-register build.config.ts"
   },
   "repository": {
@@ -35,7 +34,6 @@
     "@types/web": "^0.0.48",
     "@types/webcrypto": "^0.0.28",
     "awesome-typescript-loader": "^5.2.1",
-    "build-dev": "^0.0.3",
     "docusaurus-plugin-typedoc": "^0.16.6",
     "esbuild-register": "^3.3.1",
     "html-webpack-plugin": "^5.5.0",
@@ -51,6 +49,7 @@
     "@giveback007/util-lib": "^0.23.0",
     "@types/w3c-web-usb": "^1.0.5",
     "body-parser": "^1.19.0",
+    "build-dev": "^0.0.9",
     "cors": "^2.8.5",
     "create-docusaurus": "^2.0.0-beta.14",
     "express": "^4.17.1",

@@ -2,8 +2,8 @@ var path = require("path");
 var webpack = require("webpack");
 
 var PATHS = {
-  entryPoint: path.resolve(__dirname, 'src/index.ts'),
-  bundles: path.resolve(__dirname, '_bundles'),
+  entryPoint: path.resolve(__dirname, './index.ts'),
+  bundles: path.resolve(__dirname, 'dist'),
 }
 
 var config = {
@@ -12,8 +12,8 @@ var config = {
   // the name to filter the second entry point for applying code
   // minification via UglifyJS
   entry: {
-    'my-lib': [PATHS.entryPoint],
-    'my-lib.min': [PATHS.entryPoint]
+    'index': [PATHS.entryPoint],
+    'index.min': [PATHS.entryPoint]
   },
   // The output defines how and where we want the bundles. The special
   // value `[name]` in `filename` tell Webpack to use the name we defined above.
@@ -22,45 +22,33 @@ var config = {
   output: {
     path: PATHS.bundles,
     filename: '[name].js',
-    libraryTarget: 'umd',
-    library: 'MyLib',
-    umdNamedDefine: true
+    library: {
+      type: 'umd',
+      name: 'datastreams',
+      export: 'default',
+      umdNamedDefine: true,
+    },
+    globalObject: 'this',
   },
   // Add resolve for `tsx` and `ts` files, otherwise Webpack would
   // only look for common JavaScript file extension (.js)
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
+    fallback: { 
+      "crypto": false 
+    }
   },
   // Activate source maps for the bundles in order to preserve the original
   // source when the user debugs the application
   devtool: 'source-map',
-  plugins: [
-    // Apply minification only on the second bundle by
-    // using a RegEx on the name, which must end with `.min.js`
-    // NB: Remember to activate sourceMaps in UglifyJsPlugin
-    // since they are disabled by default!
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      sourceMap: true,
-      include: /\.min\.js$/,
-    })
-  ],
+  // optimization: {
+  //     minimize: true,
+  // },
   module: {
-    // Webpack doesn't understand TypeScript files and a loader is needed.
-    // `node_modules` folder is excluded in order to prevent problems with
-    // the library dependencies, as well as `__tests__` folders that
-    // contain the tests for the library
-    loaders: [{
-      test: /\.tsx?$/,
-      loader: 'awesome-typescript-loader',
-      exclude: /node_modules/,
-      query: {
-        // we don't want any declaration file in the bundles
-        // folder since it wouldn't be of any use ans the source
-        // map already include everything for debugging
-        declaration: false,
-      }
-    }]
+    rules: [
+        // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+        { test: /\.tsx?$/, loader: "ts-loader" }
+      ]
   }
 }
 

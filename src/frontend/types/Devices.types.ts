@@ -37,14 +37,17 @@ export type DeviceType<T=any> = CoreDeviceType<T> & {
 
 export type DeviceConstraintsType<T=any> = DeviceType<T> & {
     dataStream?: DataStream,
-    device?: Device<T> | any, // TODO: Should specify the requirements for external device classes
+    device?: Device<T> | CoreDeviceType, 
 
     // BLE
-    ble?: boolean,
+    bluetooth?: boolean,
 
     // USB / Serial
     serial?: boolean,
 
-    // WiFi
+    // Wifi
     wifi?: boolean,
+
+    // WebSocket
+    websocket?: boolean,
 }

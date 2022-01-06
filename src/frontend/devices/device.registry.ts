@@ -2,9 +2,10 @@
 import * as hegduino from './hegduino/index.js'
 import * as muse from './muse/index.js'
 import * as bci2000web from './bci2000web/index.js'
+import { DeviceConstraintsType } from '../types/Devices.types.js'
 
 // Supported Devices
-export const devices = [
+export const devices: DeviceConstraintsType[] = [
 
     // ----------------------------------  Device with Auto-Generated Connection Scripts ----------------------------------
 
@@ -21,7 +22,6 @@ export const devices = [
             transmit: '6e400003-b5a3-f393-e0a9-e50e24dcca9e',
             receive: '6e400002-b5a3-f393-e0a9-e50e24dcca9e',
         }, 
-        fileCharacteristicUuid: '6E400006-B5A3-F393-E0A9-E50E24DCCA9E',
 
         // Serial / USB
         usbVendorId: 4292,
@@ -46,7 +46,7 @@ export const devices = [
             // Generic 
             label: 'Websocket', 
             ondata: bci2000web.ondata,
-            kind: 'eegdata',
+            kind: 'eeginput',
     
             // URL
             url: 'https://localhost'

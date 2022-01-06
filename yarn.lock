@@ -41,7 +41,14 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
   integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
 
-"@giveback007/util-lib@0.23.0", "@giveback007/util-lib@^0.23.0":
+"@giveback007/util-lib@0.23.1":
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/@giveback007/util-lib/-/util-lib-0.23.1.tgz#659487ac583c86cf5c56436db53b42c40bde72a5"
+  integrity sha512-6WS+rcLXlewvs+z2exWmfBGw4YaSZt/glapVEiucuD3yAdWs2trgXmbg/0JQzjeSLOsOzX0CylarKrYnUBycyQ==
+  dependencies:
+    tslib "~2.0.3"
+
+"@giveback007/util-lib@^0.23.0":
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/@giveback007/util-lib/-/util-lib-0.23.0.tgz#0b9840ea0d8006a37bb1e0d2d470da8cec0dd2e9"
   integrity sha512-u0RmsHa41Oh4eJ34CCrEELJ5djYQscqFpuHdBtHJhVG0vnSCOp1/c9X7prURU9fKIeCA+dmOIYCHWEONm4be5g==
@@ -1226,12 +1233,12 @@ bufferutil@^4.0.2:
   dependencies:
     node-gyp-build "^4.3.0"
 
-build-dev@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/build-dev/-/build-dev-0.0.3.tgz#a691913d663349dae3150e6550f41730c60b17d7"
-  integrity sha512-0E1QWviPH0CGhDuDDgtzpc45tVqXQV9tP3SRg87B6IZvH4TrfbtV1TYMbb9TkRV0r1Slv+Y8G/RB61mAKlP7rw==
+build-dev@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/build-dev/-/build-dev-0.0.9.tgz#d99b7c3454f90638a10506369a4cb88425c56a3b"
+  integrity sha512-x0oaNYcWFOGfBT1NJv79yXPs0b7zCXncO54jDDuFkJtgV1VsyvDQmNqF5/Ix3lnSJuDJYFkG6StzUse2nk6TVQ==
   dependencies:
-    "@giveback007/util-lib" "0.23.0"
+    "@giveback007/util-lib" "0.23.1"
     browser-sync "^2.27.7"
     esbuild "^0.14.8"
     esbuild-plugin-postcss2 "0.1.1"

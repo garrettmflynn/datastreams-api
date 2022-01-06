@@ -94,9 +94,10 @@ export class DataDevices extends EventTarget {
         else {
 
             // Request Device from User
-            if (constraints.ble) device = new BluetoothDevice(constraints)
+            if (constraints.bluetooth) device = new BluetoothDevice(constraints)
             else if (constraints.serial)  device = new SerialDevice(constraints)
             else if (constraints.wifi) device = new EventSourceDevice(constraints)
+            else if (constraints.websocket) device = new WebSocketDevice(constraints)
             else if (constraints.serviceUUID) device = new BluetoothDevice(constraints)
             else if (constraints.usbVendorId)  device = new SerialDevice(constraints)
             // if () device = new USBDevice(constraints)
