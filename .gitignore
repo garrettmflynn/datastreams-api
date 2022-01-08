@@ -1,6 +1,7 @@
 .vscode
 .DS_Store
 node_modules
+*.key
 
 lib
 lib-esm
@@ -12,3 +13,6 @@ playground
 .cache
 
 website/docs/reference
+
+# Library Builds
+**/dist

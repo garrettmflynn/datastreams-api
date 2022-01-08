@@ -1,7 +1,7 @@
-import { Pipe } from "./Pipe.js";
+import { Pipe } from "./Pipe";
 import { PipeSettingsType } from '../types/Pipes.types'
-import { Websocket } from '../utils/WebSocket.js';
-import { DataType } from 'src/common/types/Data.types.js';
+import { Websocket } from '../utils/WebSocket';
+import { DataType } from 'src/common/types/Data.types';
 
 export class ServerPipe extends Pipe {
 

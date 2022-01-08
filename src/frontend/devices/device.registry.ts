@@ -1,8 +1,8 @@
 
-import * as hegduino from './hegduino/index.js'
-import * as muse from './muse/index.js'
-import * as bci2000web from './bci2000web/index.js'
-import { DeviceConstraintsType } from '../types/Devices.types.js'
+import * as hegduino from './hegduino/index'
+import * as muse from './muse/index'
+import * as bci2000web from './bci2000web/index'
+import { DeviceConstraintsType } from '../types/Devices.types'
 
 // Supported Devices
 export const devices: DeviceConstraintsType[] = [

@@ -1,5 +1,5 @@
 import * as parseutils from "../../common/parse.utils";
-import { randomUUID } from '../../common/id.js'
+import { randomUUID } from '../../common/id'
 import { MessageType } from '../types/Core.types'
 
 export class Websocket {

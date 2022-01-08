@@ -1,5 +1,7 @@
 /**
- * The `datastreams` frontend modules are main modules of the Data Capture and Streams API.
+ * The `datastreams` module is the frontend module of the Data Capture and Streams API.
+ * @packageDocumentation
+ * @module datastreams
  */
 
 // Frontend

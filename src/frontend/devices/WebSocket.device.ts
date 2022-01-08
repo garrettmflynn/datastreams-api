@@ -1,6 +1,6 @@
-import { Device } from "./Device.js"
-import { DeviceConstraintsType } from '../types/Devices.types.js';
-import { Websocket } from '../utils/WebSocket.js';
+import { Device } from "./Device"
+import { DeviceConstraintsType } from '../types/Devices.types';
+import { Websocket } from '../utils/WebSocket';
 
 export class WebSocketDevice<T=any> extends Device<T> { //This is formatted for the way the HEG sends/receives information. Other BLE devices will likely need changes to this to be interactive.
                     

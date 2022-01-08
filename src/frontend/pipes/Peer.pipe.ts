@@ -1,5 +1,5 @@
-import { Pipe } from "./Pipe.js";
-import {DataChannel} from "../core/DataChannel.js";
+import { Pipe } from "./Pipe";
+import {DataChannel} from "../core/DataChannel";
 import {RoomInterface} from "../../common/types/Room.types";
 
 
@@ -11,9 +11,9 @@ Known Bugs
 */
 
 import { PipeSettingsType , DataChannelInfoType, DataChannelCallbackType} from '../types/Pipes.types'
-import { DataStreamTrack, DataStream } from '../core/index.js';
-import { MessageType } from '../types/Core.types.js';
-import { PeerInfoType } from 'src/common/types/Peer.types.js';
+import { DataStreamTrack, DataStream } from '../core/index';
+import { MessageType } from '../types/Core.types';
+import { PeerInfoType } from 'src/common/types/Peer.types';
 
 export class PeerPipe extends Pipe {
 

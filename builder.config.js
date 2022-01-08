@@ -4,34 +4,15 @@ const { runNodejs, browserPlay, nodejsPlay, devNodejs, devBrowser } = require('b
 function run([type]) {
     switch (type) {
 
-        case 'play:browser':
-            return browserPlay();
-
-        case 'play:nodejs':
-            return nodejsPlay();
-
         case 'run:nodejs':
-            return runNodejs({ entryFile: './server/main' }); // ./server/main.ts
-            
-        case 'dev:browser':
-            return devBrowser({
-                fromDir: 'examples/conference',
-                entryFile: 'index.ts',
-                toDir: '.cache/web',
-                copyFiles: ['index.html'],
-                watchOtherDirs: ['src']
+           return runNodejs({
+                entryFile: './src/main', 
+                watchDirs: ['src/backend', 'src/common'],
+                nodeArgs: ['development'] 
             });
 
-        case 'dev:nodejs':
-            return devNodejs({
-                fromDir: '/src/backend', 
-                entryFile: 'main.ts', 
-                toDir: '.cache/node' 
-            });
-
-        case 'dev':
-            run(['dev:browser'])
-            run(['dev:nodejs'])
+        case 'run':
+            run(['run:nodejs'])
             break;
 
         default:

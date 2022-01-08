@@ -1,8 +1,8 @@
 // webSerial utils developed by Diego Schmaedech (MIT License) for chrome. 
 // Modified/Generalized and updated for web Serial by Joshua Brewster (MIT License) 
 // Modified and updated for device filtering by Garrett Flynn (AGPL License)
-import { Device } from './Device.js'
-import { DeviceConstraintsType } from '../types/Devices.types.js'
+import { Device } from './Device'
+import { DeviceConstraintsType } from '../types/Devices.types'
 
 
 export class SerialDevice<T=any> extends Device<T> {

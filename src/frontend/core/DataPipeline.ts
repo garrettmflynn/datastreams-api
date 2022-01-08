@@ -1,13 +1,13 @@
-// import { HardwarePipe } from "./pipes/Hardware.pipe.js";
-// import { ServerPipe } from "./pipes/Server.pipe.js";
+// import { HardwarePipe } from "./pipes/Hardware.pipe";
+// import { ServerPipe } from "./pipes/Server.pipe";
 
-import {randomUUID} from "../../common/id.js"
+import {randomUUID} from "../../common/id"
 
-import worker, * as workerutils from './pipeline.worker.js' // must export self
+import worker, * as workerutils from './pipeline.worker' // must export self
 
 import { DataStreamTrackProcessor } from "./DataStreamTrackProcessor"
-import { DataStreamTrackGenerator } from "./DataStreamTrackGenerator.js"
-import { DataStreamTrack } from './DataStreamTrack.js'
+import { DataStreamTrackGenerator } from "./DataStreamTrackGenerator"
+import { DataStreamTrack } from './DataStreamTrack'
 
 
 export type pipelineType = (TransformStream | ReadableStream | WritableStream)[]
@@ -36,7 +36,7 @@ export class DataPipeline {
         if (this.thread){
             // Set Worker
             try {
-                this.worker = new Worker("./src/pipeline.worker.js", { name: 'pipelineworker', type: 'module' });
+                this.worker = new Worker("./src/pipeline.worker", { name: 'pipelineworker', type: 'module' });
             } catch {
                 try {
                     this.worker = worker as unknown as Worker // TODO: TypeScript issue working with workers

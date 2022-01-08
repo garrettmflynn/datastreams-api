@@ -1,7 +1,7 @@
 import {Room} from '../classes/Room'
 import {UserType} from '../types/User.types'
 import { DataType } from '../../common/types/Data.types'
-import * as parseutils from '../../common/parse.utils.js'
+import * as parseutils from '../../common/parse.utils'
 import { RoomInterface } from '../../common/types/Room.types'
 import {randomUUID } from '../../common/id'
 
@@ -33,10 +33,10 @@ export class PeerService {
         this.users.delete(ws.id)
     }
 
-    onmessage = async (o: DataType, ws:any) => {
+    onmessage = async (str: string, ws:any) => {
 
         let data
-        o = parseutils.safeParse(o)
+        const o = parseutils.safeParse(str) as DataType
         let id = ws.id
 
         let input = o.data

@@ -4,5 +4,5 @@
     Access-Control-Allow-Origin = "*"
 
 [context.website]
-  publish = "website/build/"
-  command = "npm run build:docs"
+  publish = "docs/build/"
+  command = "npm run build"

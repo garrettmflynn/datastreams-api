@@ -7,16 +7,16 @@ Based on https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API
 
 */
 
-import {devices} from '../devices/device.registry.js';
-import { DataStream } from './DataStream.js';
-import { Bluetooth as BluetoothDevice } from '../devices/Bluetooth.device.js'
-import { SerialDevice } from '../devices/Serial.device.js'
-import {EventSourceDevice} from '../devices/EventSource.device.js'
-import {Device} from '../devices/Device.js';
+import {devices} from '../devices/device.registry';
+import { DataStream } from './DataStream';
+import { Bluetooth as BluetoothDevice } from '../devices/Bluetooth.device'
+import { SerialDevice } from '../devices/Serial.device'
+import {EventSourceDevice} from '../devices/EventSource.device'
+import {Device} from '../devices/Device';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
-import { DeviceType, DeviceConstraintsType } from '../types/Devices.types.js';
-import { DeviceRequestType } from '../types/Core.types.js';
-import {WebSocketDevice} from '../devices/WebSocket.device.js';
+import { DeviceType, DeviceConstraintsType } from '../types/Devices.types';
+import { DeviceRequestType } from '../types/Core.types';
+import {WebSocketDevice} from '../devices/WebSocket.device';
 
 
 /**

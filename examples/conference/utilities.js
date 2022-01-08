@@ -1,4 +1,4 @@
-import * as main from "./main.js"
+import * as main from "./main"
 import { WebglLinePlotUtils } from '../libraries/webglplotutil/webgl-plot-utils.js';
 
 export let createRoomButton = (r, connected, streamContext, videos) => {

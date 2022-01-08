@@ -1,8 +1,8 @@
 // Adapted from Josh Brewster's implementation for the HEGduino
 // Garrett Flynn, Nov 2021 (AGPL License) | totally not tested...
 
-import { Device } from './Device.js'
-import { DeviceConstraintsType } from '../types/Devices.types.js'
+import { Device } from './Device'
+import { DeviceConstraintsType } from '../types/Devices.types'
 
 export type customCallback = {
     tag: string,

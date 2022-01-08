@@ -1,8 +1,8 @@
-import {DataTrackSettings} from "./DataTrackSettings.js"
-import {DataTrackCapabilities} from "./DataTrackCapabilities.js"
+import {DataTrackSettings} from "./DataTrackSettings"
+import {DataTrackCapabilities} from "./DataTrackCapabilities"
 import {randomUUID} from "../../common/id"
-import { DataTrackConstraints } from "./DataTrackConstraints.js"
-import { Device } from "../devices/Device.js"
+import { DataTrackConstraints } from "./DataTrackConstraints"
+import { Device } from "../devices/Device"
 
 // NOTE: This class allows the conversion of independent data coming from Device classes
 // to a ReadableStream format.

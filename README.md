@@ -12,6 +12,9 @@ The `datastreams-api` package allows developers to specify their own I/O require
 - [x] WebSockets API
 - [ ] Web USB
 
+### Data Organization
+- [ ] Integration with [Brains@Play data structures](https://github.com/brainsatplay/brainsatplay-data)
+
 ### WebRTC
 - [x] P2P Data Streaming 
 

@@ -1,5 +1,5 @@
-import * as parseutils from '../../common/parse.utils.js'
-import { DataType } from '../../common/types/Data.types.js';
+import * as parseutils from '../../common/parse.utils'
+import { DataType } from '../../common/types/Data.types';
 import { randomUUID } from '../../common/id'
 
 export class OffloadService {
@@ -20,10 +20,10 @@ export class OffloadService {
         this.users.delete(ws.id)
     }
 
-    onmessage = (o: DataType, ws: any) => {
+    onmessage = (str: string, ws: any) => {
 
         let data;
-        o = parseutils.safeParse(o)
+        const o = parseutils.safeParse(str) as DataType
 
         let id = ws.id
         let input = o.data

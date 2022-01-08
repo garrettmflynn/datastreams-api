@@ -1,19 +1,22 @@
 {
-  "name": "datastreams-api",
-  "version": "0.0.4",
-  "description": " Support for streaming Serial / USB / BLE data",
-  "main": "dist/datastreams.js",
+  "name": "datastreams",
+  "version": "0.0.0",
+  "description": "Simple Media Capture and Streams API extension to handle arbitrary data streams acquired through the browser.",
+  "private": true,
+  "type": "commonjs",
+  "workspaces": [
+    "src/*"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
-    "start": "node server.js",
-    "build": "snowpack build",
-    "webpack": "webpack --mode production",
-    "typecheck": "tsc --watch --preserveWatchOutput",
+    "start": "concurrently \"yarn backend\" \"cd docs && yarn && yarn run start\"",
+    "frontend": "cd docs && yarn && yarn run start",
+    "backend": "node builder.config run",
+    "typecheck": "tsc --watch --preserveWatchOutput --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:docs": "cd website && yarn && yarn build",
-    "build:typedoc": "typedoc",
-    "serve:docs": "cd website && yarn && yarn run serve",
-    "start:docs": "cd website && yarn && yarn run start",
-    "run-ts": "node --trace-warnings -r esbuild-register build.config.ts"
+    "build": "cd docs && yarn && yarn build"
   },
   "repository": {
     "type": "git",
@@ -26,40 +29,23 @@
   },
   "homepage": "https://github.com/brainsatplay/DataStreams-API#readme",
   "devDependencies": {
-    "@snowpack/plugin-dotenv": "^2.2.0",
-    "@snowpack/plugin-optimize": "^0.2.13",
+    "@types/cors": "^2.8.12",
     "@types/dom-mediacapture-record": "^1.0.11",
     "@types/dom-mediacapture-transform": "^0.1.2",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8",
     "@types/w3c-web-serial": "^1.0.2",
-    "@types/web": "^0.0.48",
-    "@types/webcrypto": "^0.0.28",
-    "awesome-typescript-loader": "^5.2.1",
-    "docusaurus-plugin-typedoc": "^0.16.6",
-    "esbuild-register": "^3.3.1",
-    "html-webpack-plugin": "^5.5.0",
-    "shx": "^0.3.3",
-    "snowpack": "^3.8.8",
-    "typescript": "^4.5.4",
-    "webpack": "^5.64.0",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-middleware": "^5.2.1",
-    "webpack-dev-server": "^4.5.0"
-  },
-  "dependencies": {
-    "@giveback007/util-lib": "^0.23.0",
     "@types/w3c-web-usb": "^1.0.5",
-    "body-parser": "^1.19.0",
-    "build-dev": "^0.0.9",
+    "@types/ws": "^8.2.2",
+    "build-dev": "^0.0.10",
+    "concurrently": "^7.0.0",
     "cors": "^2.8.5",
-    "create-docusaurus": "^2.0.0-beta.14",
-    "express": "^4.17.1",
-    "gpujsutils": "^1.0.2",
-    "magicworker": "^1.0.3",
-    "muse-js": "^3.2.0",
-    "regenerator-runtime": "^0.13.9",
-    "typedoc": "^0.22.10",
-    "typedoc-plugin-internal-external": "^2.2.0",
-    "typedoc-plugin-markdown": "^3.11.8",
-    "ws": "^8.2.3"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "jest": "^27.4.7",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4",
+    "ws": "^8.4.0"
   }
 }

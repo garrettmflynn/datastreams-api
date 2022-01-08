@@ -11,8 +11,6 @@ const datastreams = {
     transforms
 }
 
-import * as utilities from './utilities.js'
-import * as main from "./main.js"
 import "./index.css"
 
 let dataDevices = new datastreams.core.DataDevices()

@@ -1,50 +1,19 @@
-// {
-//   "compilerOptions": {
-//     "moduleResolution": "node",
-//     "module": "commonjs",
-//     "target": "es5",
-//     "lib": [ "es2015", "dom.iterable"],
-//     "outDir": "lib",
-//     "allowSyntheticDefaultImports": true,
-//     "suppressImplicitAnyIndexErrors": true,
-//     "forceConsistentCasingInFileNames": true,
-//     "sourceMap": true,
-//     "declaration": true,
-//     "jsx": "react"
-//   },
-//   "files": [
-//     "./src/frontend/index.ts",
-//     "./src/backend/index.ts"
-//   ],
-//   "compileOnSave": false,
-//   "buildOnSave": false,
-
-//   "include": ["src"],
-
-// "exclude": [
-//     "node_modules"
-//   ]
-
-// }
 {
   "compilerOptions": {
       /* -- Basic Options -- */
-      "target": "es6", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
-      "rootDir": "./", /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+      "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
+      "rootDir": "./src", /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
       "outDir": "dist/", /* Redirect output structure to the directory. */
-      "module": "commonjs", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+      "module": "umd", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
       "declaration": true, /* Generates corresponding '.d.ts' file. */
       "importHelpers": true, /* Import emit helpers from 'tslib'. */
       "pretty": true, /* Stylize errors and messages using color and context (experimental). */
       "jsx": "react", /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
-    "jsxFactory": "JSX.createElement",
-    "jsxFragmentFactory": "JSX.Fragment",
       "downlevelIteration": true,
       "allowJs": true,
       "experimentalDecorators": true,
 
       /* -- For Parallel Typechecking -- */
-      "noEmit": true,
       "skipLibCheck": true,
 
       /* -- Strict Type-Checking Options -- */
@@ -61,7 +30,6 @@
       "strictPropertyInitialization": true, /* Ensure non-undefined class properties are initialized in the constructor. */
       "esModuleInterop": true,
 
-      
       /* -- Module Resolution Options -- */
       "moduleResolution": "node",
       "typeRoots": [
@@ -71,13 +39,10 @@
       
       "inlineSourceMap": true,
       "baseUrl": "./",
-      "paths": {
-          "@myalyce/common/*": ["./common/*"]
-      }
   },
   "exclude": [
-      "node_modules",
-      "scripts",
-      "website",
-  ]
+    //   "node_modules",
+      "**/__test__/**"
+  ],
+  "include": ["src"],
 }

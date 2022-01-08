@@ -1,0 +1,25 @@
+{
+  "name": "datastreams-api",
+  "version": "0.0.0",
+  "description": "Simple Media Capture and Streams API extension to handle arbitrary data streams acquired through the browser.",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "cd .. && yarn run frontend",
+    "build": "webpack --config browser.config.js --mode production"
+  },
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "common": "*",
+    "muse-js": "^3.3.0",
+    "ts-loader": "^9.2.6",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "gpujsutils": "^1.0.2",
+    "magicworker": "^1.0.4"
+  }
+}

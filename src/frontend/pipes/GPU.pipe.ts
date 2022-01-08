@@ -1,9 +1,9 @@
 /** 
- * Transforms data on the GPU using GPU.js
+ * Transforms data on the GPU using GPU
  * Note: Currently broken from .ts refactor
  */
 
-import {Pipe} from './Pipe.js'
+import {Pipe} from './Pipe'
 import { PipeSettingsType } from '../types/Pipes.types'
 
 export class GPUPipe extends Pipe{
@@ -12,11 +12,11 @@ export class GPUPipe extends Pipe{
   }
 }
 
-// import 'gpujsutils/gpu/gpu-browser.min.js'
-// import { gpuUtils } from 'gpujsutils/gpuUtils.js'
+// import 'gpujsutils/gpu/gpu-browser.min'
+// import { gpuUtils } from 'gpujsutils/gpuUtils'
 // import { createGpuKernels as krnl } from 'gpujsutils/gpuUtils-functs';
 // import { PipeSettingsType } from '../types/Pipes.types'
-// import { DataStream } from '../core/index.js';
+// import { DataStream } from '../core/index';
 
 // /** 
 //  * GPU Data Pipe for the DataStreams API
