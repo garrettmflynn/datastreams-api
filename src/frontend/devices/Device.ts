@@ -10,41 +10,67 @@ export class Device <T> {
     _ondata: (data:any, name?: string) => (any[] | {[x : string | number]: any}) = (data) => data
     constraints: DeviceConstraintsType<T>
     device: CoreDeviceType<T>
-    dataStream?: DataStream
+    stream?: DataStream
     encoder: TextEncoder | any
     decoder: TextDecoder | any
+    active: boolean = false
 
     // // Inherited Functions
     // onconnect: (target) =>{}
     // ondisconnect: (target) =>{}}
 
     constructor(constraints: DeviceConstraintsType<T>){
-
         this.constraints = constraints
         this.device = (constraints.device) ? new constraints.device(constraints) : this
-        this.dataStream = constraints.dataStream
+        this.stream = constraints.stream
+
+        // -------------- Set Default Constraints --------------
+
+        this.init(this.constraints)
+    }
+
+
+    init = (constraints?: Partial<DeviceConstraintsType>) => {
+
+        // Disconnect Active Device
+        if (this.active) this.disconnect()
         
-        // Callbacks
-        this.onconnect = constraints.onconnect ?? this.onconnect;
-        this.ondisconnect = constraints.ondisconnect ?? this.ondisconnect;
-        if (constraints.ondata) this._ondata = constraints.ondata
+        // Assign Constraints
+        if (constraints) {
 
-        this.onerror = constraints.onerror ?? this.onerror;
+            Object.assign(this.constraints, constraints) // Replace new constraints
 
-        if (constraints.encode) this.encode = constraints.encode 
-        else this.encoder = new TextEncoder();
+            //  Callbacks 
+            this.onconnect = this.constraints.onconnect ?? this.onconnect;
+            this.ondisconnect = this.constraints.ondisconnect ?? this.ondisconnect;
+            if (this.constraints.ondata) this._ondata = this.constraints.ondata
 
-        if (constraints.decode) this.decode = constraints.decode 
-        else this.decoder = new TextDecoder("utf-8");
+            this.onerror = this.constraints.onerror ?? this.onerror;
+
+            if (this.constraints.encode instanceof Function) this.encode = this.constraints.encode 
+            else this.encoder = new TextEncoder();
+
+            if (this.constraints.decode instanceof Function) this.decode = this.constraints.decode 
+            else this.decoder = new TextDecoder("utf-8");
+
+
+            if (this.constraints.oninit instanceof Function) this.oninit = this.constraints.oninit
+
+        }
+
+        // Run Callback
+        this.oninit(this)
     }
    
     // Core Methods 
     connect = async () => {
         if (!(this.device instanceof Device) && this.device.connect) await this.device.connect()
+        this.active = true
         this.onconnect(this)
     }        
     disconnect = async () => {
         if (!(this.device instanceof Device) && this.device.disconnect) await this.device.disconnect()
+        this.active = false
         this.ondisconnect(this)
     }
 
@@ -55,6 +81,7 @@ export class Device <T> {
     decode = (msg:any, _:string) => this.decoder.decode(msg)
 
     // Events
+    oninit = async (target:Device<T> = this) => console.log(`${target.constructor.name} inited!`)
     onconnect = async (target:Device<T> = this) => console.log(`${target.constructor.name} connected!`)
 
     ondisconnect = async (target:Device<T> = this) => console.log(`${target.constructor.name} disconnected!`)
@@ -72,13 +99,13 @@ export class Device <T> {
             let obj = this._ondata(data, charName) // returns array
             
             // Add DataStreamTrack for each Data Channel
-            if (this.dataStream){
+            if (this.stream){
                 
                 const keys = Object.keys(obj)
                 keys.forEach((key:(string | number)) => {
-                    if (this.dataStream){
+                    if (this.stream){
 
-                        let track = this.dataStream.tracks.get(key) ?? this._createTrack(key)
+                        let track = this.stream.tracks.get(key) ?? this._createTrack(key)
 
                         if (track instanceof DataStreamTrack) track.addData((obj as any)[key])
                     }
@@ -90,10 +117,10 @@ export class Device <T> {
     }
 
     private _createTrack = (contentHint?: string | number) => {
-        if (this.dataStream){
-            const track = this.dataStream.addTrack(new DataStreamTrack(this))
-            if(typeof contentHint === 'string') track.contentHint = contentHint
-            return track
+        if (this.stream){
+            const newTrack = new DataStreamTrack(this)
+            if(typeof contentHint === 'string') newTrack.contentHint = contentHint
+            return this.stream.addTrack(newTrack)
         } else return undefined
     }
 

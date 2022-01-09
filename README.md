@@ -5,6 +5,9 @@ Simple Media Capture and Streams API extension to handle arbitrary data streams 
 The `datastreams-api` package allows developers to specify their own I/O requirements by allowing for custom decoders to be written for a particular application. Independent decoded inputs are organzized as `DataStreamTracks` for standardized consumption.
 
 ## Features
+### Configuration
+- [x] Condition device properties (e.g. sampling rate, max buffer size, etc.) with oninit() callback
+
 ### Data Acquisition
 - [x] Web Serial API
 - [x] Web Bluetooth API
@@ -25,13 +28,7 @@ The `datastreams-api` package allows developers to specify their own I/O require
 The official documentations for the `datastreams-api` package can be found at [https://streams.brainsatplay.com](https://datastreams.brainsatplay.com).
 
 ## Roadmap
-1. Generalize the SerialDevice class with the FreeEEG32 driver. Thread it.
-    - Modes
-    - Safe connection (e.g. error connection to reconnect)
-    - Max buffering
-2. Remove device registry from being referenced by default
-3. Generalize the documentation generation for any future B@P repositories
-4. Rewrite examples to conform to new API syntax
-5. Use new build tool to run backend and frontend together. Split their builds...
-6. Complete documentation
-7. Create eye-tracking demo with WebGazer + blink to click
+1. Thread serial devices.
+2. Rewrite examples to conform to new API syntax
+3. Simplify and complete documentation
+4. Create eye-tracking demo with WebGazer + blink to click

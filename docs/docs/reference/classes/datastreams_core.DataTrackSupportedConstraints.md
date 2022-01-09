@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:32](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L32)
+[src/frontend/core/DataTrackSupportedConstraints.ts:32](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L32)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:20](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L20)
+[src/frontend/core/DataTrackSupportedConstraints.ts:20](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L20)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:10](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L10)
+[src/frontend/core/DataTrackSupportedConstraints.ts:10](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L10)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:11](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L11)
+[src/frontend/core/DataTrackSupportedConstraints.ts:11](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L11)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:28](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L28)
+[src/frontend/core/DataTrackSupportedConstraints.ts:28](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L28)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:6](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L6)
+[src/frontend/core/DataTrackSupportedConstraints.ts:6](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L6)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:29](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L29)
+[src/frontend/core/DataTrackSupportedConstraints.ts:29](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L29)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:12](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L12)
+[src/frontend/core/DataTrackSupportedConstraints.ts:12](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L12)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:21](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L21)
+[src/frontend/core/DataTrackSupportedConstraints.ts:21](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L21)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:22](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L22)
+[src/frontend/core/DataTrackSupportedConstraints.ts:22](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L22)
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:7](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L7)
+[src/frontend/core/DataTrackSupportedConstraints.ts:7](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L7)
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:23](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L23)
+[src/frontend/core/DataTrackSupportedConstraints.ts:23](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L23)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:13](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L13)
+[src/frontend/core/DataTrackSupportedConstraints.ts:13](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L13)
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:30](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L30)
+[src/frontend/core/DataTrackSupportedConstraints.ts:30](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L30)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:14](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L14)
+[src/frontend/core/DataTrackSupportedConstraints.ts:14](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L14)
 
 ___
 
@@ -171,7 +171,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:25](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L25)
+[src/frontend/core/DataTrackSupportedConstraints.ts:25](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L25)
 
 ___
 
@@ -181,7 +181,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:15](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L15)
+[src/frontend/core/DataTrackSupportedConstraints.ts:15](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L15)
 
 ___
 
@@ -191,7 +191,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:16](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L16)
+[src/frontend/core/DataTrackSupportedConstraints.ts:16](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L16)
 
 ___
 
@@ -201,7 +201,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:17](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L17)
+[src/frontend/core/DataTrackSupportedConstraints.ts:17](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L17)
 
 ___
 
@@ -211,4 +211,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackSupportedConstraints.ts:24](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackSupportedConstraints.ts#L24)
+[src/frontend/core/DataTrackSupportedConstraints.ts:24](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackSupportedConstraints.ts#L24)

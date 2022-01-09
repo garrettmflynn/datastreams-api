@@ -2,7 +2,8 @@
 import * as hegduino from './hegduino/index'
 import * as freeeeg from './freeeeg/index'
 import * as muse from './muse/index'
-import * as bci2000web from './bci2000web/index'
+// import * as bci2000web from './bci2000web/index'
+import * as remote from '../../common/source.device'
 import { DeviceConstraintsType } from '../types/Devices.types'
 
 // Supported Devices
@@ -14,7 +15,8 @@ const devices: DeviceConstraintsType[] = [
         // Generic 
         label: 'HEGduino', 
         ondata: hegduino.ondata,
-        kind: 'datainput',
+        onconnect: hegduino.onconnect,
+        bufferSize: 500,
 
         // Bluetooth
         namePrefix: 'HEG',
@@ -27,17 +29,27 @@ const devices: DeviceConstraintsType[] = [
         // Serial / USB
         usbVendorId: 4292,
         usbProductId: 60000,
-
+        serialOptions: {
+            bufferSize: 1000,
+            baudRate: 115200
+        },
     },
 
     {
         // Generic 
         label: 'FreeEEG', 
+        oninit: freeeeg.oninit,
         ondata: freeeeg.ondata,
-        kind: 'datainput',
 
         usbVendorId: 0x10c4,
         usbProductId: 0x0043,
+        serial: {
+            baudRate: 115200,
+            bufferSize: 2000,
+        },
+
+        // Additional Metadata
+        modes: ['optical', 'ads131', 'freeeeg32_2', 'freeeeg32_19'] // oninit
     },
 
     // ---------------------------------- Device with Pre-Built Connection Scripts ----------------------------------
@@ -46,7 +58,6 @@ const devices: DeviceConstraintsType[] = [
             // Generic 
             label: 'Muse', 
             // ondata: muse.ondata,
-            kind: 'datainput',
             device: muse.device,
             onconnect: muse.onconnect,
             protocols: ['bluetooth'], // must specify to list connection types
@@ -58,12 +69,11 @@ const devices: DeviceConstraintsType[] = [
 
         {
             // Generic 
-            label: 'Websocket', 
-            ondata: bci2000web.ondata,
-            kind: 'datainput',
+            label: 'Remote', 
+            ondata: remote.ondata,
     
             // URL
-            url: 'https://localhost',
+            url: 'http://localhost',
 
             protocols: ['websocket'], 
 

@@ -19,6 +19,7 @@ export const DataDeviceInfo = (constraints: DeviceConstraintsType) => {
         groupId: randomUUID(), // TODO: represents a single physical device (e.g. hybrig eeg + fnirs)
         kind: constraints.kind,
         label: constraints.label,
-        protocols: Array.from(protocols)
+        protocols: Array.from(protocols),
+        modes: constraints?.modes
     }
 }

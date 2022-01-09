@@ -31,7 +31,7 @@ MediaStream.constructor
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:23](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L23)
+[src/frontend/core/DataStream.ts:24](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L24)
 
 ## Properties
 
@@ -41,7 +41,7 @@ MediaStream.constructor
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:17](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L17)
+[src/frontend/core/DataStream.ts:18](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L18)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:18](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L18)
+[src/frontend/core/DataStream.ts:19](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L19)
 
 ___
 
@@ -93,7 +93,7 @@ MediaStream.addTrack
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:16](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L16)
+[src/frontend/core/DataStream.ts:17](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L17)
 
 ___
 
@@ -113,15 +113,15 @@ ___
 
 ### onaddtrack
 
-• **onaddtrack**: ``null`` \| (`ev`: `MediaStreamTrackEvent`) => `any`
+• **onaddtrack**: `any`
 
-#### Inherited from
+#### Overrides
 
 MediaStream.onaddtrack
 
 #### Defined in
 
-node_modules/typescript/lib/lib.dom.d.ts:9212
+[src/frontend/core/DataStream.ts:13](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L13)
 
 ___
 
@@ -141,11 +141,11 @@ ___
 
 ### tracks
 
-• **tracks**: ([`DataStreamTrack`](datastreams_core.DataStreamTrack) \| `MediaStreamTrack`)[] = `[]`
+• **tracks**: `Map`<`string` \| `number`, [`DataStreamTrack`](datastreams_core.DataStreamTrack) \| `MediaStreamTrack`\>
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:12](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L12)
+[src/frontend/core/DataStream.ts:12](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L12)
 
 ## Accessors
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:21](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L21)
+[src/frontend/core/DataStream.ts:22](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L22)
 
 ## Methods
 
@@ -303,7 +303,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:62](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L62)
+[src/frontend/core/DataStream.ts:67](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L67)
 
 ___
 

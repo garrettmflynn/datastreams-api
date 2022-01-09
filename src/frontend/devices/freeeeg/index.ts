@@ -1,3 +1,4 @@
+import { Device } from "../Device";
 import { boyerMoore, bytesToInt16, bytesToInt24 } from "./utils"
 
 // const mode = '512'; // Start byte value
@@ -9,14 +10,71 @@ const searchString = new Uint8Array([stopByte,startByte]); //Byte search string
 // const readRate = 16.666667; //Throttle EEG read speed. (1.953ms/sample min @103 bytes/line)
 // const readBufferSize = 2000; //Serial read buffer size, increase for slower read speeds (~1030bytes every 20ms) to keep up with the stream (or it will crash)
 
-// const sps = (mode === '250') ? 250 : 512 //sample rate
-const sps =  512 //sample rate
-
-const updateMs = 1000/sps; //even spacing
-const maxBufferedSamples = sps*60*2; //max samples in buffer this.sps*60*nMinutes = max minutes of data
+let updateMs:number, maxBufferedSamples:number
 
 let count = 0
 const ms: (number)[] = []
+
+let outputFilter: {[x: number] : string} | null
+
+
+export const oninit = (device: Device<any>) => { 
+
+    const mode = device.constraints.mode
+
+    device.constraints.samplingRate = 500;
+
+
+    if(mode.includes("optical")) {
+        device.constraints.baudRate = 921600;
+    }
+
+    if(mode.includes("ads131")) {
+        device.constraints.samplingRate = 250;
+    }
+
+    if(mode.includes("freeeeg32_2")) { 
+        outputFilter = {
+            4: "FP2",
+            24: "FP1",
+            8: "other",
+        }
+    }
+    else if (mode.includes('freeeeg32_19')) {
+        outputFilter = {
+            4: "FP2",
+            24: "FP1",
+            0: "O2",
+            1: "T6",
+            2: "T4",
+            3: "F8",
+            5: "F4",
+            6: "C4",
+            7: "P4",
+            25: "F3",
+            26: "C3",
+            27: "P3",
+            28: "O1",
+            29: "T5",
+            30: "T3",
+            31: "F7",
+            16: "FZ",
+            12: "PZ",
+            8: "other"
+        };
+    }
+    else {
+        outputFilter = {
+            4: "FP2",
+            24: "FP1",
+            8: "other",
+        };
+    }
+
+    updateMs = 1000/device.constraints.samplingRate; //even spacing
+    device.constraints.bufferSize = maxBufferedSamples = device.constraints.samplingRate*60*2
+
+}
 
 export const ondata = (buffer: Uint8Array) => { //returns true if successful, returns false if not
 
@@ -27,13 +85,7 @@ export const ondata = (buffer: Uint8Array) => { //returns true if successful, re
     // let newLines = 0;
 
     // Create New Data Object Every Time
-    const data: {[x : string]: any} = { //Data object to keep our head from exploding. Get current data with e.g. data.A0[count-1]
-        'A0': [],'A1': [],'A2': [],'A3': [],'A4': [],'A5': [],'A6': [],'A7': [], //ADC 0
-        'A8': [],'A9': [],'A10': [],'A11': [],'A12': [],'A13': [],'A14': [],'A15': [], //ADC 1
-        'A16': [],'A17': [],'A18': [],'A19': [],'A20': [],'A21': [],'A22': [],'A23': [], //ADC 2
-        'A24': [],'A25': [],'A26': [],'A27': [],'A28': [],'A29': [],'A30': [],'A31': [], //ADC 3
-        'Ax': [], 'Ay': [], 'Az': [], 'Gx': [], 'Gy': [], 'Gz': []  //Peripheral data (accelerometer, gyroscope)
-    };
+    const data: {[x : string]: any} = {};
 
     for (var i = search(haystack); i !== -1; i = search(haystack, i + byteLength)) {
         indices.push(i);
@@ -65,8 +117,11 @@ export const ondata = (buffer: Uint8Array) => { //returns true if successful, re
                 }//Assume no dropped samples
             
                 for(var i = 3; i < adcLength; i+=3) {
-                    var channel = "A"+(i-3)/3;
-                    data[channel]=bytesToInt24(line[i],line[i+1],line[i+2]);
+                    const num = (i-3)/3;
+                    const decoded = bytesToInt24(line[i],line[i+1],line[i+2]);
+                    if (outputFilter == null) data["A"+num]=decoded
+                    else data[outputFilter[num]]=decoded
+
                 }
 
                 data["Ax"]=bytesToInt16(line[99],line[100]);

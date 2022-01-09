@@ -140,11 +140,14 @@ export class SerialDevice<T=any> extends Device<T> {
         this.port = port
 
         // Add Disconnect Callback
-        navigator.serial.addEventListener("disconnect",this.closePort)        
+        navigator.serial.addEventListener("disconnect",this.closePort)  
+        
+        let serialOptions = {baudRate: 115200, bufferSize: 1000}
+        if (typeof this.constraints.serialOptions === 'object') Object.assign(serialOptions, this.constraints.serialOptions)
 
         // Open the Port
-        try {await port.open({ baudRate: 115200, bufferSize: 1000 }); }
-        catch (err) { await port.open({ baudRate: 115200, bufferSize: 1000 }); }
+        try {await port.open(serialOptions); }
+        catch (err) { await port.open(serialOptions); }
         this.onconnect(this);
         this.connected = true;
         this.subscribed = true;

@@ -63,7 +63,7 @@ export class Bluetooth<T=any> extends Device<T> { //This is formatted for the wa
                 this.onconnect(this);
 
             })
-            .catch(err => { console.error(err); this.onerror(err); err = true; });
+            .catch(err => { console.error(err); this.onerror(err); return Promise.reject(); });
     }
 
     disconnect = async () => {

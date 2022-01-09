@@ -7528,6 +7528,11 @@ web-namespaces@^1.0.0, web-namespaces@^1.1.2:
   resolved "https://registry.npmjs.org/web-namespaces/-/web-namespaces-1.1.4.tgz"
   integrity sha512-wYxSGajtmoP4WxfejAPIr4l0fVh+jeMXZb08wNc0tMg6xsfZXj3cECqIK0G7ZAqUq0PP8WlMDtaOGVBTAWztNw==
 
+webgl-plot@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/webgl-plot/-/webgl-plot-0.6.6.tgz#7d43664aed0715f4ec8bc042e060bb1de39a132f"
+  integrity sha512-+rKFgbWM3pOji2A0Xt85ix4MiVvWAobsvRnfoveuq6C9ZO4HP6pZ/TVmY4D4/tgU2cVyR3Bk/VFDiq2iYG6eng==
+
 webpack-bundle-analyzer@^4.4.2:
   version "4.5.0"
   resolved "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-4.5.0.tgz"

@@ -22,7 +22,7 @@ export class Pipe extends EventTarget{
         // Create Socket
         let needsSocket = ['server', 'stream']
         if (needsSocket.includes(type)){
-            this.socket = settings.socket ?? new Websocket(settings.server, settings.auth) // server and stream needs WebSocket
+            this.socket = settings.socket ?? new Websocket(settings.server, {auth: settings.auth}) // server and stream needs WebSocket
             if (type === 'stream') this.socket.addEventListener('message', this.ondata) // only stream needs an ambient ondata listener
         }
 

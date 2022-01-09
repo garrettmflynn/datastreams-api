@@ -1,10 +1,14 @@
 let times: number[] = []
 let refuS: number
 
+export const onconnect = (arg1:any, arg2: any) => {
+    console.log(arg1, arg2)
+}
+
 export const ondata = (newline:string) => {
 
     let latest: {[x: string]: any[]} = {
-        times: [],
+        // times: [],
         red: [],
          ir:  [],
          ratio: [],
@@ -35,5 +39,6 @@ export const ondata = (newline:string) => {
 
     } else {console.log("HEGDUINO: ", newline); }
 
+    console.log('latest',latest)
     return latest
 }

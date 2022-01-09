@@ -29,15 +29,18 @@ let source = new services.SourceService()
 // Connect Websocket
 wss.on('connection', function (ws: any) {
 
-    let auth = ws.protocol
-    // console.log(auth)
+    const subprotocols:{[x:string]:any} = {}
+    let subArr = ws.protocol.split(';')
+    subArr.forEach((str:string) => {
+      let subSplit = str.split('.brainsatplay.com%')
+      subprotocols[subSplit[0]] = subSplit[1].split(',')
+    })
 
+    
     ws.id = id.randomUUID()
-    webrtc.addUser(ws, auth)
+    webrtc.addUser(ws, subprotocols.auth)
     server.addUser(ws)
     source.addUser(ws)
-
-    console.log('User added!');
 
     ws.on('message', function message(o:string) {
 
@@ -59,9 +62,9 @@ wss.on('connection', function (ws: any) {
     });
     
     ws.on('close', () => {
-        console.log('User disconnected!', ws.id);
         webrtc.removeUser(ws)
         server.removeUser(ws)
+        source.removeUser(ws)
     });
 });
 

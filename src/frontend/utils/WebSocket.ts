@@ -10,12 +10,23 @@ export class Websocket {
     ready: boolean = false;
     ws?: WebSocket;
 
-    constructor(url='http://localhost', auth:string=''){
-
+    constructor(url='http://localhost', protocols:{
+        auth?: string,
+        services?: string[],
+        [x:string]: any,
+    }){
         this.url = url
         let urlObj = new URL(url)
-        if (urlObj.protocol === 'http:') this.ws = new WebSocket(`ws://` + urlObj.host, [auth])
-        else if (urlObj.protocol === 'https:') this.ws = new WebSocket(`wss://` + urlObj.host, [auth]);
+
+        const toPass:string[] = []
+        Object.keys(protocols).forEach((str:string) => {
+            toPass.push(`${str}.brainsatplay.com%${protocols[str]}`)
+        })
+        console.log(toPass)
+
+
+        if (urlObj.protocol === 'http:') this.ws = new WebSocket(`ws://` + urlObj.host, toPass.join(';'))
+        else if (urlObj.protocol === 'https:') this.ws = new WebSocket(`wss://` + urlObj.host, toPass.join(';'));
         else {console.log('invalid protocol'); return;}
 
         this.sendBuffer = []
@@ -28,6 +39,7 @@ export class Websocket {
 
         window.onunload = window.onbeforeunload = () => {
             if (this.ws) this.ws.onclose = () => {}
+            console.log('C:OSING')
             this.close()
         }
 

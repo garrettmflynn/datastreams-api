@@ -12,11 +12,13 @@ export type DeviceType<T=any> = CoreDeviceType<T> & {
     label: string;
     kind: string;
     protocols?: string[];
-
+    modes?: string[];
+    bufferSize?: number;
     
-    ondata?:(data:any, name?: string) => (any[] | {[x : string | number]: any}); // T[]
+    ondata?: (data:any, name?: string) => (any[] | {[x : string | number]: any}); // T[]
     encode?: (data:any, name?: string) => any;
     decode?: (data:any, name?: string) => any;
+    oninit?: (target: any) => Promise<any>;
     onconnect?: (target: any) => Promise<any>;
     ondisconnect?: (target: any) => Promise<any>;
     onerror?: (error: Error) => Promise<any>;
@@ -38,18 +40,24 @@ export type DeviceType<T=any> = CoreDeviceType<T> & {
 }
 
 export type DeviceConstraintsType<T=any> = DeviceType<T> & {
-    dataStream?: DataStream,
+    stream?: DataStream,
     device?: Device<T> | CoreDeviceType, 
 
+    // ---------------- Force Connection Type (boolean) or Specify Additional Metadata (object) ----------------
     // BLE
-    bluetooth?: boolean,
+    // bluetooth?: boolean,
 
     // USB / Serial
-    serial?: boolean,
+    serialOptions?: Partial<SerialOptions>,
 
     // Wifi
-    wifi?: boolean,
+    // wifi?: boolean,
 
     // WebSocket
-    websocket?: boolean,
+    // websocket?: boolean,
+
+    // ---------------- Standardized Initialization Parameters ----------------
+    mode?: string;
+    protocol?: string | string[];
+
 }

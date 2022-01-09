@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataTrackCapabilities.ts:8](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackCapabilities.ts#L8)
+[src/frontend/core/DataTrackCapabilities.ts:8](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackCapabilities.ts#L8)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataTrackCapabilities.ts:5](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackCapabilities.ts#L5)
+[src/frontend/core/DataTrackCapabilities.ts:5](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackCapabilities.ts#L5)
 
 ___
 
@@ -41,4 +41,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataTrackCapabilities.ts:6](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataTrackCapabilities.ts#L6)
+[src/frontend/core/DataTrackCapabilities.ts:6](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataTrackCapabilities.ts#L6)

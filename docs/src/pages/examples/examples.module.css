@@ -19,3 +19,63 @@
    border-radius: 10px;
    cursor: pointer;
  }
+
+ .container {
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  padding: 25px;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.container > div{
+    flex: 50%;
+    max-width: 300px;
+    padding: 10px;
+    z-index: 1;
+    max-height: calc(100vh - 175px);
+    overflow-y: scroll;
+}
+
+
+.container canvas {
+  background: black; flex-grow: 1; margin: 25px;
+}
+
+.deviceDiv {
+  padding: 15px 25px;
+  margin: 10px;
+  background: gray;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.deviceDiv span{
+  font-weight: 700;
+}
+
+.deviceDiv > div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0px;
+}
+
+/* .deviceDiv > div > * {
+  width: 100%;
+} */
+
+
+.deviceDiv > div > *:first-child{
+  width: 100px;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.deviceDiv > div > *:last-child{
+  /* padding-left: 25px; */
+  width: 100%;
+}

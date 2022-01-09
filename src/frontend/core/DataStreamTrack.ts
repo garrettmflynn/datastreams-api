@@ -19,23 +19,26 @@ export class DataStreamTrack extends EventTarget {
     kind: string = ''
     label: string = ''
     readyState: MediaStreamTrackState = 'live'
+    
 
     // New Attributes
     data: any[] = []
     callbacks: Map<string,Function> = new Map()
     pipeline: any[] = []
+    _bufferSize: number = 256 * 60 * 2
 
     get [Symbol.toStringTag]() { return 'DataStreamTrack' }
 
     constructor (device?:Device<any>) {
         super()
 
-        this.contentHint = ''
         this.id = device?.id ?? randomUUID()
-        this.kind = device?.constraints?.kind
-        this.label = device?.constraints?.label
+        this.kind = device?.constraints?.kind ?? this.kind
+        this.label = device?.constraints?.label ?? this.label
         this.callbacks = new Map()
         this.data = []
+
+        this._bufferSize = device?.constraints?.bufferSize ?? this._bufferSize
 
         this.pipeline = []
     }
@@ -73,6 +76,11 @@ export class DataStreamTrack extends EventTarget {
     addData = (val:any) => {
         if (Array.isArray(val)) this.data.push(...val)
         else this.data.push(val)
+
+        const diff = this.data.length - this._bufferSize
+
+        for (let i = diff; i > 0; i--) this.data.shift()
+
         this.ondata(val)
     }
 

@@ -32,7 +32,7 @@ The `datastreams.transforms` module contains classes for transforming data strea
 
 #### Defined in
 
-[src/frontend/transforms/data/arithmetic.transforms.ts:1](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/data/arithmetic.transforms.ts#L1)
+[src/frontend/transforms/data/arithmetic.transforms.ts:1](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/transforms/data/arithmetic.transforms.ts#L1)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/data/arithmetic.transforms.ts:4](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/data/arithmetic.transforms.ts#L4)
+[src/frontend/transforms/data/arithmetic.transforms.ts:4](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/transforms/data/arithmetic.transforms.ts#L4)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/data/arithmetic.transforms.ts:6](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/data/arithmetic.transforms.ts#L6)
+[src/frontend/transforms/data/arithmetic.transforms.ts:6](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/transforms/data/arithmetic.transforms.ts#L6)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/data/arithmetic.transforms.ts:3](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/data/arithmetic.transforms.ts#L3)
+[src/frontend/transforms/data/arithmetic.transforms.ts:3](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/transforms/data/arithmetic.transforms.ts#L3)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/data/arithmetic.transforms.ts:2](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/data/arithmetic.transforms.ts#L2)
+[src/frontend/transforms/data/arithmetic.transforms.ts:2](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/transforms/data/arithmetic.transforms.ts#L2)
 
 ___
 
@@ -135,4 +135,4 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/data/arithmetic.transforms.ts:5](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/data/arithmetic.transforms.ts#L5)
+[src/frontend/transforms/data/arithmetic.transforms.ts:5](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/transforms/data/arithmetic.transforms.ts#L5)

@@ -34,7 +34,7 @@ export default function ExampleSelector({server}) {
         </button>
         </nav>
 
-        <header className={clsx('hero hero--primary')}>
+        <header>
             {renderExample(example)}
         </header>
         </>

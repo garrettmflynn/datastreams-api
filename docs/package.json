@@ -39,6 +39,7 @@
   "devDependencies": {
     "docusaurus-plugin-typedoc": "^0.16.6",
     "typedoc": "^0.22.10",
-    "typedoc-plugin-markdown": "^3.11.8"
+    "typedoc-plugin-markdown": "^3.11.8",
+    "webgl-plot": "^0.6.6"
   }
 }

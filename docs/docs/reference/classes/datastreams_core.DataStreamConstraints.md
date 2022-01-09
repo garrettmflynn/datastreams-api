@@ -15,7 +15,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataStreamConstraints.ts:9](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamConstraints.ts#L9)
+[src/frontend/core/DataStreamConstraints.ts:9](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamConstraints.ts#L9)
 
 ## Properties
 
@@ -25,7 +25,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataStreamConstraints.ts:5](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamConstraints.ts#L5)
+[src/frontend/core/DataStreamConstraints.ts:5](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamConstraints.ts#L5)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamConstraints.ts:7](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamConstraints.ts#L7)
+[src/frontend/core/DataStreamConstraints.ts:7](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamConstraints.ts#L7)
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamConstraints.ts:6](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamConstraints.ts#L6)
+[src/frontend/core/DataStreamConstraints.ts:6](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamConstraints.ts#L6)

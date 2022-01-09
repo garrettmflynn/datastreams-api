@@ -24,7 +24,7 @@ Create a TransformStream for sensor data | modeled after the Insertable Streams 
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackTransformer.ts:11](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrackTransformer.ts#L11)
+[src/frontend/core/DataStreamTrackTransformer.ts:11](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackTransformer.ts#L11)
 
 ## Properties
 
@@ -34,4 +34,4 @@ Create a TransformStream for sensor data | modeled after the Insertable Streams 
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackTransformer.ts:9](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrackTransformer.ts#L9)
+[src/frontend/core/DataStreamTrackTransformer.ts:9](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackTransformer.ts#L9)

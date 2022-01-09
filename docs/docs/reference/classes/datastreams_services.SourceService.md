@@ -15,7 +15,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/backend/services/source.service.ts:10](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/backend/services/source.service.ts#L10)
+[src/backend/services/source.service.ts:10](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/source.service.ts#L10)
 
 ## Properties
 
@@ -25,7 +25,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/backend/services/source.service.ts:8](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/backend/services/source.service.ts#L8)
+[src/backend/services/source.service.ts:8](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/source.service.ts#L8)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[src/backend/services/source.service.ts:7](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/backend/services/source.service.ts#L7)
+[src/backend/services/source.service.ts:7](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/source.service.ts#L7)
 
 ## Methods
 
@@ -55,13 +55,13 @@ ___
 
 #### Defined in
 
-[src/backend/services/source.service.ts:12](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/backend/services/source.service.ts#L12)
+[src/backend/services/source.service.ts:12](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/source.service.ts#L12)
 
 ___
 
-### onmessage
+### ondata
 
-▸ **onmessage**(`data`): `void`
+▸ **ondata**(`data`): `void`
 
 #### Parameters
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[src/backend/services/source.service.ts:26](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/backend/services/source.service.ts#L26)
+[src/backend/services/source.service.ts:33](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/source.service.ts#L33)
 
 ___
 
@@ -95,4 +95,4 @@ ___
 
 #### Defined in
 
-[src/backend/services/source.service.ts:21](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/backend/services/source.service.ts#L21)
+[src/backend/services/source.service.ts:28](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/source.service.ts#L28)

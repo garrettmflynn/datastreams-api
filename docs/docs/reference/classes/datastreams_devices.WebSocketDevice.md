@@ -43,9 +43,52 @@ Device&lt;T\&gt;.constructor
 
 #### Defined in
 
-[src/frontend/devices/WebSocket.device.ts:9](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/WebSocket.device.ts#L9)
+[src/frontend/devices/WebSocket.device.ts:9](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/WebSocket.device.ts#L9)
 
 ## Properties
+
+### \_ondata
+
+• **\_ondata**: (`data`: `any`, `name?`: `string`) => `any`[] \| { [x: string | number]: `any`;  }
+
+#### Type declaration
+
+▸ (`data`, `name?`): `any`[] \| { [x: string | number]: `any`;  }
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+| `name?` | `string` |
+
+##### Returns
+
+`any`[] \| { [x: string | number]: `any`;  }
+
+#### Inherited from
+
+Device.\_ondata
+
+#### Defined in
+
+[src/frontend/devices/Device.ts:10](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L10)
+
+___
+
+### active
+
+• **active**: `boolean` = `false`
+
+#### Inherited from
+
+Device.active
+
+#### Defined in
+
+[src/frontend/devices/Device.ts:16](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L16)
+
+___
 
 ### constraints
 
@@ -57,35 +100,7 @@ Device.constraints
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:11](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L11)
-
-___
-
-### dataStream
-
-• `Optional` **dataStream**: [`DataStream`](datastreams_core.DataStream)
-
-#### Inherited from
-
-Device.dataStream
-
-#### Defined in
-
-[src/frontend/devices/Device.ts:13](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L13)
-
-___
-
-### datacallbacks
-
-• **datacallbacks**: `Function`[] = `[]`
-
-#### Inherited from
-
-Device.datacallbacks
-
-#### Defined in
-
-[src/frontend/devices/Device.ts:10](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L10)
+[src/frontend/devices/Device.ts:11](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L11)
 
 ___
 
@@ -99,7 +114,7 @@ Device.decoder
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:15](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L15)
+[src/frontend/devices/Device.ts:15](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L15)
 
 ___
 
@@ -113,7 +128,7 @@ Device.device
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:12](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L12)
+[src/frontend/devices/Device.ts:12](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L12)
 
 ___
 
@@ -127,7 +142,7 @@ Device.encoder
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L14)
+[src/frontend/devices/Device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L14)
 
 ___
 
@@ -141,7 +156,7 @@ Device.id
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:9](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L9)
+[src/frontend/devices/Device.ts:9](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L9)
 
 ___
 
@@ -151,85 +166,23 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/WebSocket.device.ts:7](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/WebSocket.device.ts#L7)
-
-## Accessors
-
-### ondata
-
-• `get` **ondata**(): (`data`: `any`, `charName?`: `string`) => `void`
-
-#### Returns
-
-`fn`
-
-▸ (`data`, `charName?`): `void`
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `data` | `any` |
-| `charName?` | `string` |
-
-##### Returns
-
-`void`
-
-#### Inherited from
-
-Device.ondata
-
-#### Defined in
-
-[src/frontend/devices/Device.ts:23](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L23)
-
-• `set` **ondata**(`func`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `func` | (`data`: `any`, `charName?`: `string`) => `void` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-Device.ondata
-
-#### Defined in
-
-[src/frontend/devices/Device.ts:22](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L22)
-
-## Methods
-
-### \_ondata
-
-▸ **_ondata**(`data`, `charName?`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `data` | `any` |
-| `charName?` | `string` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-Device.\_ondata
-
-#### Defined in
-
-[src/frontend/devices/Device.ts:73](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L73)
+[src/frontend/devices/WebSocket.device.ts:7](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/WebSocket.device.ts#L7)
 
 ___
+
+### stream
+
+• `Optional` **stream**: [`DataStream`](datastreams_core.DataStream)
+
+#### Inherited from
+
+Device.stream
+
+#### Defined in
+
+[src/frontend/devices/Device.ts:13](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L13)
+
+## Methods
 
 ### connect
 
@@ -245,7 +198,7 @@ Device.connect
 
 #### Defined in
 
-[src/frontend/devices/WebSocket.device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/WebSocket.device.ts#L14)
+[src/frontend/devices/WebSocket.device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/WebSocket.device.ts#L14)
 
 ___
 
@@ -270,7 +223,7 @@ Device.decode
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:60](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L60)
+[src/frontend/devices/Device.ts:81](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L81)
 
 ___
 
@@ -288,7 +241,7 @@ Device.disconnect
 
 #### Defined in
 
-[src/frontend/devices/WebSocket.device.ts:21](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/WebSocket.device.ts#L21)
+[src/frontend/devices/WebSocket.device.ts:23](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/WebSocket.device.ts#L23)
 
 ___
 
@@ -313,7 +266,31 @@ Device.encode
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:59](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L59)
+[src/frontend/devices/Device.ts:80](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L80)
+
+___
+
+### init
+
+▸ **init**(`constraints?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `constraints?` | `Partial`<`any`\> |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Device.init
+
+#### Defined in
+
+[src/frontend/devices/Device.ts:33](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L33)
 
 ___
 
@@ -337,7 +314,32 @@ Device.onconnect
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:63](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L63)
+[src/frontend/devices/Device.ts:85](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L85)
+
+___
+
+### ondata
+
+▸ **ondata**(`data`, `charName?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+| `charName?` | `string` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Device.ondata
+
+#### Defined in
+
+[src/frontend/devices/Device.ts:95](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L95)
 
 ___
 
@@ -361,7 +363,7 @@ Device.ondisconnect
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:65](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L65)
+[src/frontend/devices/Device.ts:87](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L87)
 
 ___
 
@@ -385,7 +387,31 @@ Device.onerror
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:70](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L70)
+[src/frontend/devices/Device.ts:92](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L92)
+
+___
+
+### oninit
+
+▸ **oninit**(`target?`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `target` | `Device`<`T`\> |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Inherited from
+
+Device.oninit
+
+#### Defined in
+
+[src/frontend/devices/Device.ts:84](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L84)
 
 ___
 
@@ -410,7 +436,7 @@ Device.onsend
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:69](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L69)
+[src/frontend/devices/Device.ts:91](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L91)
 
 ___
 
@@ -434,4 +460,4 @@ Device.send
 
 #### Defined in
 
-[src/frontend/devices/WebSocket.device.ts:23](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/WebSocket.device.ts#L23)
+[src/frontend/devices/WebSocket.device.ts:25](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/WebSocket.device.ts#L25)

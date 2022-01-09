@@ -32,17 +32,17 @@ EventTarget.constructor
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:37](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDevices.ts#L37)
+[src/frontend/core/DataDevices.ts:36](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L36)
 
 ## Properties
 
 ### devices
 
-• **devices**: `any`[]
+• **devices**: `any`[] = `[]`
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:33](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDevices.ts#L33)
+[src/frontend/core/DataDevices.ts:32](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L32)
 
 ## Accessors
 
@@ -56,7 +56,7 @@ EventTarget.constructor
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:35](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDevices.ts#L35)
+[src/frontend/core/DataDevices.ts:34](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L34)
 
 ## Methods
 
@@ -136,7 +136,56 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:56](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDevices.ts#L56)
+[src/frontend/core/DataDevices.ts:58](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L58)
+
+___
+
+### getDevice
+
+▸ **getDevice**(`constraints`): `undefined` \| [`BluetoothDevice`](datastreams_devices.BluetoothDevice)<`any`\> \| [`SerialDevice`](datastreams_devices.SerialDevice)<`any`\> \| [`WebSocketDevice`](datastreams_devices.WebSocketDevice)<`any`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `constraints` | `any` |
+
+#### Returns
+
+`undefined` \| [`BluetoothDevice`](datastreams_devices.BluetoothDevice)<`any`\> \| [`SerialDevice`](datastreams_devices.SerialDevice)<`any`\> \| [`WebSocketDevice`](datastreams_devices.WebSocketDevice)<`any`\>
+
+#### Defined in
+
+[src/frontend/core/DataDevices.ts:90](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L90)
+
+___
+
+### getDeviceInfo
+
+▸ **getDeviceInfo**(`constraints`): `Object`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `constraints` | `any` |
+
+#### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `deviceId` | `string` |
+| `groupId` | `string` |
+| `kind` | `any` |
+| `label` | `any` |
+| `modes` | `any` |
+| `protocols` | `string`[] |
+
+#### Defined in
+
+[src/frontend/core/DataDevices.ts:83](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L83)
 
 ___
 
@@ -150,13 +199,19 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:77](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDevices.ts#L77)
+[src/frontend/core/DataDevices.ts:85](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L85)
 
 ___
 
 ### getSupportedDevices
 
-▸ **getSupportedDevices**(): `Promise`<`any`[]\>
+▸ **getSupportedDevices**(`filter?`): `Promise`<`any`[]\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `filter?` | ``"data"`` \| ``"media"`` |
 
 #### Returns
 
@@ -164,13 +219,13 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:72](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDevices.ts#L72)
+[src/frontend/core/DataDevices.ts:74](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L74)
 
 ___
 
 ### getUserStream
 
-▸ **getUserStream**(`constraints`): `Promise`<[`DataStream`](datastreams_core.DataStream)\>
+▸ **getUserStream**(`constraints`): `Promise`<[`SerialDevice`](datastreams_devices.SerialDevice)<`any`\> \| [`WebSocketDevice`](datastreams_devices.WebSocketDevice)<`any`\> \| `Device`<`any`\>\>
 
 #### Parameters
 
@@ -180,11 +235,31 @@ ___
 
 #### Returns
 
-`Promise`<[`DataStream`](datastreams_core.DataStream)\>
+`Promise`<[`SerialDevice`](datastreams_devices.SerialDevice)<`any`\> \| [`WebSocketDevice`](datastreams_devices.WebSocketDevice)<`any`\> \| `Device`<`any`\>\>
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:116](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDevices.ts#L116)
+[src/frontend/core/DataDevices.ts:144](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L144)
+
+___
+
+### load
+
+▸ **load**(`devices`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `devices` | `any` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/frontend/core/DataDevices.ts:53](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L53)
 
 ___
 
@@ -218,19 +293,19 @@ ___
 
 ### startDataStream
 
-▸ **startDataStream**(`constraints`, `dataStream?`): `Promise`<[`DataStream`](datastreams_core.DataStream)\>
+▸ **startDataStream**(`constraints`, `stream?`): `Promise`<[`SerialDevice`](datastreams_devices.SerialDevice)<`any`\> \| [`WebSocketDevice`](datastreams_devices.WebSocketDevice)<`any`\> \| `Device`<`any`\>\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `constraints` | `any` |
-| `dataStream` | [`DataStream`](datastreams_core.DataStream) |
+| `stream` | [`DataStream`](datastreams_core.DataStream) |
 
 #### Returns
 
-`Promise`<[`DataStream`](datastreams_core.DataStream)\>
+`Promise`<[`SerialDevice`](datastreams_devices.SerialDevice)<`any`\> \| [`WebSocketDevice`](datastreams_devices.WebSocketDevice)<`any`\> \| `Device`<`any`\>\>
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:81](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDevices.ts#L81)
+[src/frontend/core/DataDevices.ts:101](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L101)

@@ -10,7 +10,6 @@ The `datastreams.core` module contains a mirror of the Media Capture and Streams
 ## Classes
 
 - [DataChannel](../classes/datastreams_core.DataChannel)
-- [DataDeviceInfo](../classes/datastreams_core.DataDeviceInfo)
 - [DataDevices](../classes/datastreams_core.DataDevices)
 - [DataPipeline](../classes/datastreams_core.DataPipeline)
 - [DataStream](../classes/datastreams_core.DataStream)
@@ -32,7 +31,7 @@ The `datastreams.core` module contains a mirror of the Media Capture and Streams
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:14](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L14)
+[src/frontend/core/DataPipeline.ts:14](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataPipeline.ts#L14)
 
 ___
 
@@ -42,4 +41,33 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:13](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L13)
+[src/frontend/core/DataPipeline.ts:13](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataPipeline.ts#L13)
+
+## Functions
+
+### DataDeviceInfo
+
+▸ `Const` **DataDeviceInfo**(`constraints`): `Object`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `constraints` | `any` |
+
+#### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `deviceId` | `string` |
+| `groupId` | `string` |
+| `kind` | `any` |
+| `label` | `any` |
+| `modes` | `any` |
+| `protocols` | `string`[] |
+
+#### Defined in
+
+[src/frontend/core/DataDeviceInfo.ts:4](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDeviceInfo.ts#L4)

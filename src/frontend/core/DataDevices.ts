@@ -13,7 +13,7 @@ import { SerialDevice } from '../devices/Serial.device'
 // import {EventSourceDevice} from '../devices/EventSource.device'
 import {Device} from '../devices/Device';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
-import { DeviceType, DeviceConstraintsType, CoreDeviceType } from '../types/Devices.types';
+import { DeviceType, DeviceConstraintsType } from '../types/Devices.types';
 import {WebSocketDevice} from '../devices/WebSocket.device';
 import { DataDeviceInfo } from '.';
 
@@ -86,23 +86,24 @@ export class DataDevices extends EventTarget {
         return new DataTrackSupportedConstraints(this)
     }
 
-    // Connect Devices through WebSerial, WebUSB, WebBLE, or Event Sources
+    // Use the `protocol` key to specify how to connect with a device
     getDevice = (constraints:DeviceConstraintsType<any>) => {
 
-        if (constraints.bluetooth) return new BluetoothDevice(constraints)
-        else if (constraints.serial)  return new SerialDevice(constraints)
-        // else if (constraints.wifi) return new EventSourceDevice(constraints)
-        else if (constraints.websocket) return new WebSocketDevice(constraints)
-        else return undefined
-
+        if (constraints.protocol){
+            if (constraints.protocol.includes('bluetooth')) return new BluetoothDevice(constraints)
+            else if (constraints.protocol.includes('serial'))  return new SerialDevice(constraints)
+            // else if (constraints.protocol.includes('wifi')) return new EventSourceDevice(constraints)
+            else if (constraints.protocol.includes('websocket')) return new WebSocketDevice(constraints)
+        } 
+        return 
     }
 
-    startDataStream = async (constraints:DeviceConstraintsType<any>, dataStream=new DataStream() ) =>{
+    startDataStream = async (constraints:DeviceConstraintsType<any>, stream=new DataStream() ) =>{
 
         let device;
 
 
-        constraints.dataStream = dataStream // Bind DataStream to the device
+        constraints.stream = stream // Bind DataStream to the device
 
         const copy = Object.assign({}, constraints) // Copy
 
@@ -121,7 +122,8 @@ export class DataDevices extends EventTarget {
             if (!device) {
 
                 let info = DataDeviceInfo(constraints)
-                info.protocols.forEach(str => copy[str] = true)
+                copy.protocol= []
+                info.protocols.forEach(str => copy.protocol.push(str))
                 device = this.getDevice(copy)
 
             }
@@ -131,9 +133,11 @@ export class DataDevices extends EventTarget {
 
         }
 
-        await device.connect()
+        await device.connect().then(res => res).catch(() => {
+            throw 'Device not connected'
+        })
 
-        return constraints.dataStream
+        return device
     }
 
     // Pass the full constraint object for the device you want to request
@@ -156,8 +160,6 @@ export class DataDevices extends EventTarget {
         // Start Stream
         const device = await this.startDataStream(constraints, stream)
 
-         device.getTracks().forEach(stream.addTrack) // NOTE: DataStreams will not initialize with any tracks. They are added dynamically when data is passed
-
         // Apply Constraints
         stream.getTracks().forEach((t,) => {
             t.applyConstraints(constraints)
@@ -165,7 +167,7 @@ export class DataDevices extends EventTarget {
             // console.log(`Track ${i} Settings`,settings)
         })
     
-        return stream
+        return device
     }
 
 }

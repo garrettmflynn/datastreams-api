@@ -12,8 +12,15 @@ export class SourceService {
     addUser = (ws: any) => {
         if (!ws.id) ws.id = randomUUID()
         if (this.users.size === 0) {
-            this.device = new Device(source)
-            this.device.ondata(this.onmessage)
+            this.device = new Device({
+                label: 'Remote Source',
+                kind: 'datainput',
+                onconnect: source.onconnect,
+                ondisconnect: source.ondisconnect,
+                ondata: this.ondata as any
+            })
+
+            this.device.connect()
         }
         this.users.set(ws.id, {uuid: ws.id, ws})
     }
@@ -23,7 +30,7 @@ export class SourceService {
         if (this.users.size === 0) this.device?.disconnect()
     }
 
-    onmessage = (data:any) => {
+    ondata = (data:any) => {
         this.users.forEach(u => {
             u.ws.send(JSON.stringify({data, service: 'websocket'}))
         })
