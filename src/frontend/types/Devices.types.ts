@@ -11,8 +11,10 @@ export type CoreDeviceType<T=any> = T & {
 export type DeviceType<T=any> = CoreDeviceType<T> & {
     label: string;
     kind: string;
+    protocols?: string[];
+
     
-    ondata?:(data:any, name?: string) => any[]; // T[]
+    ondata?:(data:any, name?: string) => (any[] | {[x : string | number]: any}); // T[]
     encode?: (data:any, name?: string) => any;
     decode?: (data:any, name?: string) => any;
     onconnect?: (target: any) => Promise<any>;

@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataChannel.ts:11](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataChannel.ts#L11)
+[src/frontend/core/DataChannel.ts:11](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataChannel.ts#L11)
 
 ## Properties
 
@@ -45,7 +45,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:25](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L25)
+[src/frontend/core/DataStreamTrack.ts:25](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L25)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:13](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L13)
+[src/frontend/core/DataStreamTrack.ts:13](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L13)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:24](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L24)
+[src/frontend/core/DataStreamTrack.ts:24](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L24)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:14](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L14)
+[src/frontend/core/DataStreamTrack.ts:14](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L14)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataChannel.ts:7](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataChannel.ts#L7)
+[src/frontend/core/DataChannel.ts:7](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataChannel.ts#L7)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:15](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L15)
+[src/frontend/core/DataStreamTrack.ts:15](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L15)
 
 ___
 
@@ -129,7 +129,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:19](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L19)
+[src/frontend/core/DataStreamTrack.ts:19](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L19)
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataChannel.ts:8](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataChannel.ts#L8)
+[src/frontend/core/DataChannel.ts:8](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataChannel.ts#L8)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:16](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L16)
+[src/frontend/core/DataStreamTrack.ts:16](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L16)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataChannel.ts:9](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataChannel.ts#L9)
+[src/frontend/core/DataChannel.ts:9](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataChannel.ts#L9)
 
 ___
 
@@ -181,7 +181,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:26](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L26)
+[src/frontend/core/DataStreamTrack.ts:26](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L26)
 
 ___
 
@@ -195,7 +195,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:21](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L21)
+[src/frontend/core/DataStreamTrack.ts:21](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L21)
 
 ___
 
@@ -209,7 +209,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:17](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L17)
+[src/frontend/core/DataStreamTrack.ts:17](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L17)
 
 ## Accessors
 
@@ -227,7 +227,7 @@ DataStreamTrack.\_\_@toStringTag@60
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:28](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L28)
+[src/frontend/core/DataStreamTrack.ts:28](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L28)
 
 ## Methods
 
@@ -251,7 +251,7 @@ DataStreamTrack.\_\_@toStringTag@60
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:74](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L74)
+[src/frontend/core/DataStreamTrack.ts:74](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L74)
 
 ___
 
@@ -309,7 +309,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:49](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L49)
+[src/frontend/core/DataStreamTrack.ts:49](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L49)
 
 ___
 
@@ -327,7 +327,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:54](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L54)
+[src/frontend/core/DataStreamTrack.ts:54](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L54)
 
 ___
 
@@ -345,7 +345,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:44](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L44)
+[src/frontend/core/DataStreamTrack.ts:44](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L44)
 
 ___
 
@@ -389,7 +389,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:58](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L58)
+[src/frontend/core/DataStreamTrack.ts:58](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L58)
 
 ___
 
@@ -407,7 +407,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:62](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L62)
+[src/frontend/core/DataStreamTrack.ts:62](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L62)
 
 ___
 
@@ -425,7 +425,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:66](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L66)
+[src/frontend/core/DataStreamTrack.ts:66](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L66)
 
 ___
 
@@ -449,7 +449,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:81](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L81)
+[src/frontend/core/DataStreamTrack.ts:81](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L81)
 
 ___
 
@@ -467,7 +467,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:97](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L97)
+[src/frontend/core/DataStreamTrack.ts:97](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L97)
 
 ___
 
@@ -485,7 +485,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:100](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L100)
+[src/frontend/core/DataStreamTrack.ts:100](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L100)
 
 ___
 
@@ -503,7 +503,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:101](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L101)
+[src/frontend/core/DataStreamTrack.ts:101](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L101)
 
 ___
 
@@ -521,7 +521,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:102](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L102)
+[src/frontend/core/DataStreamTrack.ts:102](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L102)
 
 ___
 
@@ -569,7 +569,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataChannel.ts:19](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataChannel.ts#L19)
+[src/frontend/core/DataChannel.ts:19](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataChannel.ts#L19)
 
 ___
 
@@ -589,7 +589,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataChannel.ts:20](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataChannel.ts#L20)
+[src/frontend/core/DataChannel.ts:20](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataChannel.ts#L20)
 
 ___
 
@@ -607,7 +607,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:70](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L70)
+[src/frontend/core/DataStreamTrack.ts:70](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L70)
 
 ___
 
@@ -631,7 +631,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:87](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L87)
+[src/frontend/core/DataStreamTrack.ts:87](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L87)
 
 ___
 
@@ -655,4 +655,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrack.ts:93](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStreamTrack.ts#L93)
+[src/frontend/core/DataStreamTrack.ts:93](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStreamTrack.ts#L93)

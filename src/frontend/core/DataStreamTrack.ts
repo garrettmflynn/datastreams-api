@@ -33,7 +33,6 @@ export class DataStreamTrack extends EventTarget {
         this.contentHint = ''
         this.id = device?.id ?? randomUUID()
         this.kind = device?.constraints?.kind
-        if (this.kind) this.kind = this.kind.replace('input','').replace('output', '')
         this.label = device?.constraints?.label
         this.callbacks = new Map()
         this.data = []

@@ -1,14 +1,16 @@
 let times: number[] = []
-let red: number[] = []
-let ir: number[] = []
-let ratio: number[] = []
-let ambient: number[] = []
-let temp: number[] = []
 let refuS: number
 
 export const ondata = (newline:string) => {
 
-    let latest = []
+    let latest: {[x: string]: any[]} = {
+        times: [],
+        red: [],
+         ir:  [],
+         ratio: [],
+         ambient: [],
+         temp: []
+    }
 
     if(newline.indexOf("|") > -1) {
         let data = newline.split("|");
@@ -22,13 +24,14 @@ export const ondata = (newline:string) => {
                 times.push(Math.floor(times[times.length-1]+(t-refuS)*0.001))
                 refuS = t; //keep times synchronous
             }
-            red.push(parseFloat(data[1]));
-            ir.push(parseFloat(data[2]));
-            ratio.push(parseFloat(data[3]));
-            ambient.push(parseFloat(data[4]));
-            temp.push(parseFloat(data[5])); // temp is on new firmware
+
+            latest.red.push(parseFloat(data[1]));
+            latest.ir.push(parseFloat(data[2]));
+            latest.ratio.push(parseFloat(data[3]));
+            latest.ambient.push(parseFloat(data[4]));
+            latest.temp.push(parseFloat(data[5])); // temp is on new firmware
         }
-        latest.push(parseFloat(data[3])) // stream latest ratio
+        // latest.push(parseFloat(data[3])) // stream latest ratio
 
     } else {console.log("HEGDUINO: ", newline); }
 

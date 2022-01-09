@@ -7,16 +7,15 @@ Based on https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API
 
 */
 
-import {devices} from '../devices/device.registry';
 import { DataStream } from './DataStream';
 import { Bluetooth as BluetoothDevice } from '../devices/Bluetooth.device'
 import { SerialDevice } from '../devices/Serial.device'
-import {EventSourceDevice} from '../devices/EventSource.device'
+// import {EventSourceDevice} from '../devices/EventSource.device'
 import {Device} from '../devices/Device';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
-import { DeviceType, DeviceConstraintsType } from '../types/Devices.types';
-import { DeviceRequestType } from '../types/Core.types';
+import { DeviceType, DeviceConstraintsType, CoreDeviceType } from '../types/Devices.types';
 import {WebSocketDevice} from '../devices/WebSocket.device';
+import { DataDeviceInfo } from '.';
 
 
 /**
@@ -30,14 +29,12 @@ import {WebSocketDevice} from '../devices/WebSocket.device';
 
 export class DataDevices extends EventTarget {
 
-    devices: DeviceType[]
+    devices: DeviceType[] = []
 
     get [Symbol.toStringTag]() { return 'DataDevices' }
 
     constructor () {
         super()
-
-        this.devices = devices
 
         /* -------- Events --------
             devicechange (to implement): Fired when a biosensing input or output device is attached to or removed from the user's computer.
@@ -52,6 +49,11 @@ export class DataDevices extends EventTarget {
     // _devicechanged = () => {
     //     this.dispatchEvent(new Event('devicechange'))
     // }
+
+    load = (devices: DeviceConstraintsType<any> | DeviceConstraintsType<any>[]) => {
+        if (Array.isArray(devices)) this.devices.push(...devices)
+        else if (!!devices) this.devices.push(devices)
+    }
 
     enumerateDevices = async () => {
          
@@ -69,50 +71,72 @@ export class DataDevices extends EventTarget {
         return [...media, ...serial, ...usb, ...bluetooth]
     }
 
-    getSupportedDevices = async () => {
-        let media = await navigator.mediaDevices.enumerateDevices()
-        return [...media, ...devices]
+    getSupportedDevices = async (filter?: 'data' | 'media' ) => {
+        let media: MediaDeviceInfo[] = []
+        if (!filter || filter === 'media'){
+            media = await navigator.mediaDevices.enumerateDevices()
+        }
+
+        return [...media, ...this.devices]
     }
+
+    getDeviceInfo = (constraints: DeviceConstraintsType) => DataDeviceInfo(constraints)
 
     getSupportedConstraints = async () => {
         return new DataTrackSupportedConstraints(this)
+    }
+
+    // Connect Devices through WebSerial, WebUSB, WebBLE, or Event Sources
+    getDevice = (constraints:DeviceConstraintsType<any>) => {
+
+        if (constraints.bluetooth) return new BluetoothDevice(constraints)
+        else if (constraints.serial)  return new SerialDevice(constraints)
+        // else if (constraints.wifi) return new EventSourceDevice(constraints)
+        else if (constraints.websocket) return new WebSocketDevice(constraints)
+        else return undefined
+
     }
 
     startDataStream = async (constraints:DeviceConstraintsType<any>, dataStream=new DataStream() ) =>{
 
         let device;
 
+
         constraints.dataStream = dataStream // Bind DataStream to the device
 
-        // TODO: Stop from being Mutually Exclusive
-        if (constraints.device) {
+        const copy = Object.assign({}, constraints) // Copy
+
+        if (copy.device) {
 
             // Wrap in Device Class
-            device = new Device(constraints)
+            device = new Device(copy)
             
         }
         else {
 
-            // Request Device from User
-            if (constraints.bluetooth) device = new BluetoothDevice(constraints)
-            else if (constraints.serial)  device = new SerialDevice(constraints)
-            else if (constraints.wifi) device = new EventSourceDevice(constraints)
-            else if (constraints.websocket) device = new WebSocketDevice(constraints)
-            else if (constraints.serviceUUID) device = new BluetoothDevice(constraints)
-            else if (constraints.usbVendorId)  device = new SerialDevice(constraints)
-            // if () device = new USBDevice(constraints)
-            else if (constraints.url) {
-                if (constraints.wifi) device = new EventSourceDevice(constraints)
-                else device = new WebSocketDevice(constraints)
+            // Option #1: Get device from raw constraints
+            device = this.getDevice(copy)
+
+            // Option #2: Infer preferred connection type from device constraints
+            if (!device) {
+
+                let info = DataDeviceInfo(constraints)
+                info.protocols.forEach(str => copy[str] = true)
+                device = this.getDevice(copy)
+
             }
-            else device = new Device(constraints)
+
+            // Option #3: Fallback to generic device
+            if (!device) return new Device(constraints)
+
         }
 
         await device.connect()
 
-        return dataStream
+        return constraints.dataStream
     }
 
+    // Pass the full constraint object for the device you want to request
     getUserStream = async (constraints: DeviceConstraintsType) => {
 
         // delete constraints.audio // NOTE: Remove in production
@@ -129,30 +153,10 @@ export class DataDevices extends EventTarget {
             displayStream.getTracks().forEach(stream.addTrack)
         }
         
-        // Add Tracks from Connected DataStreams to Base DataStream
-        let connectedDevices = [constraints.eeg, constraints.fnirs, constraints.emg] // TODO: Allow more than one of each stream
-        connectedDevices = connectedDevices.filter(d => d instanceof DataStream)
+        // Start Stream
+        const device = await this.startDataStream(constraints, stream)
 
-        // Connect Devices through WebSerial, WebUSB, WebBLE, or Event Sources
-        if (connectedDevices.length === 0){
-
-            // Boolean Requests
-            let request: DeviceRequestType = {}
-            if (constraints.eeg) request.eeginput = true
-            if (constraints.fnirs) request.fnirsinput = true
-            if (constraints.emg) request.emginput = true
-
-            // Format Request
-            let keys = Object.keys(request)
-            const possibleStreams = devices.filter(d => keys.includes(d.kind))
-            const deviceDetails = possibleStreams[0] // only first
-
-            // Start Stream
-            const device = await this.startDataStream(deviceDetails, stream)
-            if (deviceDetails) connectedDevices.push(device)
-        }
-
-        connectedDevices.forEach(o =>  o.getTracks().forEach(stream.addTrack)) // NOTE: DataStreams will not initialize with any tracks. They are added dynamically when data is passed
+         device.getTracks().forEach(stream.addTrack) // NOTE: DataStreams will not initialize with any tracks. They are added dynamically when data is passed
 
         // Apply Constraints
         stream.getTracks().forEach((t,) => {

@@ -1,12 +1,24 @@
-export class DataDeviceInfo {
+import { randomUUID } from "../../common/id"
+import { DeviceConstraintsType } from "../types/Devices.types"
 
-    deviceId: string = '' // persistent across sessions; reset when cookies cleared
-    groupId: string = '' // represents a single physical device (e.g. hybrig eeg + fnirs)
-    kind: 'eeginput' | 'emginput' | 'fnirsinput' | 'tdcsoutput' = 'eeginput'
-    label: string = ''
+export const DataDeviceInfo = (constraints: DeviceConstraintsType) => {
 
-    constructor () {
-    
+    const protocols = new Set<string>()
+    if (Array.isArray(constraints.protocols)) constraints.protocols.forEach((str:string) => protocols.add(str))
+    else {
+        if (constraints.serviceUUID) protocols.add('bluetooth')
+        if (constraints.usbVendorId)  protocols.add('serial')
+        if (constraints.url) {
+            protocols.add('wifi')
+            protocols.add('websocket')
+        } 
     }
 
+    return {
+        deviceId: randomUUID(), // TODO: persistent across sessions; reset when cookies cleared
+        groupId: randomUUID(), // TODO: represents a single physical device (e.g. hybrig eeg + fnirs)
+        kind: constraints.kind,
+        label: constraints.label,
+        protocols: Array.from(protocols)
+    }
 }

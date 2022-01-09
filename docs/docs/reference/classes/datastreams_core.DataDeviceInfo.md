@@ -15,7 +15,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataDeviceInfo.ts:8](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataDeviceInfo.ts#L8)
+[src/frontend/core/DataDeviceInfo.ts:8](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDeviceInfo.ts#L8)
 
 ## Properties
 
@@ -25,7 +25,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataDeviceInfo.ts:3](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataDeviceInfo.ts#L3)
+[src/frontend/core/DataDeviceInfo.ts:3](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDeviceInfo.ts#L3)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDeviceInfo.ts:4](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataDeviceInfo.ts#L4)
+[src/frontend/core/DataDeviceInfo.ts:4](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDeviceInfo.ts#L4)
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDeviceInfo.ts:5](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataDeviceInfo.ts#L5)
+[src/frontend/core/DataDeviceInfo.ts:5](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDeviceInfo.ts#L5)
 
 ___
 
@@ -55,4 +55,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDeviceInfo.ts:6](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataDeviceInfo.ts#L6)
+[src/frontend/core/DataDeviceInfo.ts:6](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataDeviceInfo.ts#L6)

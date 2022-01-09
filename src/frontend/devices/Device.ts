@@ -7,7 +7,7 @@ import {randomUUID} from "../../common/id";
 export class Device <T> {
 
     id: string = randomUUID()
-    datacallbacks: Function[] = []
+    _ondata: (data:any, name?: string) => (any[] | {[x : string | number]: any}) = (data) => data
     constraints: DeviceConstraintsType<T>
     device: CoreDeviceType<T>
     dataStream?: DataStream
@@ -16,11 +16,7 @@ export class Device <T> {
 
     // // Inherited Functions
     // onconnect: (target) =>{}
-    // ondisconnect: (target) =>{}
-
-
-    set ondata(func){this.datacallbacks.push(func)}
-    get ondata(){return this._ondata}
+    // ondisconnect: (target) =>{}}
 
     constructor(constraints: DeviceConstraintsType<T>){
 
@@ -31,8 +27,7 @@ export class Device <T> {
         // Callbacks
         this.onconnect = constraints.onconnect ?? this.onconnect;
         this.ondisconnect = constraints.ondisconnect ?? this.ondisconnect;
-        let ondata = constraints.ondata ?? this.ondata;
-        this.datacallbacks.push(ondata)
+        if (constraints.ondata) this._ondata = constraints.ondata
 
         this.onerror = constraints.onerror ?? this.onerror;
 
@@ -70,28 +65,36 @@ export class Device <T> {
     onerror = async (err:Error) => console.log(`${this.constructor.name} Error: ${err}`)
 
     // --------------- Internal Methods ---------------
-    _ondata(data:any, charName?:string){
-
-        this.datacallbacks.forEach(f => {
+    ondata = (data:any, charName?:string) => {
 
             // Run Data through Decoder Function
-            let arr = f(data, charName) // returns array
+            if (this._ondata instanceof Function){
+            let obj = this._ondata(data, charName) // returns array
             
             // Add DataStreamTrack for each Data Channel
             if (this.dataStream){
                 
-                let tracks = this.dataStream.getDataTracks()
-                arr.forEach((val:any,i:number) => {
+                const keys = Object.keys(obj)
+                keys.forEach((key:(string | number)) => {
                     if (this.dataStream){
-                        let track = tracks[i] ?? this.dataStream.addTrack(new DataStreamTrack(this))
-                        if (track instanceof DataStreamTrack) track.addData(val)
+
+                        let track = this.dataStream.tracks.get(key) ?? this._createTrack(key)
+
+                        if (track instanceof DataStreamTrack) track.addData((obj as any)[key])
                     }
                 })
 
             }
-        })
+        }
 
-        return 
+    }
+
+    private _createTrack = (contentHint?: string | number) => {
+        if (this.dataStream){
+            const track = this.dataStream.addTrack(new DataStreamTrack(this))
+            if(typeof contentHint === 'string') track.contentHint = contentHint
+            return track
+        } else return undefined
     }
 
 }

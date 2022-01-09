@@ -22,7 +22,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:31](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L31)
+[src/frontend/core/DataPipeline.ts:31](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L31)
 
 ## Properties
 
@@ -32,7 +32,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:20](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L20)
+[src/frontend/core/DataPipeline.ts:20](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L20)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:18](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L18)
+[src/frontend/core/DataPipeline.ts:18](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L18)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:24](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L24)
+[src/frontend/core/DataPipeline.ts:24](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L24)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:23](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L23)
+[src/frontend/core/DataPipeline.ts:23](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L23)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:19](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L19)
+[src/frontend/core/DataPipeline.ts:19](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L19)
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:22](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L22)
+[src/frontend/core/DataPipeline.ts:22](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L22)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:21](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L21)
+[src/frontend/core/DataPipeline.ts:21](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L21)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:27](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L27)
+[src/frontend/core/DataPipeline.ts:27](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L27)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:28](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L28)
+[src/frontend/core/DataPipeline.ts:28](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L28)
 
 ## Methods
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:84](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L84)
+[src/frontend/core/DataPipeline.ts:84](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L84)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:68](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L68)
+[src/frontend/core/DataPipeline.ts:68](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L68)
 
 ___
 
@@ -172,4 +172,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:51](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L51)
+[src/frontend/core/DataPipeline.ts:51](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L51)

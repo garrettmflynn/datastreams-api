@@ -152,11 +152,11 @@ let showDevices = (devices = []) => {
 
                     // Connect to DataStream Object (bluetooth / usb / serial)
                     button.onclick = () => {
-                        navigator.dataDevices.getUserStream({ [baseKind]: true }).then((stream) => {
+                        dataDevices.getUserStream({ [baseKind]: true }).then((stream) => {
 
                             console.log(stream)
                             // main.data(stream, streamContext, baseKind) // start processing data
-                        }).catch(console.err)
+                        }).catch(console.error)
                     }
 
                     deviceTypesContainer.insertAdjacentElement('beforeend', button)

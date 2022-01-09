@@ -6,9 +6,8 @@ export type DeviceRequestType = {
     audiooutput?: boolean;
 
     // New DataStreams Attributes
-    eeginput?: boolean;
-    emginput?: boolean;
-    fnirsinput?: boolean;
+    datainput?: boolean;
+    dataoutput?: boolean;
 }
 
 

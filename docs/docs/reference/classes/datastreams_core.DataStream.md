@@ -31,7 +31,7 @@ MediaStream.constructor
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:23](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStream.ts#L23)
+[src/frontend/core/DataStream.ts:23](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L23)
 
 ## Properties
 
@@ -41,7 +41,7 @@ MediaStream.constructor
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:17](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStream.ts#L17)
+[src/frontend/core/DataStream.ts:17](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L17)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:18](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStream.ts#L18)
+[src/frontend/core/DataStream.ts:18](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L18)
 
 ___
 
@@ -93,7 +93,7 @@ MediaStream.addTrack
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:16](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStream.ts#L16)
+[src/frontend/core/DataStream.ts:16](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L16)
 
 ___
 
@@ -145,7 +145,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:12](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStream.ts#L12)
+[src/frontend/core/DataStream.ts:12](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L12)
 
 ## Accessors
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:21](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStream.ts#L21)
+[src/frontend/core/DataStream.ts:21](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L21)
 
 ## Methods
 
@@ -303,7 +303,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:62](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataStream.ts#L62)
+[src/frontend/core/DataStream.ts:62](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataStream.ts#L62)
 
 ___
 

@@ -5,7 +5,7 @@ let looping = false
 // Generic 
 
 export const label = 'Dummy Source'
-export const kind = 'eeginput'
+export const kind = 'datainput'
 
 export const ondata = (decoded:string)=> {
     let channelData = decoded.split(',').map(str => Number.parseFloat(str)) // Organize Decoder Output into a Float Array

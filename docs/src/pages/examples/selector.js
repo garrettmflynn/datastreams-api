@@ -3,23 +3,29 @@ import clsx from 'clsx';
 import styles from './examples.module.css';
 import ConferenceExample from './components/conference';
 import ChatExample from './components/chat';
+import DeviceExample from './components/device';
 
 export default function ExampleSelector({server}) {
 
-    const [example, setExample] = React.useState('conference');
+    const [example, setExample] = React.useState('device');
 
     const renderExample = (name) => {
         switch(name) {
+          case 'device':
+            return <DeviceExample server={server}/>
           case 'conference':
             return <ConferenceExample server={server}/>
-        case 'chat':
-            return <ChatExample server={server}/>
+          case 'chat':
+              return <ChatExample server={server}/>
         }
       }
   
     return (
         <>
       <nav className={clsx(styles.nav)}>
+        <button onClick={() => setExample('device')}>
+          Device
+        </button>
         <button onClick={() => setExample('conference')}>
           Conference
         </button>

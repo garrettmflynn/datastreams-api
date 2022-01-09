@@ -32,7 +32,7 @@ The `datastreams.core` module contains a mirror of the Media Capture and Streams
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:14](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L14)
+[src/frontend/core/DataPipeline.ts:14](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L14)
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataPipeline.ts:13](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/core/DataPipeline.ts#L13)
+[src/frontend/core/DataPipeline.ts:13](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/core/DataPipeline.ts#L13)

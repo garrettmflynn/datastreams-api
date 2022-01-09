@@ -1,11 +1,12 @@
 
 import * as hegduino from './hegduino/index'
+import * as freeeeg from './freeeeg/index'
 import * as muse from './muse/index'
 import * as bci2000web from './bci2000web/index'
 import { DeviceConstraintsType } from '../types/Devices.types'
 
 // Supported Devices
-export const devices: DeviceConstraintsType[] = [
+const devices: DeviceConstraintsType[] = [
 
     // ----------------------------------  Device with Auto-Generated Connection Scripts ----------------------------------
 
@@ -13,7 +14,7 @@ export const devices: DeviceConstraintsType[] = [
         // Generic 
         label: 'HEGduino', 
         ondata: hegduino.ondata,
-        kind: 'fnirsinput',
+        kind: 'datainput',
 
         // Bluetooth
         namePrefix: 'HEG',
@@ -26,6 +27,17 @@ export const devices: DeviceConstraintsType[] = [
         // Serial / USB
         usbVendorId: 4292,
         usbProductId: 60000,
+
+    },
+
+    {
+        // Generic 
+        label: 'FreeEEG', 
+        ondata: freeeeg.ondata,
+        kind: 'datainput',
+
+        usbVendorId: 0x10c4,
+        usbProductId: 0x0043,
     },
 
     // ---------------------------------- Device with Pre-Built Connection Scripts ----------------------------------
@@ -34,9 +46,11 @@ export const devices: DeviceConstraintsType[] = [
             // Generic 
             label: 'Muse', 
             // ondata: muse.ondata,
-            kind: 'eeginput',
+            kind: 'datainput',
             device: muse.device,
             onconnect: muse.onconnect,
+            protocols: ['bluetooth'], // must specify to list connection types
+
         },
 
 
@@ -46,9 +60,14 @@ export const devices: DeviceConstraintsType[] = [
             // Generic 
             label: 'Websocket', 
             ondata: bci2000web.ondata,
-            kind: 'eeginput',
+            kind: 'datainput',
     
             // URL
-            url: 'https://localhost'
+            url: 'https://localhost',
+
+            protocols: ['websocket'], 
+
         },
 ]
+
+export default devices

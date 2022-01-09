@@ -29,4 +29,4 @@ The `datastreams.devices` module allows developers to instantiate their own Devi
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:7](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L7)
+[src/frontend/devices/EventSource.device.ts:7](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L7)

@@ -37,7 +37,7 @@ EventTarget.constructor
 
 #### Defined in
 
-[src/frontend/transforms/Transform.ts:18](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/transforms/Transform.ts#L18)
+[src/frontend/transforms/Transform.ts:18](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/Transform.ts#L18)
 
 ## Methods
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/Transform.ts:34](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/transforms/Transform.ts#L34)
+[src/frontend/transforms/Transform.ts:34](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/Transform.ts#L34)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/Transform.ts:40](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/transforms/Transform.ts#L40)
+[src/frontend/transforms/Transform.ts:40](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/Transform.ts#L40)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/Transform.ts:38](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/transforms/Transform.ts#L38)
+[src/frontend/transforms/Transform.ts:38](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/Transform.ts#L38)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/Transform.ts:39](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/transforms/Transform.ts#L39)
+[src/frontend/transforms/Transform.ts:39](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/Transform.ts#L39)
 
 ___
 
@@ -219,7 +219,7 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/Transform.ts:26](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/transforms/Transform.ts#L26)
+[src/frontend/transforms/Transform.ts:26](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/Transform.ts#L26)
 
 ___
 
@@ -240,4 +240,4 @@ ___
 
 #### Defined in
 
-[src/frontend/transforms/Transform.ts:30](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/transforms/Transform.ts#L30)
+[src/frontend/transforms/Transform.ts:30](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/transforms/Transform.ts#L30)

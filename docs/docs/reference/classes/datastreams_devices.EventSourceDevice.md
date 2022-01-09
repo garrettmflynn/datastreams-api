@@ -43,7 +43,7 @@ Device&lt;T\&gt;.constructor
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:21](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L21)
+[src/frontend/devices/EventSource.device.ts:21](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L21)
 
 ## Properties
 
@@ -57,7 +57,7 @@ Device&lt;T\&gt;.constructor
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:17](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L17)
+[src/frontend/devices/EventSource.device.ts:17](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L17)
 
 ___
 
@@ -71,7 +71,7 @@ Device.constraints
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:11](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L11)
+[src/frontend/devices/Device.ts:11](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L11)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:16](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L16)
+[src/frontend/devices/EventSource.device.ts:16](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L16)
 
 ___
 
@@ -95,7 +95,7 @@ Device.dataStream
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:13](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L13)
+[src/frontend/devices/Device.ts:13](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L13)
 
 ___
 
@@ -109,7 +109,7 @@ Device.datacallbacks
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:10](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L10)
+[src/frontend/devices/Device.ts:10](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L10)
 
 ___
 
@@ -123,7 +123,7 @@ Device.decoder
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:15](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L15)
+[src/frontend/devices/Device.ts:15](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L15)
 
 ___
 
@@ -137,7 +137,7 @@ Device.device
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:12](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L12)
+[src/frontend/devices/Device.ts:12](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L12)
 
 ___
 
@@ -151,7 +151,7 @@ Device.encoder
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L14)
+[src/frontend/devices/Device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L14)
 
 ___
 
@@ -165,7 +165,7 @@ Device.id
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:9](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L9)
+[src/frontend/devices/Device.ts:9](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L9)
 
 ___
 
@@ -175,7 +175,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:15](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L15)
+[src/frontend/devices/EventSource.device.ts:15](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L15)
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L14)
+[src/frontend/devices/EventSource.device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L14)
 
 ## Accessors
 
@@ -216,7 +216,7 @@ Device.ondata
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:23](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L23)
+[src/frontend/devices/Device.ts:23](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L23)
 
 • `set` **ondata**(`func`): `void`
 
@@ -236,7 +236,7 @@ Device.ondata
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:22](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L22)
+[src/frontend/devices/Device.ts:22](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L22)
 
 ## Methods
 
@@ -261,7 +261,7 @@ Device.\_ondata
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:73](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L73)
+[src/frontend/devices/Device.ts:73](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L73)
 
 ___
 
@@ -279,7 +279,7 @@ Device.connect
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:44](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L44)
+[src/frontend/devices/EventSource.device.ts:44](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L44)
 
 ___
 
@@ -293,7 +293,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:61](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L61)
+[src/frontend/devices/EventSource.device.ts:61](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L61)
 
 ___
 
@@ -318,7 +318,7 @@ Device.decode
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:60](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L60)
+[src/frontend/devices/Device.ts:60](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L60)
 
 ___
 
@@ -336,7 +336,7 @@ Device.disconnect
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:46](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L46)
+[src/frontend/devices/EventSource.device.ts:46](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L46)
 
 ___
 
@@ -361,7 +361,7 @@ Device.encode
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:59](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L59)
+[src/frontend/devices/Device.ts:59](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L59)
 
 ___
 
@@ -391,7 +391,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:28](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L28)
+[src/frontend/devices/EventSource.device.ts:28](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L28)
 
 ___
 
@@ -415,7 +415,7 @@ Device.onconnect
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:50](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L50)
+[src/frontend/devices/EventSource.device.ts:50](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L50)
 
 ___
 
@@ -439,7 +439,7 @@ Device.ondisconnect
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:65](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L65)
+[src/frontend/devices/Device.ts:65](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L65)
 
 ___
 
@@ -463,7 +463,7 @@ Device.onerror
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:52](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L52)
+[src/frontend/devices/EventSource.device.ts:52](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L52)
 
 ___
 
@@ -488,7 +488,7 @@ Device.onsend
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:69](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/Device.ts#L69)
+[src/frontend/devices/Device.ts:69](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/Device.ts#L69)
 
 ___
 
@@ -502,7 +502,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:77](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L77)
+[src/frontend/devices/EventSource.device.ts:77](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L77)
 
 ___
 
@@ -527,4 +527,4 @@ Device.send
 
 #### Defined in
 
-[src/frontend/devices/EventSource.device.ts:42](https://github.com/brainsatplay/datastreams-api/blob/b373a8f/src/frontend/devices/EventSource.device.ts#L42)
+[src/frontend/devices/EventSource.device.ts:42](https://github.com/brainsatplay/datastreams-api/blob/12ed679/src/frontend/devices/EventSource.device.ts#L42)

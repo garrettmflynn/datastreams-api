@@ -9,7 +9,8 @@ Extension of the MediaStream API to handle arbitrary time-series data.
 export class DataStream extends MediaStream {// has problems with getting/setting
 
     // Mirror Attributes from MediaStreams
-    tracks: (MediaStreamTrack | DataStreamTrack)[] = []
+    tracks: Map<(string | number), (MediaStreamTrack | DataStreamTrack)> = new Map()
+    onaddtrack: any // remove TS limitation on arguments
     
 
     // Functions
@@ -32,7 +33,6 @@ export class DataStream extends MediaStream {// has problems with getting/settin
         // ----------------- Core Properties -----------------
         // this.id
         // this.active
-        this.tracks = this.getTracks()
 
         // ----------------- Custom Methods -----------------
         // this.addTrack
@@ -41,10 +41,10 @@ export class DataStream extends MediaStream {// has problems with getting/settin
         this._getTracks = this.getTracks // save original
 
         this.addTrack = (track: DataStreamTrack | MediaStreamTrack) => {
-            if (!this.tracks.includes(track)){ // don't duplicate tracks
+            if (![...this.tracks.values()].includes(track)){ // don't duplicate tracks
                 try {this._addTrack(track)} catch {} // Try adding using the MediaStreams API
-                this.tracks.push(track)
-                this.dispatchEvent(new CustomEvent('track', {detail: track})) // Trigger ontrackadded for local updates (disabled in MediaStreams API)
+                this.tracks.set(track.contentHint || this.tracks.size, track)
+                this.dispatchEvent(new CustomEvent('addtrack', {detail: track})) // Trigger ontrackadded for local updates (disabled in MediaStreams API)
             }
             return track
         }
@@ -52,12 +52,17 @@ export class DataStream extends MediaStream {// has problems with getting/settin
         this.getTracks = () => {
             const mediaTracks = this._getTracks()
             const dataTracks = this.getDataTracks()
-            return this.tracks = [...mediaTracks, ...dataTracks]
+            return [...mediaTracks, ...dataTracks]
         }
+
+        this.addEventListener('addtrack', ((ev: any) => {
+            ev.track = ev.detail
+            delete ev.detail
+        }) as EventListener)
         
     }
 
     // ---------------------- NEW METHODS ----------------------
 
-    getDataTracks = () => this.tracks.filter(t => !t.kind || (!t.kind.includes('video') && !t.kind.includes('audio')))
+    getDataTracks = () => [...this.tracks.values()]
 }

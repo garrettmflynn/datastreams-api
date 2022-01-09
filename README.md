@@ -26,6 +26,9 @@ The official documentations for the `datastreams-api` package can be found at [h
 
 ## Roadmap
 1. Generalize the SerialDevice class with the FreeEEG32 driver. Thread it.
+    - Modes
+    - Safe connection (e.g. error connection to reconnect)
+    - Max buffering
 2. Remove device registry from being referenced by default
 3. Generalize the documentation generation for any future B@P repositories
 4. Rewrite examples to conform to new API syntax
