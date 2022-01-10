@@ -31,7 +31,7 @@ Pipe.constructor
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:31](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L31)
+[src/frontend/pipes/Peer.pipe.ts:31](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L31)
 
 ## Properties
 
@@ -45,7 +45,7 @@ Pipe.callback
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:13](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L13)
+[src/frontend/pipes/Pipe.ts:13](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L13)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:20](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L20)
+[src/frontend/pipes/Peer.pipe.ts:20](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L20)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:22](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L22)
+[src/frontend/pipes/Peer.pipe.ts:22](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L22)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:23](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L23)
+[src/frontend/pipes/Peer.pipe.ts:23](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L23)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:27](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L27)
+[src/frontend/pipes/Peer.pipe.ts:27](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L27)
 
 ___
 
@@ -103,7 +103,7 @@ Pipe.id
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:9](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L9)
+[src/frontend/pipes/Pipe.ts:9](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L9)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:21](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L21)
+[src/frontend/pipes/Peer.pipe.ts:21](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L21)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:24](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L24)
+[src/frontend/pipes/Peer.pipe.ts:24](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L24)
 
 ___
 
@@ -137,7 +137,7 @@ Pipe.settings
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:11](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L11)
+[src/frontend/pipes/Pipe.ts:11](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L11)
 
 ___
 
@@ -151,7 +151,7 @@ Pipe.socket
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:12](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L12)
+[src/frontend/pipes/Pipe.ts:12](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L12)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:25](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L25)
+[src/frontend/pipes/Peer.pipe.ts:25](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L25)
 
 ___
 
@@ -175,7 +175,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:26](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L26)
+[src/frontend/pipes/Peer.pipe.ts:26](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L26)
 
 ___
 
@@ -189,7 +189,7 @@ Pipe.type
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:10](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L10)
+[src/frontend/pipes/Pipe.ts:10](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L10)
 
 ## Accessors
 
@@ -207,7 +207,7 @@ Pipe.\_\_@toStringTag@60
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:29](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L29)
+[src/frontend/pipes/Peer.pipe.ts:29](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L29)
 
 ## Methods
 
@@ -227,7 +227,7 @@ Pipe.\_\_@toStringTag@60
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:237](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L237)
+[src/frontend/pipes/Peer.pipe.ts:237](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L237)
 
 ___
 
@@ -248,7 +248,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:111](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L111)
+[src/frontend/pipes/Peer.pipe.ts:111](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L111)
 
 ___
 
@@ -309,7 +309,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:200](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L200)
+[src/frontend/pipes/Peer.pipe.ts:200](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L200)
 
 ___
 
@@ -329,7 +329,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:292](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L292)
+[src/frontend/pipes/Peer.pipe.ts:292](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L292)
 
 ___
 
@@ -350,7 +350,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:204](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L204)
+[src/frontend/pipes/Peer.pipe.ts:204](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L204)
 
 ___
 
@@ -370,7 +370,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:266](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L266)
+[src/frontend/pipes/Peer.pipe.ts:266](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L266)
 
 ___
 
@@ -416,7 +416,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:257](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L257)
+[src/frontend/pipes/Peer.pipe.ts:257](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L257)
 
 ___
 
@@ -437,7 +437,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:150](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L150)
+[src/frontend/pipes/Peer.pipe.ts:150](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L150)
 
 ___
 
@@ -458,7 +458,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:136](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L136)
+[src/frontend/pipes/Peer.pipe.ts:136](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L136)
 
 ___
 
@@ -479,7 +479,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:179](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L179)
+[src/frontend/pipes/Peer.pipe.ts:179](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L179)
 
 ___
 
@@ -499,7 +499,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:189](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L189)
+[src/frontend/pipes/Peer.pipe.ts:189](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L189)
 
 ___
 
@@ -520,7 +520,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:128](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L128)
+[src/frontend/pipes/Peer.pipe.ts:128](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L128)
 
 ___
 
@@ -541,7 +541,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:191](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L191)
+[src/frontend/pipes/Peer.pipe.ts:191](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L191)
 
 ___
 
@@ -562,7 +562,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:140](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L140)
+[src/frontend/pipes/Peer.pipe.ts:140](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L140)
 
 ___
 
@@ -584,7 +584,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:262](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L262)
+[src/frontend/pipes/Peer.pipe.ts:262](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L262)
 
 ___
 
@@ -604,7 +604,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:268](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L268)
+[src/frontend/pipes/Peer.pipe.ts:268](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L268)
 
 ___
 
@@ -628,7 +628,7 @@ Pipe.ondata
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:44](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L44)
+[src/frontend/pipes/Pipe.ts:44](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L44)
 
 ___
 
@@ -648,7 +648,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:104](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L104)
+[src/frontend/pipes/Peer.pipe.ts:104](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L104)
 
 ___
 
@@ -670,7 +670,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:119](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L119)
+[src/frontend/pipes/Peer.pipe.ts:119](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L119)
 
 ___
 
@@ -690,7 +690,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:103](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L103)
+[src/frontend/pipes/Peer.pipe.ts:103](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L103)
 
 ___
 
@@ -710,7 +710,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:102](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L102)
+[src/frontend/pipes/Peer.pipe.ts:102](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L102)
 
 ___
 
@@ -730,7 +730,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:105](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L105)
+[src/frontend/pipes/Peer.pipe.ts:105](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L105)
 
 ___
 
@@ -750,7 +750,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:108](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L108)
+[src/frontend/pipes/Peer.pipe.ts:108](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L108)
 
 ___
 
@@ -770,7 +770,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:106](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L106)
+[src/frontend/pipes/Peer.pipe.ts:106](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L106)
 
 ___
 
@@ -790,7 +790,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:277](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L277)
+[src/frontend/pipes/Peer.pipe.ts:277](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L277)
 
 ___
 
@@ -814,7 +814,7 @@ Pipe.process
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:33](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L33)
+[src/frontend/pipes/Pipe.ts:33](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L33)
 
 ___
 
@@ -834,7 +834,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:251](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L251)
+[src/frontend/pipes/Peer.pipe.ts:251](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L251)
 
 ___
 
@@ -882,7 +882,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:273](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L273)
+[src/frontend/pipes/Peer.pipe.ts:273](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L273)
 
 ___
 
@@ -904,7 +904,7 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:340](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L340)
+[src/frontend/pipes/Peer.pipe.ts:340](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L340)
 
 ___
 
@@ -928,7 +928,7 @@ Pipe.subscribe
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:36](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L36)
+[src/frontend/pipes/Pipe.ts:36](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L36)
 
 ___
 
@@ -946,7 +946,7 @@ Pipe.unsubscribe
 
 #### Defined in
 
-[src/frontend/pipes/Pipe.ts:40](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Pipe.ts#L40)
+[src/frontend/pipes/Pipe.ts:40](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Pipe.ts#L40)
 
 ___
 
@@ -969,4 +969,4 @@ ___
 
 #### Defined in
 
-[src/frontend/pipes/Peer.pipe.ts:298](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/pipes/Peer.pipe.ts#L298)
+[src/frontend/pipes/Peer.pipe.ts:298](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/pipes/Peer.pipe.ts#L298)

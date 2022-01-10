@@ -15,7 +15,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/backend/services/offload.service.ts:10](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/offload.service.ts#L10)
+[src/backend/services/offload.service.ts:10](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/backend/services/offload.service.ts#L10)
 
 ## Properties
 
@@ -25,7 +25,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/backend/services/offload.service.ts:7](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/offload.service.ts#L7)
+[src/backend/services/offload.service.ts:7](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/backend/services/offload.service.ts#L7)
 
 ## Methods
 
@@ -45,7 +45,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/backend/services/offload.service.ts:14](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/offload.service.ts#L14)
+[src/backend/services/offload.service.ts:14](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/backend/services/offload.service.ts#L14)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[src/backend/services/offload.service.ts:39](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/offload.service.ts#L39)
+[src/backend/services/offload.service.ts:39](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/backend/services/offload.service.ts#L39)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[src/backend/services/offload.service.ts:49](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/offload.service.ts#L49)
+[src/backend/services/offload.service.ts:49](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/backend/services/offload.service.ts#L49)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[src/backend/services/offload.service.ts:23](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/offload.service.ts#L23)
+[src/backend/services/offload.service.ts:23](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/backend/services/offload.service.ts#L23)
 
 ___
 
@@ -137,4 +137,4 @@ ___
 
 #### Defined in
 
-[src/backend/services/offload.service.ts:19](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/backend/services/offload.service.ts#L19)
+[src/backend/services/offload.service.ts:19](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/backend/services/offload.service.ts#L19)

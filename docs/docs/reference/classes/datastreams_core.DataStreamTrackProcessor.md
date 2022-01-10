@@ -24,7 +24,7 @@ Create a ReadableStream of sensor data modeled after the Insertable Streams API
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackProcessor.ts:15](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackProcessor.ts#L15)
+[src/frontend/core/DataStreamTrackProcessor.ts:15](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStreamTrackProcessor.ts#L15)
 
 ## Properties
 
@@ -34,7 +34,7 @@ Create a ReadableStream of sensor data modeled after the Insertable Streams API
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackProcessor.ts:13](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackProcessor.ts#L13)
+[src/frontend/core/DataStreamTrackProcessor.ts:13](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStreamTrackProcessor.ts#L13)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackProcessor.ts:12](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackProcessor.ts#L12)
+[src/frontend/core/DataStreamTrackProcessor.ts:12](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStreamTrackProcessor.ts#L12)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackProcessor.ts:11](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackProcessor.ts#L11)
+[src/frontend/core/DataStreamTrackProcessor.ts:11](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStreamTrackProcessor.ts#L11)
 
 ## Methods
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackProcessor.ts:45](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackProcessor.ts#L45)
+[src/frontend/core/DataStreamTrackProcessor.ts:45](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStreamTrackProcessor.ts#L45)
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackProcessor.ts:43](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackProcessor.ts#L43)
+[src/frontend/core/DataStreamTrackProcessor.ts:43](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStreamTrackProcessor.ts#L43)
 
 ___
 
@@ -102,4 +102,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStreamTrackProcessor.ts:33](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStreamTrackProcessor.ts#L33)
+[src/frontend/core/DataStreamTrackProcessor.ts:33](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStreamTrackProcessor.ts#L33)

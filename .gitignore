@@ -12,7 +12,7 @@ playground
 .temp
 .cache
 
-website/docs/reference
+docs/docs/reference
 
 # Library Builds
 **/dist

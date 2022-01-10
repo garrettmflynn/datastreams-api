@@ -43,7 +43,7 @@ Device&lt;T\&gt;.constructor
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:28](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L28)
+[src/frontend/devices/Bluetooth.device.ts:28](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L28)
 
 ## Properties
 
@@ -72,7 +72,7 @@ Device.\_ondata
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:10](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L10)
+[src/frontend/devices/Device.ts:10](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L10)
 
 ___
 
@@ -86,7 +86,7 @@ Device.active
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:16](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L16)
+[src/frontend/devices/Device.ts:16](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L16)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:19](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L19)
+[src/frontend/devices/Bluetooth.device.ts:19](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L19)
 
 ___
 
@@ -114,7 +114,7 @@ Device.constraints
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:11](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L11)
+[src/frontend/devices/Device.ts:11](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L11)
 
 ___
 
@@ -128,7 +128,7 @@ Device.decoder
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:15](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L15)
+[src/frontend/devices/Device.ts:15](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L15)
 
 ___
 
@@ -142,7 +142,7 @@ Device.device
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:12](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L12)
+[src/frontend/devices/Device.ts:12](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L12)
 
 ___
 
@@ -156,7 +156,7 @@ Device.encoder
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L14)
+[src/frontend/devices/Device.ts:14](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L14)
 
 ___
 
@@ -170,7 +170,7 @@ Device.id
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:9](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L9)
+[src/frontend/devices/Device.ts:9](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L9)
 
 ___
 
@@ -180,7 +180,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:24](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L24)
+[src/frontend/devices/Bluetooth.device.ts:24](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L24)
 
 ___
 
@@ -190,7 +190,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:25](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L25)
+[src/frontend/devices/Bluetooth.device.ts:25](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L25)
 
 ___
 
@@ -200,7 +200,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:18](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L18)
+[src/frontend/devices/Bluetooth.device.ts:18](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L18)
 
 ___
 
@@ -214,7 +214,7 @@ Device.stream
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:13](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L13)
+[src/frontend/devices/Device.ts:13](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L13)
 
 ___
 
@@ -224,7 +224,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:26](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L26)
+[src/frontend/devices/Bluetooth.device.ts:26](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L26)
 
 ## Methods
 
@@ -242,7 +242,7 @@ Device.connect
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:34](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L34)
+[src/frontend/devices/Bluetooth.device.ts:34](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L34)
 
 ___
 
@@ -263,7 +263,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:87](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L87)
+[src/frontend/devices/Bluetooth.device.ts:87](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L87)
 
 ___
 
@@ -288,7 +288,7 @@ Device.decode
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:81](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L81)
+[src/frontend/devices/Device.ts:81](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L81)
 
 ___
 
@@ -306,7 +306,7 @@ Device.disconnect
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:69](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L69)
+[src/frontend/devices/Bluetooth.device.ts:69](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L69)
 
 ___
 
@@ -331,7 +331,7 @@ Device.encode
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:80](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L80)
+[src/frontend/devices/Device.ts:80](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L80)
 
 ___
 
@@ -355,7 +355,7 @@ Device.init
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:33](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L33)
+[src/frontend/devices/Device.ts:33](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L33)
 
 ___
 
@@ -379,7 +379,7 @@ Device.onconnect
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:85](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L85)
+[src/frontend/devices/Device.ts:85](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L85)
 
 ___
 
@@ -404,7 +404,7 @@ Device.ondata
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:95](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L95)
+[src/frontend/devices/Device.ts:95](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L95)
 
 ___
 
@@ -428,7 +428,7 @@ Device.ondisconnect
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:87](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L87)
+[src/frontend/devices/Device.ts:87](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L87)
 
 ___
 
@@ -452,7 +452,7 @@ Device.onerror
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:92](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L92)
+[src/frontend/devices/Device.ts:92](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L92)
 
 ___
 
@@ -476,7 +476,7 @@ Device.oninit
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:84](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L84)
+[src/frontend/devices/Device.ts:84](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L84)
 
 ___
 
@@ -497,7 +497,7 @@ ___
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:80](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L80)
+[src/frontend/devices/Bluetooth.device.ts:80](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L80)
 
 ___
 
@@ -522,7 +522,7 @@ Device.onsend
 
 #### Defined in
 
-[src/frontend/devices/Device.ts:91](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Device.ts#L91)
+[src/frontend/devices/Device.ts:91](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Device.ts#L91)
 
 ___
 
@@ -547,4 +547,4 @@ Device.send
 
 #### Defined in
 
-[src/frontend/devices/Bluetooth.device.ts:74](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/devices/Bluetooth.device.ts#L74)
+[src/frontend/devices/Bluetooth.device.ts:74](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/devices/Bluetooth.device.ts#L74)

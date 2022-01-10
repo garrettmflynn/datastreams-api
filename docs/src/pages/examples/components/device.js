@@ -105,17 +105,19 @@ let initPlot = (currentTracks) => {
         let howToConnect = document.createElement('div')
         deviceDiv.insertAdjacentElement('beforeend', howToConnect)
         
+        if (protocols.length > 0) {
 
-        ReactDOM.createPortal(ReactDOM.render(<Radio
-          name={`${o.label}-protocol`}
-          header={'Protocol'}
-          options={protocols}
-          default={constraints.protocol}
-          callback={(ev) => {
-            constraints.protocol = ev.target.value
-          }}
-        />, howToConnect), howToConnect, () => { console.log('REDRAW') });
-
+          ReactDOM.createPortal(ReactDOM.render(<Radio
+            name={`${o.label}-protocol`}
+            header={'Protocol'}
+            options={protocols}
+            default={constraints.protocol}
+            callback={(ev) => {
+              constraints.protocol = ev.target.value
+            }}
+          />, howToConnect), howToConnect, () => { console.log('REDRAW') });
+          }
+          
         let modeDiv = document.createElement('div')
         deviceDiv.insertAdjacentElement('beforeend', modeDiv)
         if (modes) {
@@ -128,7 +130,6 @@ let initPlot = (currentTracks) => {
             constraints.protocol = ev.target.value
           }}
         />
-        console.log(radio)
           ReactDOM.createPortal(ReactDOM.render(radio, modeDiv), modeDiv, () => { console.log('REDRAW') });
         }
 

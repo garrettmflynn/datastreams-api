@@ -2,13 +2,39 @@
 import * as hegduino from './hegduino/index'
 import * as freeeeg from './freeeeg/index'
 import * as muse from './muse/index'
+import * as webgazer from './webgazer/index'
 // import * as bci2000web from './bci2000web/index'
 import * as remote from '../../common/source.device'
 import { DeviceConstraintsType } from '../types/Devices.types'
 
 // Supported Devices
 const devices: DeviceConstraintsType[] = [
+        // ----------------------------------  WebSocket "Device" ----------------------------------
 
+        {
+
+             // Generic 
+             label: 'Webgazer', 
+             // ondata: muse.ondata,
+             device: webgazer.Webgazer,
+             onconnect: webgazer.onconnect,
+
+        },
+
+
+        // ----------------------------------  WebSocket "Device" ----------------------------------
+
+        {
+            // Generic 
+            label: 'Remote', 
+            ondata: remote.ondata,
+    
+            // URL
+            url: 'http://localhost',
+
+            protocols: ['websocket'], 
+
+        },
     // ----------------------------------  Device with Auto-Generated Connection Scripts ----------------------------------
 
     {
@@ -57,25 +83,9 @@ const devices: DeviceConstraintsType[] = [
         {
             // Generic 
             label: 'Muse', 
-            // ondata: muse.ondata,
             device: muse.device,
             onconnect: muse.onconnect,
             protocols: ['bluetooth'], // must specify to list connection types
-
-        },
-
-
-        // ----------------------------------  WebSocket "Device" ----------------------------------
-
-        {
-            // Generic 
-            label: 'Remote', 
-            ondata: remote.ondata,
-    
-            // URL
-            url: 'http://localhost',
-
-            protocols: ['websocket'], 
 
         },
 ]

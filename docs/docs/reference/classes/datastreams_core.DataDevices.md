@@ -32,7 +32,7 @@ EventTarget.constructor
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:36](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L36)
+[src/frontend/core/DataDevices.ts:36](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L36)
 
 ## Properties
 
@@ -42,7 +42,7 @@ EventTarget.constructor
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:32](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L32)
+[src/frontend/core/DataDevices.ts:32](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L32)
 
 ## Accessors
 
@@ -56,7 +56,7 @@ EventTarget.constructor
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:34](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L34)
+[src/frontend/core/DataDevices.ts:34](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L34)
 
 ## Methods
 
@@ -136,7 +136,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:58](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L58)
+[src/frontend/core/DataDevices.ts:58](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L58)
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:90](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L90)
+[src/frontend/core/DataDevices.ts:90](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L90)
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:83](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L83)
+[src/frontend/core/DataDevices.ts:83](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L83)
 
 ___
 
@@ -199,7 +199,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:85](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L85)
+[src/frontend/core/DataDevices.ts:85](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L85)
 
 ___
 
@@ -219,7 +219,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:74](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L74)
+[src/frontend/core/DataDevices.ts:74](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L74)
 
 ___
 
@@ -239,7 +239,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:144](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L144)
+[src/frontend/core/DataDevices.ts:144](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L144)
 
 ___
 
@@ -259,7 +259,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:53](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L53)
+[src/frontend/core/DataDevices.ts:53](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L53)
 
 ___
 
@@ -308,4 +308,4 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataDevices.ts:101](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataDevices.ts#L101)
+[src/frontend/core/DataDevices.ts:101](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataDevices.ts#L101)

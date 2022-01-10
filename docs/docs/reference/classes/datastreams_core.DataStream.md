@@ -31,7 +31,7 @@ MediaStream.constructor
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:24](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L24)
+[src/frontend/core/DataStream.ts:24](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStream.ts#L24)
 
 ## Properties
 
@@ -41,7 +41,7 @@ MediaStream.constructor
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:18](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L18)
+[src/frontend/core/DataStream.ts:18](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStream.ts#L18)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:19](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L19)
+[src/frontend/core/DataStream.ts:19](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStream.ts#L19)
 
 ___
 
@@ -93,7 +93,7 @@ MediaStream.addTrack
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:17](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L17)
+[src/frontend/core/DataStream.ts:17](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStream.ts#L17)
 
 ___
 
@@ -121,7 +121,7 @@ MediaStream.onaddtrack
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:13](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L13)
+[src/frontend/core/DataStream.ts:13](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStream.ts#L13)
 
 ___
 
@@ -145,7 +145,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:12](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L12)
+[src/frontend/core/DataStream.ts:12](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStream.ts#L12)
 
 ## Accessors
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:22](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L22)
+[src/frontend/core/DataStream.ts:22](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStream.ts#L22)
 
 ## Methods
 
@@ -303,7 +303,7 @@ ___
 
 #### Defined in
 
-[src/frontend/core/DataStream.ts:67](https://github.com/brainsatplay/datastreams-api/blob/3bb0d1d/src/frontend/core/DataStream.ts#L67)
+[src/frontend/core/DataStream.ts:67](https://github.com/brainsatplay/datastreams-api/blob/2f2731a/src/frontend/core/DataStream.ts#L67)
 
 ___
 
