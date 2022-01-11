@@ -143,7 +143,7 @@ export class DataDevices extends EventTarget {
     // Pass the full constraint object for the device you want to request
     getUserStream = async (constraints: DeviceConstraintsType) => {
 
-        // delete constraints.audio // NOTE: Remove in production
+        delete constraints.audio
 
         let mediaStream;
         // Add MediaStream Tracks to DataStream

@@ -1,36 +1,39 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import styles from './examples.module.css';
-import ConferenceExample from './components/conference';
-import ChatExample from './components/chat';
+import WebRTCExample from './components/webrtc';
 import DeviceExample from './components/device';
+import { useHistory, useLocation } from 'react-router';
 
 export default function ExampleSelector({server}) {
+   const history = useHistory();
+    var url = window.location;
+    var name = new URLSearchParams(url.search).get('name');
+    const [example, setExample] = React.useState(name ?? 'device');
 
-    const [example, setExample] = React.useState('device');
 
     const renderExample = (name) => {
         switch(name) {
           case 'device':
             return <DeviceExample server={server}/>
-          case 'conference':
-            return <ConferenceExample server={server}/>
-          case 'chat':
-              return <ChatExample server={server}/>
+          case 'webrtc':
+            return <WebRTCExample server={server}/>
         }
       }
+
+    const set = (name) => {
+      history.replace(`/examples?name=${name}`)
+      setExample(name)
+    }
   
     return (
         <>
       <nav className={clsx(styles.nav)}>
-        <button onClick={() => setExample('device')}>
+        <button onClick={() => set('device')}>
           Device
         </button>
-        <button onClick={() => setExample('conference')}>
-          Conference
-        </button>
-        <button onClick={() => setExample('chat')}>
-          Chat
+        <button onClick={() => set('webrtc')}>
+          WebRTC
         </button>
         </nav>
 

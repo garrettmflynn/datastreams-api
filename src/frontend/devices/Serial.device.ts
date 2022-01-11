@@ -57,7 +57,7 @@ export class SerialDevice<T=any> extends Device<T> {
         ];
 
         
-        this.port = await navigator.serial.requestPort({ filters }).then(this.onPortSelected)
+        await navigator.serial.requestPort({ filters }).then(this.onPortSelected)
     }
 
     send = async (msg: string) => {
@@ -85,7 +85,9 @@ export class SerialDevice<T=any> extends Device<T> {
             // Internal Management of the Stream
             console.error('Managing the readable stream internally')
             let transform = async (value:any) => {
-                // console.log('streaming')
+                console.log('streaming')
+                if (!this.subscribed) throw Error('Device disconnected')
+
                 this.onReceive(value);         
                 return value
             }
@@ -130,9 +132,12 @@ export class SerialDevice<T=any> extends Device<T> {
                         }
                     }
                      else {
-                        await this.closePort();	
+                        await this._disconnect();	
                     }
                 }
+
+
+    
 
     onPortSelected = async (port: SerialPort) => {
 
@@ -140,7 +145,7 @@ export class SerialDevice<T=any> extends Device<T> {
         this.port = port
 
         // Add Disconnect Callback
-        navigator.serial.addEventListener("disconnect",this.closePort)  
+        navigator.serial.addEventListener("disconnect", this.disconnect)  
         
         let serialOptions = {baudRate: 115200, bufferSize: 1000}
         if (typeof this.constraints.serialOptions === 'object') Object.assign(serialOptions, this.constraints.serialOptions)
@@ -148,6 +153,7 @@ export class SerialDevice<T=any> extends Device<T> {
         // Open the Port
         try {await port.open(serialOptions); }
         catch (err) { await port.open(serialOptions); }
+        this.active = true;
         this.onconnect(this);
         this.connected = true;
         this.subscribed = true;
@@ -173,11 +179,17 @@ export class SerialDevice<T=any> extends Device<T> {
         }
     }
 
+    _disconnect = async () => {
+        this.closePort()
+    }
+
 	closePort = async (port=this.port) =>  {
 		if(this.port){
 			this.subscribed = false;
 			setTimeout(async () => {
                 try{
+                    console.log('clsing', this.readable)
+
                     if (this.readable) {
                         await this.readable.cancel();
                         this.readable = null;
@@ -185,7 +197,6 @@ export class SerialDevice<T=any> extends Device<T> {
                     await port.close();
                     //this.port = null;
                     this.connected = false;
-                    this.ondisconnect(this);
                 } catch (err) {console.error(err);}
 			}, 50);
 		}

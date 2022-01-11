@@ -43,7 +43,7 @@ export class EventSourceDevice<T = any> extends Device<T> {
 
     connect = async () => this.createEventListeners();
 
-    disconnect = async () => this.removeEventListeners();
+    _disconnect = async () => this.removeEventListeners();
 
     // ---------------------- CALLBACKS ----------------------
 
@@ -62,7 +62,10 @@ export class EventSourceDevice<T = any> extends Device<T> {
         if (this.source !== null) this.removeEventListeners();
         if (window.EventSource) {
             this.source = new EventSource(this.url);
-            this.source.addEventListener('open', this.onconnect, false);
+            this.source.addEventListener('open', () =>{
+                this.active = true
+                this.onconnect(this)
+            }, false);
             this.source.addEventListener('error', this.onerror, false);
             this.source.addEventListener('message', this.ondata, false);
             if (this.customCallbacks.length > 0) {
@@ -71,7 +74,6 @@ export class EventSourceDevice<T = any> extends Device<T> {
                 })
             }
         }
-        this.onconnect(this)
     }
 
     removeEventListeners = () => {
@@ -87,7 +89,6 @@ export class EventSourceDevice<T = any> extends Device<T> {
             }
             this.source = undefined;
         }
-        this.ondisconnect(this)
     }
 
 }

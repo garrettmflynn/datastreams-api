@@ -4,7 +4,6 @@ export default class Radio extends React.Component {
     
     constructor(props) {
         super(props)
-        this.input = React.createRef();
 
     }
 

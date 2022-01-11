@@ -8,38 +8,38 @@ export class DataTrackConstraints {
         deviceId?: string | undefined
         groupId?: string | undefined
 
-        autoGainControl: null = null
-        channelCount: null = null
-        echoCancellation: null = null
-        latency: null = null
-        noiseSuppression: null = null
-        sampleRate: null = null
-        sampleSize: null = null
-        volume: null = null
+        autoGainControl: boolean | undefined
+        channelCount: number | undefined = undefined
+        echoCancellation: boolean  | undefined
+        latency: number | undefined = undefined
+        noiseSuppression: boolean  | undefined
+        sampleRate: number | undefined = undefined
+        sampleSize: number | undefined = undefined
+        volume: number | undefined = undefined
 
         // Image Tracks
-        whiteBalanceMode: null = null
-        exposureMode: null = null
-        focusMode: null = null
-        pointOfInterest: null = null
-        exposureCompensation: null = null
-        colorTemperature: null = null
-        iso: null = null
-        brightness: null = null
-        contrast: null = null
-        saturation: null = null
-        sharpness: null = null
-        focusDistance: null = null
-        zoom: null = null
-        torch: null = null
+        whiteBalanceMode: number | undefined = undefined
+        exposureMode: number | undefined = undefined
+        focusMode: number | undefined = undefined
+        pointOfInterest: number | undefined = undefined
+        exposureCompensation: number | undefined = undefined
+        colorTemperature: number | undefined = undefined
+        iso: number | undefined = undefined
+        brightness: number | undefined = undefined
+        contrast: number | undefined = undefined
+        saturation: number | undefined = undefined
+        sharpness: number | undefined = undefined
+        focusDistance: number | undefined = undefined
+        zoom: number | undefined = undefined
+        torch: number | undefined = undefined
 
         // Video Tracks
-        aspectRatio: null = null
-        facingMode: null = null
-        frameRate: null = null
-        height: null = null
-        width: null = null
-        resizeMode: null = null
+        aspectRatio: number | undefined = undefined
+        facingMode: string  | undefined
+        frameRate: number | undefined = undefined
+        height: number | undefined = undefined
+        width: number | undefined = undefined
+        resizeMode: number | undefined = undefined
         
         // Shared Screen Tracks
         cursor: string | string[] = ['always', 'motion', 'never'] // can be single string

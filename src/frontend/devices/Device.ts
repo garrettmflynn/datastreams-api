@@ -66,13 +66,20 @@ export class Device <T> {
     connect = async () => {
         if (!(this.device instanceof Device) && this.device.connect) await this.device.connect()
         this.active = true
+        this._connect()
         this.onconnect(this)
     }        
+
     disconnect = async () => {
         if (!(this.device instanceof Device) && this.device.disconnect) await this.device.disconnect()
         this.active = false
+        this.stream?.tracks.forEach((t:DataStreamTrack | MediaStreamTrack) => (this.stream as DataStream)?.removeTrack(t))
+        this._disconnect()
         this.ondisconnect(this)
     }
+
+    _connect = async () => { }
+    _disconnect = async () => { }
 
     send = async (msg:any,from:any):Promise<any> => {this.onsend(msg,from)}
 
@@ -102,6 +109,7 @@ export class Device <T> {
             if (this.stream){
                 
                 const keys = Object.keys(obj)
+
                 keys.forEach((key:(string | number)) => {
                     if (this.stream){
 

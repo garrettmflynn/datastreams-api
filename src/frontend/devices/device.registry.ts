@@ -7,18 +7,37 @@ import * as webgazer from './webgazer/index'
 import * as remote from '../../common/source.device'
 import { DeviceConstraintsType } from '../types/Devices.types'
 
+// let audioDevices:string[] = [], videoDevices:string[] = [];
+// navigator.mediaDevices.enumerateDevices().then(mediaDevices => {
+//     let audioIns = mediaDevices.filter(d => d.kind === 'audioinput')
+//     let videoIns = mediaDevices.filter(d => d.kind === 'videoinput')
+
+//     audioDevices.push(...audioIns.map(o => o.label))
+//     videoDevices.push(...videoIns.map(o => o.label))
+//     console.log(mediaDevices)
+
+//     console.log(audioDevices)
+//     console.log(videoDevices)
+
+// })
+
 // Supported Devices
 const devices: DeviceConstraintsType[] = [
         // ----------------------------------  WebSocket "Device" ----------------------------------
+        {
+            label: 'Video', 
+            video: true,
+       },
+
+       {
+        label: 'Audio', 
+        audio: true,
+        },
 
         {
-
-             // Generic 
              label: 'Webgazer', 
-             // ondata: muse.ondata,
              device: webgazer.Webgazer,
              onconnect: webgazer.onconnect,
-
         },
 
 

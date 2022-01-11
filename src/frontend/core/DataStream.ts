@@ -17,7 +17,7 @@ export class DataStream extends MediaStream {// has problems with getting/settin
     addTrack: (track: DataStreamTrack | MediaStreamTrack) => DataStreamTrack | MediaStreamTrack = this.addTrack
     _addTrack: Function
     _getTracks: Function
-
+    _removeTrack: Function
 
     get [Symbol.toStringTag]() { return 'DataStream' }
 
@@ -39,12 +39,27 @@ export class DataStream extends MediaStream {// has problems with getting/settin
         // this.getTracks
         this._addTrack = this.addTrack // save original
         this._getTracks = this.getTracks // save original
+        this._removeTrack = this.removeTrack // save original
 
         this.addTrack = (track: DataStreamTrack | MediaStreamTrack) => {
             if (![...this.tracks.values()].includes(track)){ // don't duplicate tracks
                 try {this._addTrack(track)} catch {} // Try adding using the MediaStreams API
                 this.tracks.set(track.contentHint || this.tracks.size, track)
                 this.dispatchEvent(new CustomEvent('addtrack', {detail: track})) // Trigger ontrackadded for local updates (disabled in MediaStreams API)
+            }
+            return track
+        }
+
+        this.removeTrack = (track: DataStreamTrack | MediaStreamTrack) => {
+
+            if ([...this.tracks.values()].includes(track)){
+                try {this._removeTrack(track)} catch {} // Try adding using the MediaStreams API
+                for (let [key, value] of this.tracks.entries()) {
+                    if (value === track){
+                        this.tracks.delete(key)
+                        this.dispatchEvent(new CustomEvent('removetrack', {detail: track})) // Trigger ontrackadded for local updates (disabled in MediaStreams API)
+                    }
+                }
             }
             return track
         }
@@ -59,7 +74,11 @@ export class DataStream extends MediaStream {// has problems with getting/settin
             ev.track = ev.detail
             delete ev.detail
         }) as EventListener)
-        
+
+        this.addEventListener('removetrack', ((ev: any) => {
+            ev.track = ev.detail
+            delete ev.detail
+        }) as EventListener)
     }
 
     // ---------------------- NEW METHODS ----------------------

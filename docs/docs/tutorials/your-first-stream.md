@@ -41,8 +41,8 @@ let connect = document.getElementById('connect')
 connect.onclick = () => {
 
   // Request Dummy Websocket Device from the Brains@Play Server
-  dataDevices.getUserStream({ websocket: true })
-  .then(stream => console.log(stream))
+  dataDevices.getUserStream({ protocol: 'websocket' })
+  .then(device => console.log(device, device.stream))
   .catch(console.error)
 
 }
@@ -55,15 +55,15 @@ You should now be getting a real-time stream from our WebSocket server!
 
 If you're feeling adventerous, you can also try connecting to other stream types:
 
-1. Bluetooth: `{ble: true}`
-2. Serial / USB: `{usb: true}`
-3. EventSources: `{wifi: true, url: 'https://example.com'}`
-4. WebSocket: `{websocket: true, url: 'https://example.com'}`
+1. Bluetooth: `{protocol: 'bluetooth'}`
+2. Serial / USB: `{protocol: 'serial'}`
+<!-- 3. EventSources: `{protocol: 'wifi', url: 'https://example.com'}` -->
+3. WebSocket: `{protocol: 'websocket', url: 'https://example.com'}`
 
 ```diff title="examples/hello/index.js"
-- dataDevices.getUserStream({ websocket: true })
-+ dataDevices.getUserStream({ ble: true })
-  .then(stream => console.log(stream))
+- dataDevices.getUserStream({ protocol: 'websocket' })
++ dataDevices.getUserStream({ protocol: 'bluetooth' })
+  .then(device => console.log(device, device.stream))
   .catch(console.error)
 ```
 
@@ -81,8 +81,8 @@ If you're feeling adventerous, you can also try connecting to other stream types
       let connect = document.getElementById('connect')
       connect.onclick = () => {
 
-        dataDevices.getUserStream({ websocket: true })
-        .then(stream => console.log(stream))
+        dataDevices.getUserStream({ protocol: 'websocket' })
+        .then(device => console.log(device, device.stream))
         .catch(console.error)
 
       }
@@ -90,7 +90,7 @@ If you're feeling adventerous, you can also try connecting to other stream types
   </div>
 ```
 
-Check the console to see the output of `console.log(stream)`.
+Check the console to see the output of `console.log(device, device.stream)`.
 
 ## Visualize the Stream
 Coming soon...

@@ -39,6 +39,5 @@ export const ondata = (newline:string) => {
 
     } else {console.log("HEGDUINO: ", newline); }
 
-    console.log('latest',latest)
     return latest
 }

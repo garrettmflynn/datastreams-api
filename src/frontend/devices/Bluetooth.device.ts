@@ -61,14 +61,12 @@ export class Bluetooth<T=any> extends Device<T> { //This is formatted for the wa
 
                 for (let name in this.constraints.characteristics) await this.connectCharacteristic(name, this.constraints.characteristics[name])
                 this.onconnect(this);
-
             })
             .catch(err => { console.error(err); this.onerror(err); return Promise.reject(); });
     }
 
-    disconnect = async () => {
+    _disconnect = async () => {
         this.server?.disconnect();
-        this.ondisconnect(this);
     };
 
     send = async (msg:any, charName:any) => {

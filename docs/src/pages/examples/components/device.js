@@ -7,13 +7,14 @@ import { WebglLinePlotUtils } from '../libraries/webgl-plot-utils';
 import { DataStream } from '../../../../../src/frontend';
 import styles from '../examples.module.css'
 import Radio from './radio.component';
+import Overlay from './overlay.component';
 
 export default function DeviceExample({server}) {
 
   const container = useRef(null);
   const buttons = useRef(null);
   const canvas = useRef(null);
-
+  const overlayContent = useRef(null);
   const dataDevices = new api.DataDevices()
   dataDevices.load(devices)
 
@@ -87,6 +88,9 @@ let initPlot = (currentTracks) => {
 
   requestAnimationFrame(newFrame);
 
+
+  overlayContent.current.classList.add(styles.gallery)
+
     dataDevices.getSupportedDevices('data').then(res => {
       res.forEach(o => {
 
@@ -101,7 +105,8 @@ let initPlot = (currentTracks) => {
         const device = document.createElement('h2')
         device.innerHTML = o.label
         deviceDiv.insertAdjacentElement('beforeend', device)
-        buttons.current.insertAdjacentElement('beforeend', deviceDiv)
+
+        overlayContent.current.insertAdjacentElement('beforeend', deviceDiv)
         let howToConnect = document.createElement('div')
         deviceDiv.insertAdjacentElement('beforeend', howToConnect)
         
@@ -147,6 +152,10 @@ let initPlot = (currentTracks) => {
               source.addTrack(ev.track)
             })
 
+            stream.addEventListener('removetrack', (ev) => {
+              source.removeTrack(ev.track)
+            })
+
             tracks.forEach(t => source.addTrack(t))
 
             button.innerHTML = 'Disconnect'
@@ -163,14 +172,15 @@ let initPlot = (currentTracks) => {
         deviceDiv.insertAdjacentElement('beforeend', button)
       })
     })
-
   });
   
     return (
         <div ref={container} className={clsx(styles.container)}>
-                    <canvas ref={canvas}></canvas>
-          <div ref={buttons}>
-          </div>
+          <canvas ref={canvas}></canvas>
+          <Overlay 
+            ref={overlayContent}
+            header={'Select a Device'}
+          />
         </div>
     );
   }
