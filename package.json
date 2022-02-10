@@ -1,9 +1,6 @@
 {
-  "name": "datastreams",
-  "version": "0.0.0",
-  "description": "Simple Media Capture and Streams API extension to handle arbitrary data streams acquired through the browser.",
+  "name": "datastreams-api",
   "private": true,
-  "type": "commonjs",
   "workspaces": [
     "src/*"
   ],

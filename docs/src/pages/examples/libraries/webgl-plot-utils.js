@@ -364,7 +364,7 @@ export class WebglLinePlotUtils {
     static test(canvasId) {
     
         const canvas = document.getElementById(canvasId);
-        const devicePixelRatio = window.devicePixelRatio || 1;
+        const devicePixelRatio = globalThis.devicePixelRatio || 1;
         canvas.width = canvas.clientWidth * devicePixelRatio;
         canvas.height = canvas.clientHeight * devicePixelRatio;
     

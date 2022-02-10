@@ -1,11 +1,16 @@
-import { uiid } from '@giveback007/util-lib';
+import { v4 as uuid } from 'uuid';
+
+declare global {
+    interface Crypto {
+      randomUUID: () => string;
+    }
+}
 
 export const randomUUID = () => {
 
     // // Use Crypto API
-    // if (window.crypto) return window.crypto.randomUUID()
+    if (globalThis.crypto) return globalThis.crypto.randomUUID()
 
     // // Or Generate our UUID
-    // else 
-    return uiid()
+    else return uuid()
 }

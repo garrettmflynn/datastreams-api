@@ -19,7 +19,7 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}!\n`);
 });
 
-const wss = new ws.WebSocketServer({ port: 80 });
+const wss = new ws.Server({ port: 80 }); // TODO: Check if working
 
 let webrtc = new services.PeerService()
 let server = new services.OffloadService()

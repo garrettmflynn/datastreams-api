@@ -18,8 +18,8 @@ let me = document.getElementById('me')
 let auth = 'THISISME' // lock yourself to a roo with you in it
 
 // ---------------------------------- Stream Context Initialization ----------------------------------
-const server = (location.hostname === "localhost" || location.hostname === "127.0.0.1" && window.brainsatplayPlatform) ? 'http://localhost' : 'https://server.brainsatplay.com'
-let context = new datastreams.StreamContext({ server , auth }) // sets dataDevices on window.navigator
+const server = (location.hostname === "localhost" || location.hostname === "127.0.0.1" && globalThis.brainsatplayPlatform) ? 'http://localhost' : 'https://server.brainsatplay.com'
+let context = new datastreams.StreamContext({ server , auth }) // sets dataDevices on globalThis.navigator
 
 // ---------------------------------- Event Monitoring ----------------------------------
 let joined = false
@@ -56,7 +56,7 @@ context.streamer.ondatachannel = async (ev) => {
     if (ev.detail.label === 'chat') ev.detail.subscribe((msg) => peer.innerHTML += msg)
 }
 
-window.onkeydown = (ev) => {
+globalThis.onkeydown = (ev) => {
     let msg = ev.key
     me.innerHTML += msg
     channels.forEach(o => o.sendMessage(msg)) // type to the peer!

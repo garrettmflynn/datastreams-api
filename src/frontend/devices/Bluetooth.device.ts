@@ -10,7 +10,7 @@ Written by Andrew England (SparkFun)
 BSD license, all text above must be included in any redistribution.
 *****************************************************/
 import {Device} from "./Device"
-import { DeviceConstraintsType } from '../types/Devices.types';
+import { DeviceConfig } from '../types/Devices.types';
 
 export class Bluetooth<T=any> extends Device<T> { //This is formatted for the way the HEG sends/receives information. Other BLE devices will likely need changes to this to be interactive.
     
@@ -25,19 +25,22 @@ export class Bluetooth<T=any> extends Device<T> { //This is formatted for the wa
             service?: BluetoothRemoteGATTService;
             transmitCharacteristic?: BluetoothRemoteGATTCharacteristic;
                     
-    constructor(constraints: DeviceConstraintsType) {
+    constructor(constraints: DeviceConfig<T> | DeviceConfig<T>[]) {
         super(constraints)
+        console.log(constraints)
     }
 
     // ---------------------- CORE ----------------------
 
     connect = async (): Promise<void> => { //Must be run by button press or user-initiated call
-        let serviceUUID = (typeof this.constraints.serviceUUID === 'string') ? this.constraints.serviceUUID.toLowerCase() : this.constraints.serviceUUID
         
-        let filters = []
-        if (serviceUUID) filters.push({ services: [serviceUUID] })
-        if (this.constraints.namePrefix) filters.push({ namePrefix: this.constraints.namePrefix })
+        let filters:{}[] = []
 
+        filters.push({ services: this.options.map(o => (typeof o.serviceUUID === 'string') ? o.serviceUUID.toLowerCase() : o.serviceUUID).filter(str => !!str)})
+        this.options.forEach(o => {
+            if (o.namePrefix) filters.push({ namePrefix: o.namePrefix }) // TODO: Can do multiple?
+        })
+        
         await navigator.bluetooth.requestDevice({
             filters
         })
@@ -49,10 +52,14 @@ export class Bluetooth<T=any> extends Device<T> { //This is formatted for the wa
             })
             .then((server: BluetoothRemoteGATTServer) => {
 
+                // NOTE: This requires the name prefix to be specified
+                const serviceUUID = this.options.find(o => o?.namePrefix && server.device.name?.includes(o.namePrefix))?.serviceUUID
                 if (serviceUUID){
                     this.server = server
                     return server.getPrimaryService(serviceUUID)
                 } else return Promise.reject();
+
+                // TODO: Track server.device.id in cookies?
             })
             .then(async (service: BluetoothRemoteGATTService) => {
 

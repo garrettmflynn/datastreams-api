@@ -13,9 +13,9 @@ import { SerialDevice } from '../devices/Serial.device'
 // import {EventSourceDevice} from '../devices/EventSource.device'
 import {Device} from '../devices/Device';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
-import { DeviceType, DeviceConstraintsType } from '../types/Devices.types';
+import { DeviceConstraintsType, DeviceConfig } from '../types/Devices.types';
 import {WebSocketDevice} from '../devices/WebSocket.device';
-import { DataDeviceInfo } from '.';
+import { DataDeviceInfo } from './DataDeviceInfo';
 
 
 /**
@@ -29,7 +29,7 @@ import { DataDeviceInfo } from '.';
 
 export class DataDevices extends EventTarget {
 
-    devices: DeviceType[] = []
+    devices: DeviceConfig[] = []
 
     get [Symbol.toStringTag]() { return 'DataDevices' }
 
@@ -80,25 +80,54 @@ export class DataDevices extends EventTarget {
         return [...media, ...this.devices]
     }
 
-    getDeviceInfo = (constraints: DeviceConstraintsType) => DataDeviceInfo(constraints)
+    getDeviceInfo = (constraints: DeviceConfig) => DataDeviceInfo(constraints)
 
     getSupportedConstraints = async () => {
         return new DataTrackSupportedConstraints(this)
     }
 
-    // Use the `protocol` key to specify how to connect with a device
-    getDevice = (constraints:DeviceConstraintsType<any>) => {
+    // Specify Device with Protocol, Label, and Mode (or Pass in the Entire Device Configuration). Allows Boolean or Object Specification.
+    // Note: Allows selection by the end-user if the query returns more than one device
+    getDevice = (constraints:DeviceConfig<any>, fallback=false) => {
 
-        if (constraints.protocol){
-            if (constraints.protocol.includes('bluetooth')) return new BluetoothDevice(constraints)
-            else if (constraints.protocol.includes('serial'))  return new SerialDevice(constraints)
-            // else if (constraints.protocol.includes('wifi')) return new EventSourceDevice(constraints)
-            else if (constraints.protocol.includes('websocket')) return new WebSocketDevice(constraints)
-        } 
-        return 
+        // Match Device Configuration by Constraints
+       let filtered = [...this.devices]
+
+       const protocols: string[] = []
+       if (constraints.bluetooth) protocols.push('bluetooth')
+       if (constraints.usb || constraints.serial) protocols.push('usb', 'serial')
+       if (constraints.websocket) protocols.push('websocket')
+
+
+        // Protocol Match
+        if (protocols.length > 0) filtered = filtered.filter(o => {
+            if(o['protocols']) return o['protocols'].find((k:string) => protocols.includes(k))
+        })
+
+        // Label Match
+        const label = (constraints as {[x: string]: any})['label']
+        if (label) filtered = filtered.filter(o => label === o.label)
+
+        // Mode Match
+        const mode = (constraints as {[x: string]: any})['mode']
+        if (mode){
+            filtered = filtered.filter(o => {
+                if(o['modes']) return o['modes'].includes(mode)
+            })
+        }
+        
+        const found = filtered.length > 0 // Jump to Fallback if Stream is Specified OR No Filtered Results
+        const customDevice = !!filtered?.[0]?.device // Jump to Fallback if Stream is Specified OR No Filtered Results
+
+        // TODO: Allow users to select from multiple matches
+        if (found && !customDevice && constraints.bluetooth) return new BluetoothDevice(filtered.map(o => Object.assign(o, constraints)))
+        else if (found && !customDevice && (constraints.usb || constraints.serial))  return new SerialDevice(filtered.map(o => Object.assign(o, constraints)))
+        else if (found && !customDevice && constraints.websocket) return new WebSocketDevice(filtered.map(o => Object.assign(o, constraints)))
+        else if (fallback) return new Device((found) ? filtered.map(o => Object.assign(o, constraints)) : constraints) //Fallback to generic device
+        else return
     }
 
-    startDataStream = async (constraints:DeviceConstraintsType<any>, stream=new DataStream() ) =>{
+    startDataStream = async (constraints:DeviceConfig<any> = {}, stream=new DataStream() ) =>{
 
         let device;
 
@@ -122,36 +151,32 @@ export class DataDevices extends EventTarget {
             if (!device) {
 
                 let info = DataDeviceInfo(constraints)
-                copy.protocol= []
-                info.protocols.forEach(str => copy.protocol.push(str))
-                device = this.getDevice(copy)
+                info.protocols.forEach(str => copy[str] = true)
 
+                // Option #3: Fallback to generic device if not found
+                device = this.getDevice(copy, true) 
             }
-
-            // Option #3: Fallback to generic device
-            if (!device) return new Device(constraints)
-
         }
 
-        await device.connect().then(res => res).catch(() => {
-            throw 'Device not connected'
-        })
+        if (device) await device.connect().then(res => res).catch(() => { throw 'Device not connected' })
 
         return device
     }
 
-    // Pass the full constraint object for the device you want to request
-    getUserStream = async (constraints: DeviceConstraintsType) => {
+    // Pass minimal constraints (e.g. {bluetooth: true}) OR the full device configuration object
+    getUserDevice = async (constraints: DeviceConfig = {}) => {
 
-        delete constraints.audio
+        // delete constraints.audio
 
         let mediaStream;
-        // Add MediaStream Tracks to DataStream
+
+        // 1. Use MediaStreams API
+        // - Add MediaStream Tracks to DataStream
         if (constraints.video || constraints.audio) mediaStream = await navigator.mediaDevices.getUserMedia(constraints)
 
         let stream = new DataStream(mediaStream)
 
-        // Note: Not Tested
+         // 2. Get Screen through MediaStreams API
         if (constraints.screen){
             let displayStream = await navigator.mediaDevices.getDisplayMedia({video: true})
             displayStream.getTracks().forEach(stream.addTrack)

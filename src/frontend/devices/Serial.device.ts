@@ -2,7 +2,7 @@
 // Modified/Generalized and updated for web Serial by Joshua Brewster (MIT License) 
 // Modified and updated for device filtering by Garrett Flynn (AGPL License)
 import { Device } from './Device'
-import { DeviceConstraintsType } from '../types/Devices.types'
+import { DeviceConfig } from '../types/Devices.types'
 
 
 export class SerialDevice<T=any> extends Device<T> {
@@ -23,7 +23,7 @@ export class SerialDevice<T=any> extends Device<T> {
     monitorData: any[] = []
     monitorIdx: number = 0
 
-    constructor(constraints: DeviceConstraintsType) {
+    constructor(constraints: DeviceConfig) {
 
         super(constraints)
 
@@ -147,8 +147,10 @@ export class SerialDevice<T=any> extends Device<T> {
         // Add Disconnect Callback
         navigator.serial.addEventListener("disconnect", this.disconnect)  
         
+        // Check USB or Serial Constraint
         let serialOptions = {baudRate: 115200, bufferSize: 1000}
-        if (typeof this.constraints.serialOptions === 'object') Object.assign(serialOptions, this.constraints.serialOptions)
+        if (typeof this.constraints.serial === 'object') Object.assign(serialOptions, this.constraints.serial)
+        if (typeof this.constraints.usb === 'object') Object.assign(serialOptions, this.constraints.usb)
 
         // Open the Port
         try {await port.open(serialOptions); }

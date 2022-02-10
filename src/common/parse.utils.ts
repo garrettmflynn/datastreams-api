@@ -14,9 +14,10 @@ export const safeParse = (input:string | {
             let arrow = (typeof value === 'string') ? regex.test(value) : false
             
             try {
-                input[key] = (func || arrow) ? eval('(' + value + ')') : value;
+                input[key] = (func || arrow) ? new Function(value) : value;
+                // REMOVE EVAL FOR ROLLUP
+                // input[key] = (func || arrow) ? eval('(' + value + ')') : value;
             } catch (e) {
-                console.error(e, value)
                 input[key] = value
             }
             

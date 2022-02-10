@@ -11,13 +11,11 @@ import Overlay from './overlay.component';
 
 export default function DeviceExample({server}) {
 
+
   const container = useRef(null);
   const buttons = useRef(null);
   const canvas = useRef(null);
   const overlayContent = useRef(null);
-  const dataDevices = new api.DataDevices()
-  dataDevices.load(devices)
-
 
 let plotutil, spss = [], trackBuffers = []
 
@@ -35,15 +33,21 @@ let initPlot = (currentTracks) => {
     
       // let i = 0
       currentTracks.forEach((track, i) => {
+        if (track.subscribe){
           track.subscribe((data, name) => {
               // if (track.data.length > sps) trackBuffers[i] = track.data.slice(-sps)
               // else trackBuffers[i] = track.data
-              if (trackBuffers[i].length === 0) trackBuffers[i]  = Array.from({length:sps}, e => data)
-              else {
-                  trackBuffers[i].pop()
-                  trackBuffers[i].unshift(data)
-              }
+              if (!Array.isArray(data)) data = [data]
+              data.forEach(v => {
+                if (trackBuffers[i].length === 0) trackBuffers[i]  = Array.from({length:sps}, e => v)
+                else {
+                    trackBuffers[i].pop()
+                    trackBuffers[i].unshift(v)
+                }
+              })
+
           })
+        }
       })
   }
 
@@ -60,10 +64,16 @@ let initPlot = (currentTracks) => {
 
 
   // Run After Initialization
-  useEffect(() => {
+  useEffect(async () => {
+
+    const api = await import('../../../../../src/frontend/index')
+    console.log(api)
+    const dataDevices = new api.DataDevices()
+    dataDevices.load(devices)
+  
 
     // Setup Plotting
-    let source = new DataStream()
+    let source = new api.DataStream()
 
   // Add Canvas Data Readout
   plotutil = new WebglLinePlotUtils(canvas.current, false)
@@ -95,10 +105,9 @@ let initPlot = (currentTracks) => {
       res.forEach(o => {
 
         let {protocols, modes} = dataDevices.getDeviceInfo(o)
-        const constraints = {
-          protocol: protocols?.[0],
-          mode: modes?.[0]
-        } // Per-device constraints
+
+        const protocol = protocols?.[0]
+        const mode = modes?.[0]
 
         const deviceDiv = document.createElement('div')
         deviceDiv.classList.add(clsx(styles.deviceDiv))
@@ -111,14 +120,14 @@ let initPlot = (currentTracks) => {
         deviceDiv.insertAdjacentElement('beforeend', howToConnect)
         
         if (protocols.length > 0) {
-
           ReactDOM.createPortal(ReactDOM.render(<Radio
+            key={`${o.label}-protocol`}
             name={`${o.label}-protocol`}
             header={'Protocol'}
             options={protocols}
-            default={constraints.protocol}
+            default={protocol}
             callback={(ev) => {
-              constraints.protocol = ev.target.value
+              protocol = ev.target.value
             }}
           />, howToConnect), howToConnect, () => { console.log('REDRAW') });
           }
@@ -127,12 +136,13 @@ let initPlot = (currentTracks) => {
         deviceDiv.insertAdjacentElement('beforeend', modeDiv)
         if (modes) {
           const radio = <Radio
+          key={`${o.label}-mode`}
           name={`${o.label}-mode`}
           header={'Mode'}
           options={modes}
-          default={constraints.mode}
+          default={mode}
           callback={(ev) => {
-            constraints.protocol = ev.target.value
+            mode = ev.target.value
           }}
         />
           ReactDOM.createPortal(ReactDOM.render(radio, modeDiv), modeDiv, () => { console.log('REDRAW') });
@@ -143,7 +153,11 @@ let initPlot = (currentTracks) => {
 
 
         let connectFunc = () => {
-          dataDevices.getUserStream(Object.assign(constraints, o)).then((device) =>{
+          dataDevices.getUserDevice(Object.assign({mode, [protocol]:true}))
+          // dataDevices.getUserDevice({
+          //   bluetooth:true
+          // })
+          .then((device) =>{
 
             let stream = device.stream
             let tracks = stream.getTracks()

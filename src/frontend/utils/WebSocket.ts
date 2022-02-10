@@ -37,7 +37,7 @@ export class Websocket {
         this.ws.onmessage = this._onmessage
         this.ws.onclose = this._onclose
 
-        window.onunload = window.onbeforeunload = () => {
+        globalThis.onunload = globalThis.onbeforeunload = () => {
             if (this.ws) this.ws.onclose = () => {}
             console.log('C:OSING')
             this.close()

@@ -31,7 +31,7 @@ Create a simple HTML file at `index.html` and link this to JavaScript file at `i
 let dataDevices = new datastreams.DataDevices()
 ```
 
-Then use `dataDevices.getUserStream()` to request a device. This must happen on a user-initiated action (e.g. button press)
+Then use `dataDevices.getUserDevice()` to request a device. This must happen on a user-initiated action (e.g. button press)
 
 ```js title="examples/hello/index.js" {3-11}
 // Instantiate the Device API
@@ -41,7 +41,7 @@ let connect = document.getElementById('connect')
 connect.onclick = () => {
 
   // Request Dummy Websocket Device from the Brains@Play Server
-  dataDevices.getUserStream({ protocol: 'websocket' })
+  dataDevices.getUserDevice({ protocol: 'websocket' })
   .then(device => console.log(device, device.stream))
   .catch(console.error)
 
@@ -61,8 +61,8 @@ If you're feeling adventerous, you can also try connecting to other stream types
 3. WebSocket: `{protocol: 'websocket', url: 'https://example.com'}`
 
 ```diff title="examples/hello/index.js"
-- dataDevices.getUserStream({ protocol: 'websocket' })
-+ dataDevices.getUserStream({ protocol: 'bluetooth' })
+- dataDevices.getUserDevice({ protocol: 'websocket' })
++ dataDevices.getUserDevice({ protocol: 'bluetooth' })
   .then(device => console.log(device, device.stream))
   .catch(console.error)
 ```
@@ -81,7 +81,7 @@ If you're feeling adventerous, you can also try connecting to other stream types
       let connect = document.getElementById('connect')
       connect.onclick = () => {
 
-        dataDevices.getUserStream({ protocol: 'websocket' })
+        dataDevices.getUserDevice({ protocol: 'websocket' })
         .then(device => console.log(device, device.stream))
         .catch(console.error)
 

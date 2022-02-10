@@ -8,12 +8,21 @@ export type CoreDeviceType<T=any> = T & {
     disconnect?: Function
 }
 
-export type DeviceType<T=any> = CoreDeviceType<T> & {
+export type DeviceAttributes = USBDetails & BLEDetails & {
+
+    bufferSize?: number;
+
+     // Event Source / Websocket
+     url?: string
+
+}
+
+// Must include DeviceConstraintsType for uniform reconfiguration
+export type DeviceConfig<T=any> = DeviceConstraintsType & CoreDeviceType<T> & DeviceAttributes & {
     label: string;
     kind: string;
     protocols?: string[];
     modes?: string[];
-    bufferSize?: number;
     
     ondata?: (data:any, name?: string) => (any[] | {[x : string | number]: any}); // T[]
     encode?: (data:any, name?: string) => any;
@@ -23,38 +32,39 @@ export type DeviceType<T=any> = CoreDeviceType<T> & {
     ondisconnect?: (target: any) => Promise<any>;
     onerror?: (error: Error) => Promise<any>;
 
-    // Bluetooth
+}
+
+export type USBDetails = Partial<SerialOptions> & {
+    usbVendorId?: number | string ;
+    usbProductId?: number | string;
+}
+
+export type BLEDetails = {
     namePrefix?: string;
     serviceUUID?: string;
     characteristics?: {
         [x: string]: string
     };
-
-    // USB / Serial
-    usbVendorId?: number | string ;
-    usbProductId?: number | string;
-
-    // Event Source / Websocket
-    url?: string
-    
 }
 
-export type DeviceConstraintsType<T=any> = DeviceType<T> & {
-    stream?: DataStream,
-    device?: Device<T> | CoreDeviceType, 
+export type DeviceConstraintsType<T=any> = MediaStreamConstraints & {screen?: boolean} & DeviceAttributes & { // Filter by a subset of device attributes
+    stream?: DataStream; // Existing Stream
+    device?: Device<T> | CoreDeviceType; // Device Class
 
     // ---------------- Force Connection Type (boolean) or Specify Additional Metadata (object) ----------------
+    
     // BLE
-    // bluetooth?: boolean,
+    bluetooth?: boolean | BLEDetails;
 
     // USB / Serial
-    serialOptions?: Partial<SerialOptions>,
+    usb?: boolean | USBDetails;
+    serial?: boolean | USBDetails;
 
     // Wifi
-    // wifi?: boolean,
+    wifi?: boolean | string;
 
     // WebSocket
-    // websocket?: boolean,
+    websocket?: boolean | string;
 
     // ---------------- Standardized Initialization Parameters ----------------
     mode?: string;

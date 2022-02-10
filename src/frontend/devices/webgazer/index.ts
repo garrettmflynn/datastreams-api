@@ -5,14 +5,12 @@ declare var webgazer: any; // Solves Typescript error
 export const onconnect = async (dataDevice: Device<Webgazer>) => {
 
     let device = dataDevice.device
-    console.log(device)
     device.subscribe((data:{
         eyeFeatures: any,
         x: number,
         y: number
     }) => {
- 
-        
+
             let o: {
                 // times: number[],
                 x: number[],

@@ -5,7 +5,7 @@ import * as muse from './muse/index'
 import * as webgazer from './webgazer/index'
 // import * as bci2000web from './bci2000web/index'
 import * as remote from '../../common/source.device'
-import { DeviceConstraintsType } from '../types/Devices.types'
+import { DeviceConfig } from '../types/Devices.types'
 
 // let audioDevices:string[] = [], videoDevices:string[] = [];
 // navigator.mediaDevices.enumerateDevices().then(mediaDevices => {
@@ -22,22 +22,23 @@ import { DeviceConstraintsType } from '../types/Devices.types'
 // })
 
 // Supported Devices
-const devices: DeviceConstraintsType[] = [
+const devices: DeviceConfig[] = [
         // ----------------------------------  WebSocket "Device" ----------------------------------
-        {
-            label: 'Video', 
-            video: true,
-       },
+    //     {
+    //         label: 'Video', 
+    //         video: true,
+    //    },
 
-       {
-        label: 'Audio', 
-        audio: true,
-        },
+    //    {
+    //     label: 'Audio', 
+    //     audio: true,
+    //     },
 
         {
              label: 'Webgazer', 
              device: webgazer.Webgazer,
              onconnect: webgazer.onconnect,
+             protocols: ['video']
         },
 
 
@@ -61,10 +62,9 @@ const devices: DeviceConstraintsType[] = [
         label: 'HEGduino', 
         ondata: hegduino.ondata,
         onconnect: hegduino.onconnect,
-        bufferSize: 500,
 
         // Bluetooth
-        namePrefix: 'HEG',
+        namePrefix: 'HEG', // NOTE: Required when filtering for multiple BLE devices
         serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
         characteristics: {
             transmit: '6e400003-b5a3-f393-e0a9-e50e24dcca9e',
@@ -74,10 +74,10 @@ const devices: DeviceConstraintsType[] = [
         // Serial / USB
         usbVendorId: 4292,
         usbProductId: 60000,
-        serialOptions: {
-            bufferSize: 1000,
-            baudRate: 115200
-        },
+        bufferSize: 1000,
+        baudRate: 115200,
+
+        protocols: ['bluetooth', 'serial'], 
     },
 
     {
@@ -86,26 +86,26 @@ const devices: DeviceConstraintsType[] = [
         oninit: freeeeg.oninit,
         ondata: freeeeg.ondata,
 
+        // Serial
         usbVendorId: 0x10c4,
         usbProductId: 0x0043,
-        serial: {
-            baudRate: 115200,
-            bufferSize: 2000,
-        },
+        baudRate: 115200,
+        bufferSize: 2000,
 
         // Additional Metadata
-        modes: ['optical', 'ads131', 'freeeeg32_2', 'freeeeg32_19'] // oninit
+        modes: ['optical', 'ads131', 'freeeeg32_2', 'freeeeg32_19'], // oninit
+        protocols: ['serial'], 
     },
 
     // ---------------------------------- Device with Pre-Built Connection Scripts ----------------------------------
 
+        // NOTE: Excluded from search of multiple Bluetooth devices. Must specify label.
         {
-            // Generic 
             label: 'Muse', 
             device: muse.device,
             onconnect: muse.onconnect,
             protocols: ['bluetooth'], // must specify to list connection types
-
+            modes: ['default', 'aux']
         },
 ]
 

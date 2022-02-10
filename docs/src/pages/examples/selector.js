@@ -7,7 +7,7 @@ import { useHistory, useLocation } from 'react-router';
 
 export default function ExampleSelector({server}) {
    const history = useHistory();
-    var url = window.location;
+    var url = globalThis.location;
     var name = new URLSearchParams(url.search).get('name');
     const [example, setExample] = React.useState(name ?? 'device');
 

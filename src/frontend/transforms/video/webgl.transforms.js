@@ -8,42 +8,20 @@
 
 'use strict';
 
-/**
- * Applies a warp effect using WebGL.
- * @implements {FrameTransform} in pipeline.js
- */
-export class VideoSwirl { // eslint-disable-line no-unused-vars
+export class VideoSwirl {
   constructor() {
-    // All fields are initialized in init()
-    /** @private {?OffscreenCanvas} canvas used to create the WebGL context */
     this.canvas_ = null;
-    /** @private {?WebGLRenderingContext} */
     this.gl_ = null;
-    /** @private {?WebGLUniformLocation} location of inSampler */
     this.sampler_ = null;
-    /** @private {?WebGLProgram} */
     this.program_ = null;
-    /** @private {?WebGLTexture} input texture */
     this.texture_ = null;
-    /**
-     * @private {boolean} If false, pass VideoFrame directly to
-     * WebGLRenderingContext.texImage2D and create VideoFrame directly from
-     * this.canvas_. If either of these operations fail (it's not supported in
-     * Chrome <90 and broken in Chrome 90: https://crbug.com/1184128), we set
-     * this field to true; in that case we create an ImageBitmap from the
-     * VideoFrame and pass the ImageBitmap to texImage2D on the input side and
-     * create the VideoFrame using an ImageBitmap of the canvas on the output
-     * side.
-     */
     this.use_image_bitmap_ = false;
-    /** @private {string} */
     this.debugPath_ = 'debug.pipeline.frameTransform_';
   }
-  /** @override */
+
   async init() {
-    // console.log('[VideoSwirlTransform] Initializing WebGL.');
     this.canvas_ = new OffscreenCanvas(1, 1);
-    const gl = /** @type {?WebGLRenderingContext} */ (
+    const gl = (
       this.canvas_.getContext('webgl'));
     if (!gl) {
       alert(
@@ -120,13 +98,6 @@ export class VideoSwirl { // eslint-disable-line no-unused-vars
     //     this.canvas_, `${this.debugPath_}.gl_ =`, this.gl_);
   }
 
-  /**
-   * Creates and compiles a WebGLShader from the provided source code.
-   * @param {number} type either VERTEX_SHADER or FRAGMENT_SHADER
-   * @param {string} shaderSrc
-   * @return {!WebGLShader}
-   * @private
-   */
   loadShader_(type, shaderSrc) {
     const gl = this.gl_;
     const shader = gl.createShader(type);
@@ -143,14 +114,6 @@ export class VideoSwirl { // eslint-disable-line no-unused-vars
     return shader;
   }
 
-  /**
-   * Sets a floating point shader attribute to the values in arr.
-   * @param {string} attrName the name of the shader attribute to set
-   * @param {number} vsize the number of components of the shader attribute's
-   *   type
-   * @param {!Array<number>} arr the values to set
-   * @private
-   */
   attributeSetFloats_(attrName, vsize, arr) {
     const gl = this.gl_;
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
@@ -160,7 +123,6 @@ export class VideoSwirl { // eslint-disable-line no-unused-vars
     gl.vertexAttribPointer(attr, vsize, gl.FLOAT, false, 0, 0);
   }
 
-  /** @override */
   async transform(frame, controller) {
     const gl = this.gl_;
     if (!gl || !this.canvas_) {
@@ -226,7 +188,6 @@ export class VideoSwirl { // eslint-disable-line no-unused-vars
     }
   }
 
-  /** @override */
   destroy() {
     if (this.gl_) {
       // console.log('[WebGLTransform] Forcing WebGL context to be lost.');

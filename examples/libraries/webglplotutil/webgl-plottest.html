@@ -300,7 +300,7 @@
 
 
     const canvas = document.getElementById("my_canvas");
-    const devicePixelRatio = window.devicePixelRatio || 1;
+    const devicePixelRatio = globalThis.devicePixelRatio || 1;
     canvas.width = canvas.clientWidth * devicePixelRatio;
     canvas.height = canvas.clientHeight * devicePixelRatio;
 

@@ -1,7 +1,7 @@
 import { randomUUID } from "../../common/id"
-import { DeviceConstraintsType } from "../types/Devices.types"
+import { DeviceConfig } from "../types/Devices.types"
 
-export const DataDeviceInfo = (constraints: DeviceConstraintsType) => {
+export const DataDeviceInfo = (constraints: DeviceConfig) => {
 
     const protocols = new Set<string>()
     if (Array.isArray(constraints.protocols)) constraints.protocols.forEach((str:string) => protocols.add(str))

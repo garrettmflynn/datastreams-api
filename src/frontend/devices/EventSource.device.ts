@@ -2,7 +2,7 @@
 // Garrett Flynn, Nov 2021 (AGPL License) | totally not tested...
 
 import { Device } from './Device'
-import { DeviceConstraintsType } from '../types/Devices.types'
+import { DeviceConfig } from '../types/Devices.types'
 
 export type customCallback = {
     tag: string,
@@ -18,8 +18,8 @@ export class EventSourceDevice<T = any> extends Device<T> {
         [x: string]: Function
     } = {}
 
-    constructor(constraints: DeviceConstraintsType<T>) {
-        super(constraints)
+    constructor(constraints: DeviceConfig<T> | DeviceConfig<T>[]) {
+        super(constraints) // Auto-select first constraint in an array
     }
 
     // ---------------------- CORE ----------------------
@@ -60,7 +60,7 @@ export class EventSourceDevice<T = any> extends Device<T> {
 
     createEventListeners = () => {
         if (this.source !== null) this.removeEventListeners();
-        if (window.EventSource) {
+        if (globalThis.EventSource) {
             this.source = new EventSource(this.url);
             this.source.addEventListener('open', () =>{
                 this.active = true
@@ -77,7 +77,7 @@ export class EventSourceDevice<T = any> extends Device<T> {
     }
 
     removeEventListeners = () => {
-        if (window.EventSource && this.source) {
+        if (globalThis.EventSource && this.source) {
             this.source.close();
             this.source.removeEventListener('open', this.onconnect, false);
             this.source.removeEventListener('error', this.onerror, false);

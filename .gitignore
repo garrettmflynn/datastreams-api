@@ -16,3 +16,6 @@ docs/docs/reference
 
 # Library Builds
 **/dist
+
+*.log
+*.lock

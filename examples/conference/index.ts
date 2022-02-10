@@ -26,7 +26,7 @@ let videos = new Map()
 let buttons = new Map()
 
 // Initialize Socket Connection
-const server = (location.hostname === "localhost" || location.hostname === "127.0.0.1" && window.brainsatplayPlatform) ? 'http://localhost' : 'https://server.brainsatplay.com'
+const server = (location.hostname === "localhost" || location.hostname === "127.0.0.1" && globalThis.brainsatplayPlatform) ? 'http://localhost' : 'https://server.brainsatplay.com'
 
 // Extended with Defaults
 const onmessage = (res) => {
@@ -48,7 +48,7 @@ const onmessage = (res) => {
 
 
 
-// let streamContext = new datastreams.StreamContext({ server, onmessage }) // sets dataDevices on window.navigator
+// let streamContext = new datastreams.StreamContext({ server, onmessage }) // sets dataDevices on globalThis.navigator
 
 
 // streamContext.onvideo = (source, id, streamer) => {
@@ -152,7 +152,7 @@ let showDevices = (devices = []) => {
 
                     // Connect to DataStream Object (bluetooth / usb / serial)
                     button.onclick = () => {
-                        dataDevices.getUserStream({ [baseKind]: true }).then((stream) => {
+                        dataDevices.getUserDevice({ [baseKind]: true }).then((stream) => {
 
                             console.log(stream)
                             // main.data(stream, streamContext, baseKind) // start processing data

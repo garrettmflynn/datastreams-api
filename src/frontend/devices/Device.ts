@@ -1,6 +1,6 @@
 import { DataStreamTrack } from "../core/DataStreamTrack";
 import { DataStream } from "../core/DataStream";
-import { CoreDeviceType, DeviceConstraintsType } from "../types/Devices.types";
+import { CoreDeviceType, DeviceConfig } from "../types/Devices.types";
 import {randomUUID} from "../../common/id";
 
 
@@ -8,21 +8,33 @@ export class Device <T> {
 
     id: string = randomUUID()
     _ondata: (data:any, name?: string) => (any[] | {[x : string | number]: any}) = (data) => data
-    constraints: DeviceConstraintsType<T>
+    constraints: DeviceConfig<T>
     device: CoreDeviceType<T>
     stream?: DataStream
     encoder: TextEncoder | any
     decoder: TextDecoder | any
     active: boolean = false
+    options: DeviceConfig<T>[]
+    
 
     // // Inherited Functions
     // onconnect: (target) =>{}
     // ondisconnect: (target) =>{}}
 
-    constructor(constraints: DeviceConstraintsType<T>){
-        this.constraints = constraints
-        this.device = (constraints.device) ? new constraints.device(constraints) : this
-        this.stream = constraints.stream
+    constructor(constraints: DeviceConfig<T> | DeviceConfig<T>[]){
+
+        // Auto-select first constraint in an array
+        if (Array.isArray(constraints)){
+            this.constraints = constraints[0]
+            this.options = [...constraints]
+        } else {
+            this.constraints = constraints
+            this.options = [constraints]
+
+        }
+
+        this.device = (this.constraints.device) ? new this.constraints.device(this.constraints) : this
+        this.stream = this.constraints.stream
 
         // -------------- Set Default Constraints --------------
 
@@ -30,7 +42,7 @@ export class Device <T> {
     }
 
 
-    init = (constraints?: Partial<DeviceConstraintsType>) => {
+    init = (constraints?: Partial<DeviceConfig>) => {
 
         // Disconnect Active Device
         if (this.active) this.disconnect()
@@ -64,6 +76,7 @@ export class Device <T> {
    
     // Core Methods 
     connect = async () => {
+
         if (!(this.device instanceof Device) && this.device.connect) await this.device.connect()
         this.active = true
         this._connect()
