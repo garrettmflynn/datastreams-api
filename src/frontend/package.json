@@ -1,9 +1,10 @@
 {
   "name": "datastreams-api",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Simple Media Capture and Streams API extension to handle arbitrary data streams acquired through the browser.",
   "main": "dist/index.js",
-  "module": "dist/module.js",
+  "module": "dist/index.js",
+  "browser": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
