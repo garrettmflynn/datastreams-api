@@ -86,7 +86,7 @@ export class Device <T> {
     disconnect = async () => {
         if (!(this.device instanceof Device) && this.device.disconnect) await this.device.disconnect()
         this.active = false
-        this.stream?.tracks.forEach((t:DataStreamTrack | MediaStreamTrack) => (this.stream as DataStream)?.removeTrack(t))
+        this.stream?.tracks.forEach((t:DataStreamTrack | MediaStreamTrack) => this.stream?.removeTrack(t as any))
         this._disconnect()
         this.ondisconnect(this)
     }

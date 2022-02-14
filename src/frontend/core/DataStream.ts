@@ -11,7 +11,7 @@ export class DataStream extends MediaStream {// has problems with getting/settin
     // Mirror Attributes from MediaStreams
     tracks: Map<(string | number), (MediaStreamTrack | DataStreamTrack)> = new Map()
     onaddtrack: any // remove TS limitation on arguments
-    
+
 
     // Functions
     addTrack: (track: DataStreamTrack | MediaStreamTrack) => DataStreamTrack | MediaStreamTrack = this.addTrack
@@ -82,6 +82,10 @@ export class DataStream extends MediaStream {// has problems with getting/settin
             ev.track = ev.detail
             delete ev.detail
         }) as EventListener)
+
+        let arr = (!Array.isArray(arg)) ? [...arg.getTracks()] : [...arg]
+        arr.forEach((t:any) => this.addTrack(t))
+        
     }
 
     // ---------------------- NEW METHODS ----------------------
