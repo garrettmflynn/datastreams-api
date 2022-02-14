@@ -5,8 +5,6 @@ import {randomUUID} from "../../common/id"
 
 import worker, * as workerutils from './pipeline.worker' // must export self
 
-import { DataStreamTrackProcessor } from "./DataStreamTrackProcessor"
-import { DataStreamTrackGenerator } from "./DataStreamTrackGenerator"
 import { DataStreamTrack } from './DataStreamTrack'
 
 
@@ -20,7 +18,7 @@ export class DataPipeline {
     bound: boundType = []
     source: ReadableStream<any> | null  = null
     sink: WritableStream<any> | null  = null
-    output?: DataStreamTrackGenerator | MediaStreamTrackGenerator<any>
+    output?: DataStreamTrack | MediaStreamTrackGenerator<any>
     kind: string = ''
 
 
@@ -48,36 +46,29 @@ export class DataPipeline {
 
     }
 
-    setSource = (track: DataStreamTrack | MediaStreamTrack) => {
+    setSource = (track: DataStreamTrack) => {
 
-        let processor
-        if (track instanceof MediaStreamTrack && (track.kind === 'video' || track.kind === 'audio ')) {
-            if ('MediaStreamTrackProcessor' in window) processor = new MediaStreamTrackProcessor({ track: track as any})
-            else alert('Your browser does not support the experimental MediaStreamTrack API for Insertable Streams of Media');
-        } else if (track instanceof DataStreamTrack) processor = new DataStreamTrackProcessor({ track })
+        let readable = track.readable
 
         this.kind = track.kind // Guess the kind of stream (and sink...)
 
-        if (processor){
-            this.source = processor.readable
-            if (this.thread && this.worker) this.worker.postMessage({ cmd: 'source', data: this.source}, [this.source as any]) // TODO: TypeScript issue working with ReadableStreams
-            else workerutils.addSource(this.source, this.bound)
-        }
+        this.source = readable
+        if (this.thread && this.worker) this.worker.postMessage({ cmd: 'source', data: this.source}, [this.source as any])
+        else workerutils.addSource(this.source, this.bound)
     }
 
     setSink = (kind=this.kind) => {
 
+        this.output = new DataStreamTrack()
         if (kind === 'video' || kind === 'audio') {
-            if ('MediaStreamTrackGenerator' in window) this.output = new MediaStreamTrackGenerator({ kind: kind as any }) 
+            if ('MediaStreamTrackGenerator' in window)  this.output = new MediaStreamTrackGenerator({ kind: kind as any }) 
             else alert('Your browser does not support the experimental MediaStreamTrack API for Insertable Streams of Media');
-        } else this.output = new DataStreamTrackGenerator()
-
-        if (this.output){
-            this.sink = this.output.writable
-
-            if (this.thread && this.worker) this.worker.postMessage({ cmd: 'sink', data: this.sink }, [this.sink as any]) // TODO: TypeScript issue working with WritableStreams
-            else workerutils.addSink(this.sink, this.bound)
         }
+
+        this.sink =  (this.output.writable as WritableStream)
+
+        if (this.thread && this.worker) this.worker.postMessage({ cmd: 'sink', data: this.sink }, [this.sink as any]) // TODO: TypeScript issue working with WritableStreams
+        else workerutils.addSink(this.sink, this.bound)
     }
 
     // TODO: Specify formats acceptable for pipeline creation

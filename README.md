@@ -4,6 +4,8 @@ Simple Media Capture and Streams API extension to handle arbitrary data streams 
 ## Architecture
 The `datastreams-api` package allows developers to specify their own I/O requirements by allowing for custom decoders to be written for a particular application. Independent decoded inputs are organzized as `DataStreamTracks` for standardized consumption.
 
+When the user uses requests native to the Media Capture and Streams API, the `tracks` attribute will be an array of `DataStream` objects populated with `DataStreamTracks` that provide raw data from the selected media device (e.g. audio, video)
+
 ## Features
 ### Configuration
 - [x] Condition device properties (e.g. sampling rate, max buffer size, etc.) with oninit() callback

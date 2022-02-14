@@ -43,7 +43,10 @@ export class DataStream extends MediaStream {// has problems with getting/settin
 
         this.addTrack = (track: DataStreamTrack | MediaStreamTrack) => {
             if (![...this.tracks.values()].includes(track)){ // don't duplicate tracks
-                try {this._addTrack(track)} catch {} // Try adding using the MediaStreams API
+                if (track instanceof MediaStreamTrack) {
+                    this._addTrack(track) // Add track using the MediaStreams API
+                    track = new DataStreamTrack(undefined, (track as MediaStreamTrack)) // Add track using our DataStreams API
+                }
                 this.tracks.set(track.contentHint || this.tracks.size, track)
                 this.dispatchEvent(new CustomEvent('addtrack', {detail: track})) // Trigger ontrackadded for local updates (disabled in MediaStreams API)
             }
