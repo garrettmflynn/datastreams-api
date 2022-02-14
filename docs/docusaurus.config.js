@@ -32,7 +32,6 @@ const config = {
           "../src/frontend/core", 
           "../src/frontend/devices", 
           "../src/frontend/pipes", 
-          "../src/backend/services",
           "../src/frontend/transforms", 
         ],
         // entryPointStrategy: "Expand",

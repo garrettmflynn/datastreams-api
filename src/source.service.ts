@@ -1,8 +1,8 @@
-import * as source from '../../common/source.device'
-import { Device } from '../../frontend/devices/Device'
-import { randomUUID } from '../../common/id'
+import * as source from './common/source.device'
+import { Device } from './frontend/devices/Device'
+import { randomUUID } from './common/id'
 
-export class SourceService {
+export default class SourceService {
 
     users: Map<string,any> = new Map()
     device?: Device<any>

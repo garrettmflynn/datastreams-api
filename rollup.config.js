@@ -1,5 +1,5 @@
 // Install Rollup Plugins
-// yarn add rollup @babel/core @babel/preset-env @rollup/plugin-commonjs @web/rollup-plugin-copy @rollup/plugin-node-resolve rollup-plugin-minify-html-literals rollup-plugin-summary rollup-plugin-typescript2 rollup-plugin-terser rollup-plugin-import-css @rollup/plugin-node-resolve @rollup/plugin-babel @babel/plugin-proposal-class-properties -D
+// yarn add typescript rollup @babel/core @babel/preset-env @rollup/plugin-commonjs @web/rollup-plugin-copy @rollup/plugin-node-resolve rollup-plugin-minify-html-literals rollup-plugin-summary rollup-plugin-typescript2 rollup-plugin-terser rollup-plugin-import-css @rollup/plugin-node-resolve @rollup/plugin-babel @babel/plugin-proposal-class-properties -D
 
 import {copy} from '@web/rollup-plugin-copy';
 import resolve from '@rollup/plugin-node-resolve';
@@ -16,22 +16,19 @@ import commonjs from '@rollup/plugin-commonjs';
 /**
  * @type {import('rollup').RollupOptions}
  */
-const config = {
- input: './index.ts', // our source file
- output: [
-  {
-   file: pkg.module,
-   format: 'es' // the preferred format
-  },
-  {
-   file: pkg.browser,
-   format: 'iife',
-   name: 'datastreams' // the global which can be used in a browser
-  }
- ],
-//  external: [
-//   ...Object.keys(pkg.dependencies || {})
-//  ],
+
+const es6 = {
+  input: './index.ts', // our source file
+  output: [ { file: pkg.module, format: 'es' } ]
+}
+
+const browser = {
+  input: './index.ts', // our source file
+  output: [ { file: pkg.browser, format: 'iife', name: 'liveserver' } ]
+}
+
+
+const common = {
  plugins: [
     commonjs(),
     node_resolve(),
@@ -56,7 +53,7 @@ const config = {
     summary(),
     // Optional: copy any static assets to build directory
     copy({
-      patterns: ['./src/styles/**/*'],
+      // patterns: ['./src/styles/**/*'],
     }),
     // Support Typescript
   typescript({ 
@@ -66,4 +63,7 @@ const config = {
 //  preserveEntrySignatures: 'strict',
 }
 
-export default config
+export default [
+  Object.assign({}, es6, common),
+  Object.assign({}, browser, common)
+]

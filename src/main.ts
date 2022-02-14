@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import ws from 'ws'
-import * as services from './backend/services'
+import SourceService from './source.service'
 import * as id from './common/id'
 
 const app = express();
@@ -23,7 +23,7 @@ const wss = new ws.Server({ port: 80 }); // TODO: Check if working
 
 let webrtc = new services.PeerService()
 let server = new services.OffloadService()
-let source = new services.SourceService()
+let source = new SourceService()
 
 
 // Connect Websocket
