@@ -3,6 +3,7 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import ws from 'ws'
 import SourceService from './source.service'
+
 import * as id from './common/id'
 
 const app = express();
@@ -21,8 +22,6 @@ app.listen(port, () => {
 
 const wss = new ws.Server({ port: 80 }); // TODO: Check if working
 
-let webrtc = new services.PeerService()
-let server = new services.OffloadService()
 let source = new SourceService()
 
 
@@ -38,22 +37,20 @@ wss.on('connection', function (ws: any) {
 
     
     ws.id = id.randomUUID()
-    webrtc.addUser(ws, subprotocols.auth)
-    server.addUser(ws)
     source.addUser(ws)
 
     ws.on('message', function message(o:string) {
 
       try{
-        let parsed = JSON.parse(o)
+        // let parsed = JSON.parse(o)
 
         // Send Message through WebRTC Service
-        if (parsed.service === 'webrtc') webrtc.onmessage(o, ws)
+        // if (parsed.service === 'webrtc') webrtc.onmessage(o, ws)
 
-         // Parse Command for Server Offloading
-         if (parsed.service === 'offload') server.onmessage(o, ws)
+        //  // Parse Command for Server Offloading
+        //  if (parsed.service === 'offload') server.onmessage(o, ws)
 
-      } catch (e: any) {
+      } catch (e) {
         // let buf = new Uint8Array(o).buffer;
         // var dv = new DataView(buf);
         ws.send(JSON.stringify({error: e.message}))
@@ -62,8 +59,8 @@ wss.on('connection', function (ws: any) {
     });
     
     ws.on('close', () => {
-        webrtc.removeUser(ws)
-        server.removeUser(ws)
+        // webrtc.removeUser(ws)
+        // server.removeUser(ws)
         source.removeUser(ws)
     });
 });

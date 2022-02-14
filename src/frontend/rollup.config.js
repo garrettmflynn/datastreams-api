@@ -20,6 +20,12 @@ const config = {
  input: './index.ts', // our source file
  output: [
   {
+    file: pkg.main,
+    format: 'umd', // the preferred format
+    exports: 'named',
+    name: 'datastreams'
+  },
+  {
    file: pkg.module,
    format: 'es' // the preferred format
   },

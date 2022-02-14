@@ -6,8 +6,8 @@
 
 // Frontend
 export * from "./core";
-import * as core from "./core";
-export default core
+// import * as core from "./core";
+// export default core
 // import * as core from "./core";
 // import * as devices from "./devices";
 // import * as pipes from "./pipes";
