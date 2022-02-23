@@ -28,11 +28,6 @@ const config = {
   {
    file: pkg.module,
    format: 'es' // the preferred format
-  },
-  {
-   file: pkg.browser,
-   format: 'iife',
-   name: 'datastreams' // the global which can be used in a browser
   }
  ],
 //  external: [
