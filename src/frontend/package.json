@@ -1,6 +1,6 @@
 {
   "name": "datastreams-api",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Simple API to handle arbitrary data streams acquired through the browser.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
