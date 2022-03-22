@@ -46,13 +46,13 @@ const config = {
     // Minify HTML template literals
     minifyHTML(),
     // Minify JS
-    terser(
-        // {
-        // ecma: 2020,
-        // module: true,
-        // warnings: true,
-        // }
-    ),
+    // terser(
+    //     // {
+    //     // ecma: 2020,
+    //     // module: true,
+    //     // warnings: true,
+    //     // }
+    // ),
     // Print bundle summary
     summary(),
     // Optional: copy any static assets to build directory

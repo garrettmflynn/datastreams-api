@@ -32,6 +32,9 @@ export type DeviceConfig<T=any> = DeviceConstraintsType & CoreDeviceType<T> & De
     ondisconnect?: (target: any) => Promise<any>;
     onerror?: (error: Error) => Promise<any>;
 
+    // Internal Usage Only
+    debug?: boolean;
+
 }
 
 export type USBDetails = Partial<SerialOptions> & {

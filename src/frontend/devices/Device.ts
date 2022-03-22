@@ -15,7 +15,8 @@ export class Device <T> {
     decoder: TextDecoder | any
     active: boolean = false
     options: DeviceConfig<T>[]
-    coordinates: any[] = []
+    debug: boolean = false
+    // coordinates: any[] = []
     
 
     // // Inherited Functions
@@ -35,6 +36,7 @@ export class Device <T> {
 
         this.device = (this.constraints.device) ? new this.constraints.device(this.constraints) : this
         this.stream = this.constraints.stream
+        this.debug = this.constraints.debug ?? false
 
         // -------------- Set Default Constraints --------------
 
@@ -105,15 +107,13 @@ export class Device <T> {
     decode = (msg:any, _:string) => this.decoder.decode(msg)
 
     // Events
-    oninit = async (target:Device<T> = this) => console.log(`${target.constructor.name} inited!`)
-    onconnect = async (target:Device<T> = this) => console.log(`${target.constructor.name} connected!`)
+    oninit = async (_:Device<T> = this) => {}
+    onconnect = async (target:Device<T> = this) => (this.debug) ? console.log(`${target.constructor.name} connected!`) : {}
 
-    ondisconnect = async (target:Device<T> = this) => console.log(`${target.constructor.name} disconnected!`)
+    ondisconnect = async (target:Device<T> = this) => (this.debug) ? console.log(`${target.constructor.name} disconnected!`) : {}
 
-    // ondata = async (data, from) => console.log(`${this.constructor.name}: ${data}`)
-
-    onsend = async (msg?:any, from?:any) => {console.log(`Sent ${msg} from ${from}`)}
-    onerror = async (err:Error) => console.log(`${this.constructor.name} Error: ${err}`)
+    onsend = async (msg?:any, from?:any) => (this.debug) ? console.log(`Sent ${msg} from ${from}`) : {}
+    onerror = async (err:Error) => (this.debug) ? console.log(`${this.constructor.name} Error: ${err}`) : {}
 
     // --------------- Internal Methods ---------------
     ondata = (data:any, timestamps:any=[Date.now()], charName?:string) => {

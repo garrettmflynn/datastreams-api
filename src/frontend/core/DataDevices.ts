@@ -116,15 +116,27 @@ export class DataDevices extends EventTarget {
             })
         }
         
-        const found = filtered.length > 0 // Jump to Fallback if Stream is Specified OR No Filtered Results
+        const found = filtered?.[0] // Jump to Fallback if Stream is Specified OR No Filtered Results
         const customDevice = !!filtered?.[0]?.device // Jump to Fallback if Stream is Specified OR No Filtered Results
+        if (protocols.length === 0) protocols.push(...protocols)
+
+        const getGenericDevice = () => {
+            return new Device((found) ? filtered.map(o => Object.assign(o, constraints)) : constraints) //Fallback to generic device
+        }
 
         // TODO: Allow users to select from multiple matches
-        if (found && !customDevice && constraints.bluetooth) return new BluetoothDevice(filtered.map(o => Object.assign(o, constraints)))
-        else if (found && !customDevice && (constraints.usb || constraints.serial))  return new SerialDevice(filtered.map(o => Object.assign(o, constraints)))
-        else if (found && !customDevice && constraints.websocket) return new WebSocketDevice(filtered.map(o => Object.assign(o, constraints)))
-        else if (fallback) return new Device((found) ? filtered.map(o => Object.assign(o, constraints)) : constraints) //Fallback to generic device
-        else return
+        if (customDevice) return getGenericDevice()
+        else {
+
+            // Check Protocol and serviceUUID Presence
+            if (found && (protocols.includes('bluetooth') && found?.serviceUUID)) return new BluetoothDevice(filtered.map(o => Object.assign(o, constraints)))
+            
+            // Check Protocol and usbVendorId Presence
+            else if (found && (protocols.includes('usb') || (protocols.includes('serial') && found?.usbVendorId)))  return new SerialDevice(filtered.map(o => Object.assign(o, constraints)))
+            else if (found && protocols.includes('websocket')) return new WebSocketDevice(filtered.map(o => Object.assign(o, constraints)))
+            else if (fallback) return getGenericDevice()
+        }
+        return
     }
 
     startDataStream = async (constraints:DeviceConfig<any> = {}, stream=new DataStream() ) =>{

@@ -18,8 +18,7 @@
         <button id="device">Synthetic</button>
         <button id="muse">Muse</button>
         <button id="ganglion">Ganglion</button>
-        <button id="hegduino">HEGduino (broken)</button>
-
+        <button id="hegduino">HEGduino</button>
     </div>
     <div id="graph">
 
@@ -34,16 +33,15 @@
     import * as components from "https://cdn.jsdelivr.net/npm/brainsatplay-ui@0.0.7/dist/index.esm.js"    
 
     // Data Acquisition
-    // import * as datastreams from "./src/frontend/dist/index.esm.js"
-    import * as datastreams from "https://cdn.jsdelivr.net/npm/datastreams-api@latest/dist/index.esm.js"
+    import * as datastreams from "./src/frontend/dist/index.esm.js"
+    // import * as datastreams from "https://cdn.jsdelivr.net/npm/datastreams-api@latest/dist/index.esm.js"
     const dataDevices = new datastreams.DataDevices()
 
     // Device Drivers
-    // import ganglion from "./dist/index.esm.js"
     import ganglion from "https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion@0.0.2/dist/index.esm.js"
     import muse from "https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.1/dist/index.esm.js"
     import device from "https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.2/dist/index.esm.js"
-    import hegduino from "https://cdn.jsdelivr.net/npm/@brainsatplay/hegduino@0.0.3/dist/index.esm.js"
+    import hegduino from "https://cdn.jsdelivr.net/npm/@brainsatplay/hegduino@0.0.4/dist/index.esm.js"
 
     dataDevices.load(muse)
     dataDevices.load(device)
@@ -55,9 +53,6 @@
     graphDiv.style.padding = '25px'
     const timeseries = new components.streams.data.TimeSeries()
     graphDiv.insertAdjacentElement('beforeend', timeseries)
-
-
-    
 
     // ------------- Declare Global Variables -------------
     const allData = []
@@ -107,7 +102,7 @@
         // ------------- Get Device Stream -------------
 
         // Method #1: By Label
-        const dataDevice = await dataDevices.getUserDevice({label})
+        const dataDevice = await dataDevices.getUserDevice({label, bluetooth: true})
 
         // Method #2: By Class
         // const dataDevice = await dataDevices.getUserDevice(ganglion)

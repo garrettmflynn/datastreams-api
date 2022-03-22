@@ -8,9 +8,8 @@
     "node": ">=16"
   },
   "scripts": {
-    "start": "concurrently \"yarn backend\" \"cd docs && yarn && yarn run start\"",
+    "start": "concurrently \"cd docs && yarn && yarn run start\"",
     "frontend": "cd docs && yarn && yarn run start",
-    "backend": "node builder.config run",
     "typecheck": "tsc --watch --preserveWatchOutput --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd docs && yarn && yarn build"

@@ -16,8 +16,10 @@ export default function ExampleSelector({server}) {
         switch(name) {
           case 'device':
             return <DeviceExample server={server}/>
-          case 'webrtc':
-            return <WebRTCExample server={server}/>
+          // case 'webrtc':
+          //   return <WebRTCExample server={server}/>
+          default:
+            return <DeviceExample server={server}/>
         }
       }
 
@@ -28,14 +30,14 @@ export default function ExampleSelector({server}) {
   
     return (
         <>
-      <nav className={clsx(styles.nav)}>
+      {/* <nav className={clsx(styles.nav)}>
         <button onClick={() => set('device')}>
           Device
         </button>
         <button onClick={() => set('webrtc')}>
           WebRTC
         </button>
-        </nav>
+        </nav> */}
 
         <header>
             {renderExample(example)}
