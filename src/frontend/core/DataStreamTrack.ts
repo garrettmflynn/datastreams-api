@@ -24,11 +24,12 @@ export class DataStreamTrack extends EventTarget {
 
     // New Attributes
     data: any[] = []
+    timestamps: any[] = []
     controller?: ReadableStreamController<any>;
     readable: ReadableStream;
     writable: WritableStream = new WritableStream({
         start: () => { },
-        write: (chunk: any) => this.addData(chunk),
+        write: (chunk: any) => this.addData(chunk, Date.now()), // TODO: Allow reliable stream into the track
         // close: () => console.log("All data successfully read!"),
         // abort: (reason: any) => console.error("Something went wrong!", reason),
     })
@@ -41,7 +42,8 @@ export class DataStreamTrack extends EventTarget {
 
     constructor(
         device?: Device<any>,       // Get Track Details
-        track?:MediaStreamTrack     // Get Readable Stream from MediaStreamTrack
+        track?:MediaStreamTrack,    // Get Readable Stream from MediaStreamTrack
+        contentHint: string = ''
     ) {
         super()
 
@@ -50,6 +52,7 @@ export class DataStreamTrack extends EventTarget {
         this.label = device?.constraints?.label ?? this.label
         this.callbacks = new Map()
         this.data = []
+        if(typeof this.contentHint === 'string') this.contentHint = contentHint
 
         this._bufferSize = device?.constraints?.bufferSize ?? this._bufferSize
 
@@ -75,7 +78,7 @@ export class DataStreamTrack extends EventTarget {
                 const [r1,r2] = readable.tee()
                 r1.pipeTo(new WritableStream({
                     start: () => { },
-                    write: (chunk: any) => this.addData(chunk),
+                    write: (chunk: any) => this.addData(chunk, Date.now()),
                     // close: () => console.log("All data successfully read!"),
                     // abort: (reason: any) => console.error("Something went wrong!", reason),
                 }))
@@ -120,24 +123,33 @@ export class DataStreamTrack extends EventTarget {
         this.writable.abort()
     }
 
-    addData = (val: any) => {
-        if (this.controller){
-            if (!Array.isArray(val)) val = [val]
-                this.data.push(...val)
-                val.forEach((v:any) => this.controller?.enqueue(v))
-        }
+    addData = (values: any, timestamps: any = [Date.now()]) => {
+
+        // Values
+        if (!Array.isArray(values)) values = [values]
+        this.data.push(...values)
+
+        // Timestamps (not corrected)
+        console.log(timestamps)
+        if (!Array.isArray(timestamps)) timestamps = [timestamps]
+        const lastTime = timestamps[timestamps.length - 1]
+        if (values.length !== timestamps.length) timestamps = Array.from({length: values.length}, (_,i) => timestamps?.[i] ?? lastTime)
+        this.timestamps.push(...timestamps)
+        
+
+        if (this.controller) values.forEach((v:any) => this.controller?.enqueue(v))
 
         const diff = this.data.length - this._bufferSize
 
         for (let i = diff; i > 0; i--) this.data.shift()
 
-        this.ondata(val)
+        this.ondata(values, timestamps)
     }
 
     // Data Readout
-    ondata = (data: any) => {
+    ondata = (data: any, timestamp: any) => {
         this.callbacks.forEach((f) => {
-            f(data)
+            f(data, timestamp)
         })
     }
 

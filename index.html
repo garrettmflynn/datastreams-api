@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Brains@Play Stack | Spring 2022</title>
-
+    <title>datastreams-api</title>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/datastreams-api"></script> -->
-
 </head>
+
 <body style="padding: 10px;">
-    <h1>Bluetooth Device Connection</h1>
+    <h1>datastreams-api</h1>
     <hr>
     <br>
 
     <div id="buttons">
-        <button id="Device">Synthetic</button>
-        <button id="Muse">Muse</button>
-        <button id="Ganglion">Ganglion</button>
+        <button id="device">Synthetic</button>
+        <button id="muse">Muse</button>
+        <button id="ganglion">Ganglion</button>
+        <button id="hegduino">HEGduino (broken)</button>
+
     </div>
     <div id="graph">
 
@@ -33,17 +34,21 @@
     import * as components from "https://cdn.jsdelivr.net/npm/brainsatplay-ui@0.0.7/dist/index.esm.js"    
 
     // Data Acquisition
-    import * as datastreams from "https://cdn.jsdelivr.net/npm/datastreams-api@0.0.15/dist/index.esm.js"
+    // import * as datastreams from "./src/frontend/dist/index.esm.js"
+    import * as datastreams from "https://cdn.jsdelivr.net/npm/datastreams-api@latest/dist/index.esm.js"
     const dataDevices = new datastreams.DataDevices()
 
     // Device Drivers
     // import ganglion from "./dist/index.esm.js"
-    import ganglion from "https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion@0.0.0/dist/index.esm.js"
-    import muse from "https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.0/dist/module.js"
-    import device from "https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.0/dist/module.js"
+    import ganglion from "https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion@0.0.2/dist/index.esm.js"
+    import muse from "https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.1/dist/index.esm.js"
+    import device from "https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.2/dist/index.esm.js"
+    import hegduino from "https://cdn.jsdelivr.net/npm/@brainsatplay/hegduino@0.0.3/dist/index.esm.js"
+
     dataDevices.load(muse)
     dataDevices.load(device)
     dataDevices.load(ganglion)
+    dataDevices.load(hegduino)
 
     // ------------- Setup Visualization (very rough) -------------
     const graphDiv = document.getElementById('graph')
@@ -51,12 +56,21 @@
     const timeseries = new components.streams.data.TimeSeries()
     graphDiv.insertAdjacentElement('beforeend', timeseries)
 
-    // ------------- Declare Track Handler -------------
+
+    
+
+    // ------------- Declare Global Variables -------------
     const allData = []
     let channels = 0
     let trackMap = new Map()
     let contentHintToIndex = {}
 
+    // ------------- Declare Data Handler -------------
+    const ondata = (data, timestamps, contentHint) => {
+        console.log(`Data from Electrode ${contentHintToIndex[contentHint]} (${contentHint})`, data, timestamps)
+    }
+
+    // ------------- Declare Track Handler -------------
     const handleTrack = (track) => { 
 
         // ------------- Map Track Information (e.g. 10-20 Coordinate) to Index -------------
@@ -71,16 +85,18 @@
         channels = (i > channels) ? i : channels // Assign channels as max track number
 
         // ------------- Subscribe to New Data -------------
-        track.subscribe((data) => {
+        track.subscribe((data, timestamps) => {
 
             // Organize New Data
-            let arr = [], value = data
-            for (let j = 0 ; j <= channels; j++) (i === j) ? arr.push(value) : arr.push([])
+            let arr = []
+            for (let j = 0 ; j <= channels; j++) (i === j) ? arr.push(data) : arr.push([])
 
             // Add Data to Timeseries Graph
-            console.log(`Data from Electrode ${i}`, data, arr, timeseries.buffers)
             timeseries.data = arr
             timeseries.draw() // FORCE DRAW: Update happens too fast for UI
+
+            // Run ondata Callback
+            ondata(data, timestamps, track.contentHint)
         })
     }
 
@@ -89,7 +105,7 @@
     const startAcquisition = async (label) => {
 
         // ------------- Get Device Stream -------------
-        
+
         // Method #1: By Label
         const dataDevice = await dataDevices.getUserDevice({label})
 

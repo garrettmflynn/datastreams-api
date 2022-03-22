@@ -7,7 +7,7 @@ import {randomUUID} from "../../common/id";
 export class Device <T> {
 
     id: string = randomUUID()
-    _ondata: (data:any, name?: string) => (any[] | {[x : string | number]: any}) = (data) => data
+    _ondata: (data:any, timestamps?:any, name?: string) => (any[] | {[x : string | number]: any}) = (data) => data
     constraints: DeviceConfig<T>
     device: CoreDeviceType<T>
     stream?: DataStream
@@ -15,6 +15,7 @@ export class Device <T> {
     decoder: TextDecoder | any
     active: boolean = false
     options: DeviceConfig<T>[]
+    coordinates: any[] = []
     
 
     // // Inherited Functions
@@ -30,7 +31,6 @@ export class Device <T> {
         } else {
             this.constraints = constraints
             this.options = [constraints]
-
         }
 
         this.device = (this.constraints.device) ? new this.constraints.device(this.constraints) : this
@@ -73,6 +73,10 @@ export class Device <T> {
         // Run Callback
         this.oninit(this)
     }
+
+    // setCoordinates = (input:any[]) => {
+    //     if (Array.isArray(input)) this.coordinates = input
+    // }
    
     // Core Methods 
     connect = async () => {
@@ -112,7 +116,7 @@ export class Device <T> {
     onerror = async (err:Error) => console.log(`${this.constructor.name} Error: ${err}`)
 
     // --------------- Internal Methods ---------------
-    ondata = (data:any, charName?:string) => {
+    ondata = (data:any, timestamps:any=[Date.now()], charName?:string) => {
 
             // Run Data through Decoder Function
             if (this._ondata instanceof Function){
@@ -126,9 +130,9 @@ export class Device <T> {
                 keys.forEach((key:(string | number)) => {
                     if (this.stream){
 
-                        let track = this.stream.tracks.get(key) ?? this._createTrack(key)
+                        let track = this.stream.tracks.get(key) ?? this._createTrack(String(key))
 
-                        if (track instanceof DataStreamTrack) track.addData((obj as any)[key])
+                        if (track instanceof DataStreamTrack) track.addData((obj as any)[key], timestamps)
                     }
                 })
 
@@ -137,10 +141,9 @@ export class Device <T> {
 
     }
 
-    private _createTrack = (contentHint?: string | number) => {
+    private _createTrack = (contentHint?: string) => {
         if (this.stream){
-            const newTrack = new DataStreamTrack(this)
-            if(typeof contentHint === 'string') newTrack.contentHint = contentHint
+            const newTrack = new DataStreamTrack(this, undefined, contentHint)
             return this.stream.addTrack(newTrack)
         } else return undefined
     }

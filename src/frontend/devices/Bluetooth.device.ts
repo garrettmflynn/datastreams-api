@@ -83,7 +83,7 @@ export class Bluetooth<T=any> extends Device<T> { //This is formatted for the wa
     // ---------------------- CALLBACKS ----------------------
 
     onnotification = (e:any, charName:string) => {
-        this.ondata(this.decode(e.target.value, charName), charName)
+        this.ondata(this.decode(e.target.value, charName), Date.now(), charName) // TODO: Add Capacity for On-Device Timestamp
     }
 
     // ---------------------- INTERNAL UTILITIES ----------------------
