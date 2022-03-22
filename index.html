@@ -4,32 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="./src/frontend/dist/browser.js"></script>
+    <title>Brains@Play Stack | Spring 2022</title>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/datastreams-api"></script> -->
+
 </head>
-<body>
-    <video style = "width: 300px; height: 150px;"></video>
+<body style="padding: 10px;">
+    <h1>Bluetooth Device Connection</h1>
+    <hr>
+    <br>
+
+    <div id="buttons">
+        <button id="Device">Synthetic</button>
+        <button id="Muse">Muse</button>
+        <button id="Ganglion">Ganglion</button>
+    </div>
+    <div id="graph">
+
+    </div>
 </body>
+
 <script type="module">
 
-import * as datastreams from './src/frontend/dist/index.mjs'
-const dataDevices = new datastreams.DataDevices()
+    // ------------- Import Libraries -------------
 
-let video = document.body.querySelector('video')
-video.autoplay = true
-// navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
-//     video.srcObject = stream
-// })
+    // User Interface
+    import * as components from "https://cdn.jsdelivr.net/npm/brainsatplay-ui@0.0.7/dist/index.esm.js"    
 
+    // Data Acquisition
+    import * as datastreams from "https://cdn.jsdelivr.net/npm/datastreams-api@0.0.15/dist/index.esm.js"
+    const dataDevices = new datastreams.DataDevices()
 
-dataDevices.getUserDevice({video: true}).then(device => {
-    video.srcObject = device.stream
-    device.stream.tracks.forEach(t => {
-        t.subscribe(data => {
-            console.log('data', data)
+    // Device Drivers
+    // import ganglion from "./dist/index.esm.js"
+    import ganglion from "https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion@0.0.0/dist/index.esm.js"
+    import muse from "https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.0/dist/module.js"
+    import device from "https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.0/dist/module.js"
+    dataDevices.load(muse)
+    dataDevices.load(device)
+    dataDevices.load(ganglion)
+
+    // ------------- Setup Visualization (very rough) -------------
+    const graphDiv = document.getElementById('graph')
+    graphDiv.style.padding = '25px'
+    const timeseries = new components.streams.data.TimeSeries()
+    graphDiv.insertAdjacentElement('beforeend', timeseries)
+
+    // ------------- Declare Track Handler -------------
+    const allData = []
+    let channels = 0
+    let trackMap = new Map()
+    let contentHintToIndex = {}
+
+    const handleTrack = (track) => { 
+
+        // ------------- Map Track Information (e.g. 10-20 Coordinate) to Index -------------
+        if (!trackMap.has(track.contentHint)) {
+            const index = trackMap.size
+            contentHintToIndex[track.contentHint] = index
+            trackMap.set(index, track)
+        }
+        
+        // ------------- Grab Index -------------
+        const i = contentHintToIndex[track.contentHint]
+        channels = (i > channels) ? i : channels // Assign channels as max track number
+
+        // ------------- Subscribe to New Data -------------
+        track.subscribe((data) => {
+
+            // Organize New Data
+            let arr = [], value = data
+            for (let j = 0 ; j <= channels; j++) (i === j) ? arr.push(value) : arr.push([])
+
+            // Add Data to Timeseries Graph
+            console.log(`Data from Electrode ${i}`, data, arr, timeseries.buffers)
+            timeseries.data = arr
+            timeseries.draw() // FORCE DRAW: Update happens too fast for UI
         })
-    })
-})
+    }
+
+    // ------------- Declare Acquisition Function -------------
+
+    const startAcquisition = async (label) => {
+
+        // ------------- Get Device Stream -------------
+        
+        // Method #1: By Label
+        const dataDevice = await dataDevices.getUserDevice({label})
+
+        // Method #2: By Class
+        // const dataDevice = await dataDevices.getUserDevice(ganglion)
+
+        // ------------- Grab DataStream from Device -------------
+        const stream = dataDevice.stream
+
+        // ------------- Handle All Tracks -------------
+        stream.tracks.forEach(handleTrack)
+        stream.onaddtrack = e => handleTrack(e.track)
+    }
+
+    // ------------- Set Button Functionality -------------
+    const buttons = document.querySelector('#buttons')
+    for (let button of buttons.querySelectorAll('button')) button.onclick = () => startAcquisition(button.id)
 
 </script>
+
 </html>
