@@ -121,16 +121,11 @@ export class DataStreamTrack extends EventTarget {
     }
 
     addData = (val: any) => {
-        if (Array.isArray(val)) {
-            this.data.push(...val)
-            if (this.controller) val.forEach(this.controller?.enqueue)
+        if (this.controller){
+            if (!Array.isArray(val)) val = [val]
+                this.data.push(...val)
+                val.forEach((v:any) => this.controller?.enqueue(v))
         }
-        else {
-            this.data.push(val)
-            this.controller?.enqueue()
-        }
-
-        this.controller?.enqueue()
 
         const diff = this.data.length - this._bufferSize
 

@@ -158,7 +158,10 @@ export class DataDevices extends EventTarget {
             }
         }
 
-        if (device) await device.connect().then(res => res).catch(() => { throw 'Device not connected' })
+        if (device) await device.connect().then(res => res).catch((e) => { 
+            console.warn('Device not connected')
+            throw e
+        })
 
         return device
     }
