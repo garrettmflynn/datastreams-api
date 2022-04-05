@@ -41,6 +41,8 @@ export class SerialDevice<T=any> extends Device<T> {
 
         let {usbVendorId, usbProductId} = this.constraints;
 
+        console.log(this.constraints)
+
         var re = /[0-9A-Fa-f]{6}/g;
 
         // Convert to Hexadecimal (assume strings are accurate)

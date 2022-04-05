@@ -98,7 +98,6 @@ export class DataDevices extends EventTarget {
        if (constraints.usb || constraints.serial) protocols.push('usb', 'serial')
        if (constraints.websocket) protocols.push('websocket')
 
-
         // Protocol Match
         if (protocols.length > 0) filtered = filtered.filter(o => {
             if(o['protocols']) return o['protocols'].find((k:string) => protocols.includes(k))
@@ -116,9 +115,13 @@ export class DataDevices extends EventTarget {
             })
         }
         
+
+        if (filtered.length === 0) filtered.push(constraints) // Load raw constraints
+        
         const found = filtered?.[0] // Jump to Fallback if Stream is Specified OR No Filtered Results
         const customDevice = !!filtered?.[0]?.device // Jump to Fallback if Stream is Specified OR No Filtered Results
-        if (protocols.length === 0) protocols.push(...protocols)
+
+        if (protocols.length === 0) protocols.push(...found?.protocols ?? [])
 
         const getGenericDevice = () => {
             return new Device((found) ? filtered.map(o => Object.assign(o, constraints)) : constraints) //Fallback to generic device
@@ -131,8 +134,8 @@ export class DataDevices extends EventTarget {
             // Check Protocol and serviceUUID Presence
             if (found && (protocols.includes('bluetooth') && found?.serviceUUID)) return new BluetoothDevice(filtered.map(o => Object.assign(o, constraints)))
             
-            // Check Protocol and usbVendorId Presence
-            else if (found && (protocols.includes('usb') || (protocols.includes('serial') && found?.usbVendorId)))  return new SerialDevice(filtered.map(o => Object.assign(o, constraints)))
+            // Check Protocol and usbVendorId / usbProductId Presence
+            else if (found && (protocols.includes('usb') || (protocols.includes('serial') && found?.usbVendorId && found?.usbProductId)))  return new SerialDevice(filtered.map(o => Object.assign(o, constraints)))
             else if (found && protocols.includes('websocket')) return new WebSocketDevice(filtered.map(o => Object.assign(o, constraints)))
             else if (fallback) return getGenericDevice()
         }
@@ -147,8 +150,7 @@ export class DataDevices extends EventTarget {
         constraints.stream = stream // Bind DataStream to the device
 
         const copy = Object.assign({}, constraints) // Copy
-
-        if (copy.device) {
+        if (copy.device || (constraints.video || constraints.audio || constraints.screen)) {
 
             // Wrap in Device Class
             device = new Device(copy)
@@ -186,7 +188,6 @@ export class DataDevices extends EventTarget {
         let mediaStream;
 
         // 1. Use MediaStreams API
-        // - Add MediaStream Tracks to DataStream
         if (constraints.video || constraints.audio) mediaStream = await navigator.mediaDevices.getUserMedia(constraints)
 
         let stream = new DataStream(mediaStream)
@@ -197,10 +198,10 @@ export class DataDevices extends EventTarget {
             displayStream.getTracks().forEach(stream.addTrack)
         }
         
-        // Start Stream
+        // 3. Create Device from Contraints and Stream
         const device = await this.startDataStream(constraints, stream)
 
-        // Apply Constraints
+        // 4. Apply Constraints
         stream.getTracks().forEach((t,) => {
             t.applyConstraints(constraints)
             // let settings = t.getSettings() // TODO: Returns a dictionary currently set values for the constraints

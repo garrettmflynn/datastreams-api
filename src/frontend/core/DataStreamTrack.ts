@@ -130,7 +130,7 @@ export class DataStreamTrack extends EventTarget {
         this.data.push(...values)
 
         // Timestamps (not corrected)
-        console.log(timestamps)
+        // console.log(timestamps)
         if (!Array.isArray(timestamps)) timestamps = [timestamps]
         const lastTime = timestamps[timestamps.length - 1]
         if (values.length !== timestamps.length) timestamps = Array.from({length: values.length}, (_,i) => timestamps?.[i] ?? lastTime)
