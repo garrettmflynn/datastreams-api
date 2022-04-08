@@ -1,9 +1,10 @@
-# Data Capture and Streams API (Data Streams)
-Simple Media Capture and Streams API extension to handle arbitrary data streams acquired through the browser.
+# Data Capture and Streams API
+A unified data acquisition API for the browser
 
+> **TL;DR: The Data Capture and Streams API (`datastreams-api`) is a simple extension of the Media Capture and Streams API to handle arbitrary data streams acquired through the browser.
 
 ## Introduction
-The latest web browsers have a wide variety of APIs for acquiring real-time data, including `navigator.serial`, `navigator.bluetooth`, and `WebSocket`. This is a proposal for `navigator.devices`, a global `Object` that acts as a top-level namespace (similar to [`navigator.mediaDevices`](https://streams.spec.whatwg.org/)) that brings a unified data acquisition API to the ECMAScript language.
+The latest web browsers have a wide variety of APIs for acquiring real-time data, including `navigator.serial`, `navigator.bluetooth`, and `WebSocket`. This is a proposal for `navigator.devices`, a global `Object` that acts as a top-level namespace (similar to [`navigator.mediaDevices`](https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API)) that brings a unified data acquisition API to the ECMAScript language.
 
 ### Implementation
 The **Data Capture and Streams API** (`datastreams-api`) allows developers to specify their own I/O requirements by allowing for custom decoders to be written for a particular application. Independent decoded inputs are organzized as `DataStreamTracks` for standardized consumption.
