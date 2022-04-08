@@ -13,3 +13,6 @@ When the user uses requests native to the Media Capture and Streams API, the `tr
 
 ## Documentation 
 Official documentations for the `datastreams-api` package can be found at [https://streams.brainsatplay.com](https://streams.brainsatplay.com).
+
+## Roadmap
+1. Create a default UI for device management
