@@ -8,13 +8,13 @@ Based on https://developer.mozilla.org/en-US/docs/Web/API/Media_Streams_API
 */
 
 import { DataStream } from './DataStream';
-import { Bluetooth as BluetoothDevice } from '../devices/Bluetooth.device'
-import { SerialDevice } from '../devices/Serial.device'
+import { Bluetooth as BluetoothDevice } from './devices/Bluetooth.device'
+import { SerialDevice } from './devices/Serial.device'
 // import {EventSourceDevice} from '../devices/EventSource.device'
-import {Device} from '../devices/Device';
+import {Device} from './devices/Device';
 import { DataTrackSupportedConstraints } from './DataTrackSupportedConstraints'
-import { DeviceConstraintsType, DeviceConfig } from '../types/Devices.types';
-import {WebSocketDevice} from '../devices/WebSocket.device';
+import { DeviceConstraintsType, DeviceConfig } from './types/Devices.types';
+import {WebSocketDevice} from './devices/WebSocket.device';
 import { DataDeviceInfo } from './DataDeviceInfo';
 
 

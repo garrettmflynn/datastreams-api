@@ -1,4 +1,4 @@
-import { DataStream } from '../core/DataStream'
+import { DataStream } from '../DataStream'
 import { Device } from '../devices/Device'
 
 // Only needs extension when the device is an externally specified class

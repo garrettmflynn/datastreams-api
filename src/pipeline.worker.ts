@@ -1,6 +1,6 @@
 // --------------------------- Pipeline Global Variables ---------------------------
 import {pipelineType, boundType} from './DataPipeline' 
-import { WorkerMessageType } from '../types/Worker.types'
+import { WorkerMessageType } from './types/Worker.types'
 
 // Ensure Proper Pipeline Format
 let pipeline:pipelineType = []

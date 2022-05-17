@@ -1,4 +1,4 @@
-import { Device } from 'src/frontend/devices/Device'
+import { Device } from 'src/devices/Device'
 
 let looping = false
 

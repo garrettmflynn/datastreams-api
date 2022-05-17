@@ -1,5 +1,5 @@
 import { Pipe } from "./Pipe";
-import { PipeSettingsType } from '../types/Pipes.types'
+import { PipeSettingsType } from '../../types/Pipes.types'
 
 export default class HardwarePipe extends Pipe {
 

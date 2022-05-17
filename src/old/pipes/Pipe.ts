@@ -1,6 +1,6 @@
-import { Websocket } from "../utils/WebSocket";
+import { Websocket } from "../../utils/WebSocket";
 import { randomUUID } from '../../common/id'
-import { PipeTypes, PipeSettingsType, PipeCallbackType } from '../types/Pipes.types'
+import { PipeTypes, PipeSettingsType, PipeCallbackType } from '../../types/Pipes.types'
 
 export class Pipe extends EventTarget{
 

@@ -1,5 +1,5 @@
 import { DataStreamTrack } from "./DataStreamTrack"
-import { randomUUID } from '../../common/id'
+import { randomUUID } from './common/id'
 
 // Data Channels Behave Just Like Tracks
 export class DataChannel extends DataStreamTrack{

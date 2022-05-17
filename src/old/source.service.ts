@@ -1,6 +1,6 @@
-import * as source from './common/source.device'
-import { Device } from './frontend/devices/Device'
-import { randomUUID } from './common/id'
+import * as source from '../common/source.device'
+import { Device } from '../devices/Device'
+import { randomUUID } from '../common/id'
 
 export default class SourceService {
 

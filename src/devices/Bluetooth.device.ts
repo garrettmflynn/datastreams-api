@@ -27,7 +27,7 @@ export class Bluetooth<T=any> extends Device<T> { //This is formatted for the wa
                     
     constructor(constraints: DeviceConfig<T> | DeviceConfig<T>[]) {
         super(constraints)
-        console.log(constraints)
+        // console.log(constraints)
     }
 
     // ---------------------- CORE ----------------------

@@ -17,7 +17,7 @@ import commonjs from '@rollup/plugin-commonjs';
  * @type {import('rollup').RollupOptions}
  */
 const config = {
- input: './index.ts', // our source file
+ input: './src/index.ts', // our source file
  output: [
   {
     file: pkg.main,

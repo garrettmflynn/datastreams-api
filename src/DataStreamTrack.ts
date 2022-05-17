@@ -1,8 +1,8 @@
 import { DataTrackSettings } from "./DataTrackSettings"
 import { DataTrackCapabilities } from "./DataTrackCapabilities"
-import { randomUUID } from "../../common/id"
+import { randomUUID } from "./common/id"
 import { DataTrackConstraints } from "./DataTrackConstraints"
-import { Device } from "../devices/Device"
+import { Device } from "./devices/Device"
 import { ReadableStreamController } from 'stream/web'
 
 // NOTE: This class allows the conversion of independent data coming from Device classes

@@ -4,7 +4,7 @@
  */
 
 import {Pipe} from './Pipe'
-import { PipeSettingsType } from '../types/Pipes.types'
+import { PipeSettingsType } from '../../types/Pipes.types'
 
 export class GPUPipe extends Pipe{
   constructor(settings:PipeSettingsType){

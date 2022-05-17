@@ -1,6 +1,6 @@
 import { Pipe } from "./Pipe";
-import { PipeSettingsType } from '../types/Pipes.types'
-import { Websocket } from '../utils/WebSocket';
+import { PipeSettingsType } from '../../types/Pipes.types'
+import { Websocket } from '../../utils/WebSocket';
 import { DataType } from 'src/common/types/Data.types';
 
 export class ServerPipe extends Pipe {

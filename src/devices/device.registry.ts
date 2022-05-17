@@ -1,10 +1,7 @@
 
-import * as hegduino from './hegduino/index'
 import * as freeeeg from './freeeeg/index'
-import * as muse from './muse/index'
-import * as webgazer from './webgazer/index'
-// import * as bci2000web from './bci2000web/index'
-import * as remote from '../../common/source.device'
+
+import * as remote from '../common/source.device'
 import { DeviceConfig } from '../types/Devices.types'
 
 // let audioDevices:string[] = [], videoDevices:string[] = [];
@@ -34,14 +31,6 @@ const devices: DeviceConfig[] = [
     //     audio: true,
     //     },
 
-        {
-             label: 'Webgazer', 
-             device: webgazer.Webgazer,
-             onconnect: webgazer.onconnect,
-             protocols: ['video']
-        },
-
-
         // ----------------------------------  WebSocket "Device" ----------------------------------
 
         {
@@ -55,30 +44,7 @@ const devices: DeviceConfig[] = [
             protocols: ['websocket'], 
 
         },
-    // ----------------------------------  Device with Auto-Generated Connection Scripts ----------------------------------
-
-    {
-        // Generic 
-        label: 'HEGduino', 
-        ondata: hegduino.ondata,
-        onconnect: hegduino.onconnect,
-
-        // Bluetooth
-        namePrefix: 'HEG', // NOTE: Required when filtering for multiple BLE devices
-        serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
-        characteristics: {
-            transmit: '6e400003-b5a3-f393-e0a9-e50e24dcca9e',
-            receive: '6e400002-b5a3-f393-e0a9-e50e24dcca9e',
-        }, 
-
-        // Serial / USB
-        usbVendorId: 4292,
-        usbProductId: 60000,
-        bufferSize: 1000,
-        baudRate: 115200,
-
-        protocols: ['bluetooth', 'serial'], 
-    },
+    // ----------------------------------  Device with Auto-Generated Connection Scripts ---------------------------------
 
     {
         // Generic 
@@ -96,17 +62,6 @@ const devices: DeviceConfig[] = [
         modes: ['optical', 'ads131', 'freeeeg32_2', 'freeeeg32_19'], // oninit
         protocols: ['serial'], 
     },
-
-    // ---------------------------------- Device with Pre-Built Connection Scripts ----------------------------------
-
-        // NOTE: Excluded from search of multiple Bluetooth devices. Must specify label.
-        {
-            label: 'Muse', 
-            device: muse.device,
-            onconnect: muse.onconnect,
-            protocols: ['bluetooth'], // must specify to list connection types
-            modes: ['default', 'aux']
-        },
 ]
 
 export default devices

@@ -1,5 +1,5 @@
 import { Pipe } from "./Pipe";
-import {DataChannel} from "../core/DataChannel";
+import {DataChannel} from "../../DataChannel";
 import {RoomInterface} from "../../common/types/Room.types";
 
 
@@ -10,9 +10,9 @@ Known Bugs
 
 */
 
-import { PipeSettingsType , DataChannelInfoType, DataChannelCallbackType} from '../types/Pipes.types'
-import { DataStreamTrack, DataStream } from '../core/index';
-import { MessageType } from '../types/Core.types';
+import { PipeSettingsType , DataChannelInfoType, DataChannelCallbackType} from '../../types/Pipes.types'
+import { DataStreamTrack, DataStream } from '../../core/index';
+import { MessageType } from '../../types/Core.types';
 import { PeerInfoType } from 'src/common/types/Peer.types';
 
 export class PeerPipe extends Pipe {

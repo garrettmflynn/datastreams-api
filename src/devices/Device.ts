@@ -1,13 +1,13 @@
-import { DataStreamTrack } from "../core/DataStreamTrack";
-import { DataStream } from "../core/DataStream";
+import { DataStreamTrack } from "../DataStreamTrack";
+import { DataStream } from "../DataStream";
 import { CoreDeviceType, DeviceConfig } from "../types/Devices.types";
-import {randomUUID} from "../../common/id";
+import {randomUUID} from "../common/id";
 
 
 export class Device <T> {
 
     id: string = randomUUID()
-    _ondata: (data:any, timestamps?:any, name?: string) => (any[] | {[x : string | number]: any}) = (data) => data
+    _ondata: (data:any, timestamps?:any, name?: string) => (any[] | {[x : string]: any}) = (data) => data
     constraints: DeviceConfig<T>
     device: CoreDeviceType<T>
     stream?: DataStream

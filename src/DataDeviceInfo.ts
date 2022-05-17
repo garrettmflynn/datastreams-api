@@ -1,5 +1,5 @@
-import { randomUUID } from "../../common/id"
-import { DeviceConfig } from "../types/Devices.types"
+import { randomUUID } from "./common/id"
+import { DeviceConfig } from "./types/Devices.types"
 
 export const DataDeviceInfo = (constraints: DeviceConfig) => {
 

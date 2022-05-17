@@ -1,7 +1,7 @@
 // import { HardwarePipe } from "./pipes/Hardware.pipe";
 // import { ServerPipe } from "./pipes/Server.pipe";
 
-import {randomUUID} from "../../common/id"
+import {randomUUID} from "./common/id"
 
 import worker, * as workerutils from './pipeline.worker' // must export self
 
