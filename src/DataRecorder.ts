@@ -1,6 +1,6 @@
 import { DataStreamTrack } from './DataStreamTrack'
-import { Encoder, EncoderOptions } from './encoders'
-import CSVEncoder from './encoders/csv'
+import { Encoder, EncoderOptions } from './files/encoders'
+import CSVEncoder from './files/encoders/csv'
 import { Device } from './devices/Device'
 
 // Records data to a file
@@ -12,7 +12,7 @@ type StateType = 'inactive' | 'recording' | 'paused'
 type RecorderOptions = {
     mimeType?: MimeTypes
     destination?: DestinationType
-    bitsPerSecond?: Number
+    // bitsPerSecond?: Number
 }
 
 type SaveOptions = RecorderOptions & {
@@ -30,7 +30,7 @@ export class DataRecorder extends EventTarget {
     mimeType: RecorderOptions['mimeType'] = 'application/json'
     state: StateType = 'inactive'
     device: Device<any>;
-    bitsPerSecond: RecorderOptions['bitsPerSecond'] = 0; // dynamic or applied from options
+    // bitsPerSecond: RecorderOptions['bitsPerSecond'] = 0; // dynamic or applied from options
     data: DataType['data'] = {}
     destination: RecorderOptions['destination'] = 'file'
     encoders: Map<MimeTypes, Encoder> = new Map()
@@ -41,7 +41,7 @@ export class DataRecorder extends EventTarget {
         this.device = device
         if (options.mimeType) this.mimeType = options.mimeType
         if (options.destination) this.destination = options.destination
-        if (options.bitsPerSecond) this.bitsPerSecond = options.bitsPerSecond
+        // if (options.bitsPerSecond) this.bitsPerSecond = options.bitsPerSecond
 
         this.load(new Encoder()) // Add JSON Encoder
         this.load(new CSVEncoder()) // Add CSV Encoder
@@ -120,7 +120,7 @@ export class DataRecorder extends EventTarget {
                     }
 
                     // Recording Sampling Rate
-                    objectToEncode.bitsPerSecond = this.bitsPerSecond
+                    // objectToEncode.bitsPerSecond = this.bitsPerSecond
 
                     const encoded = encoder.encode(objectToEncode, options)
                     const blob = new Blob([encoded], {type: mimeType}) // Export as Blob
@@ -168,7 +168,7 @@ export class DataRecorder extends EventTarget {
     }
 
     stop = () => {
-        if (this.state === 'recording'){
+        if (this.state != 'inactive'){
             this.state = 'inactive'
             this.dispatchEvent(new CustomEvent('stop'))
         }else {

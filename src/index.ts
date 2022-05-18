@@ -22,7 +22,10 @@ export * from './DataTrackCapabilities'
 export * from './DataTrackConstraints'
 export * from './DataTrackSettings'
 export * from './DataTrackSupportedConstraints'
+
+// Recording and File Playback
 export * from './DataRecorder'
+export * from './DataFile'
 
 // import * as core from "./core";
 // export default core

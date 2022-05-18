@@ -1,5 +1,5 @@
 import { Encoder } from ".";
-import {DataType} from '../DataRecorder'
+import {DataType} from '../../DataRecorder'
 
 export default class CSVEncoder extends Encoder {
     mimeType = 'text/csv'
@@ -34,7 +34,7 @@ export default class CSVEncoder extends Encoder {
 
             let csv = `${headers}`
             for (let i = 0; i < maxLength; i++){
-                csv = csv + `\n${keys.map(key => `${(!Array.isArray(flat[key])) ? ((i === 0) ? flat[key] : '') : (flat[key]?.[i] ? `"${flat[key][i]}"` : '')}`).join(',')}`;
+                csv = csv + `\n${keys.map(key => `${(!Array.isArray(flat[key])) ? ((i === 0) ? `${JSON.stringify(flat[key])}` : "") : (flat[key]?.[i] ? `${JSON.stringify(flat[key][i])}` : "")}`).join(',')}`;
             }
 
             return csv

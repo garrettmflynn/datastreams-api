@@ -1,4 +1,4 @@
-import {DataType, MimeTypes} from '../DataRecorder'
+import {DataType, MimeTypes} from '../../DataRecorder'
 
 export type FilterType = string[]
 export type EncoderOptions = {
