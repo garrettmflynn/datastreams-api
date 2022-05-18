@@ -11,7 +11,7 @@ Known Bugs
 */
 
 import { PipeSettingsType , DataChannelInfoType, DataChannelCallbackType} from '../../types/Pipes.types'
-import { DataStreamTrack, DataStream } from '../../core/index';
+import { DataStreamTrack, DataStream } from '../../index';
 import { MessageType } from '../../types/Core.types';
 import { PeerInfoType } from 'src/common/types/Peer.types';
 

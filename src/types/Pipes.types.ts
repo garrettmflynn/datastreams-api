@@ -1,6 +1,6 @@
 import { Websocket } from '../utils/WebSocket'
 import { DataStream } from '../DataStream'
-import { DataChannel } from '../core'
+import { DataChannel } from '../index'
 
 export type PipeTypes = 'server' | 'stream' | 'gpu' | 'device'
 

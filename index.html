@@ -7,6 +7,11 @@
     <title>datastreams-api</title>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/datastreams-api"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/brainsatplay-ui@0.0.7/dist/index.esm.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.1/dist/index.esm.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.2/dist/index.esm.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/hegduino@0.0.4/dist/index.esm.js"></script> -->
+
 </head>
 
 <body style="padding: 10px;">
@@ -14,7 +19,18 @@
     <hr>
     <br>
 
-    <div id="buttons">
+    <h3 style="margin: 0px; margin-top: 20px;">Controls</h3>
+    <div id="controls" style="padding: 10px; width: 100%;">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="pause">Pause</button>
+        <button id="resume">Resume</button>
+        <button id="save">Save</button>
+        <select id="saveMethod"></select>
+    </div>
+
+    <h3 style="margin: 0px; margin-top: 20px;">Device Connection</h3>
+    <div id="buttons" style="padding: 10px; width: 100%;">
         <button id="device">Synthetic</button>
         <button id="muse">Muse</button>
         <button id="ganglion">Ganglion</button>
@@ -33,16 +49,18 @@
     import * as components from "https://cdn.jsdelivr.net/npm/brainsatplay-ui@0.0.7/dist/index.esm.js"    
 
     // Data Acquisition
-    import * as datastreams from "./src/frontend/dist/index.esm.js"
+    import * as datastreams from "./dist/index.esm.js"
+    // import * as datastreams from "../src/index"
     // import * as datastreams from "https://cdn.jsdelivr.net/npm/datastreams-api@latest/dist/index.esm.js"
     const dataDevices = new datastreams.DataDevices()
 
     // Device Drivers
     import ganglion from "https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion@0.0.2/dist/index.esm.js"
     import muse from "https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.1/dist/index.esm.js"
-    import device from "https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.2/dist/index.esm.js"
+    import device from "https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.3/dist/index.esm.js"
     import hegduino from "https://cdn.jsdelivr.net/npm/@brainsatplay/hegduino@0.0.4/dist/index.esm.js"
 
+    console.log(device)
     dataDevices.load(muse)
     dataDevices.load(device)
     dataDevices.load(ganglion)
@@ -62,7 +80,7 @@
 
     // ------------- Declare Data Handler -------------
     const ondata = (data, timestamps, contentHint) => {
-        console.log(`Data from Electrode ${contentHintToIndex[contentHint]} (${contentHint})`, data, timestamps)
+        // console.log(`Data from Electrode ${contentHintToIndex[contentHint]} (${contentHint})`, data, timestamps)
     }
 
     // ------------- Declare Track Handler -------------
@@ -96,13 +114,15 @@
     }
 
     // ------------- Declare Acquisition Function -------------
+    let recorder;
+    const saveMethod = document.getElementById('saveMethod')
 
     const startAcquisition = async (label) => {
 
         // ------------- Get Device Stream -------------
 
         // Method #1: By Label
-        const dataDevice = await dataDevices.getUserDevice({label, bluetooth: true})
+        const dataDevice = await dataDevices.getUserDevice({label})
 
         // Method #2: By Class
         // const dataDevice = await dataDevices.getUserDevice(ganglion)
@@ -113,11 +133,88 @@
         // ------------- Handle All Tracks -------------
         stream.tracks.forEach(handleTrack)
         stream.onaddtrack = e => handleTrack(e.track)
+        
+        // ------------- Manage Recording -------------
+        recorder = new datastreams.DataRecorder(dataDevice)
+        start.style.opacity = '1.0'
+        start.style.pointerEvents = 'all'
+
+        recorder.encoders.forEach((o) => {
+            saveMethod.insertAdjacentHTML('beforeend', `<option value=${o.mimeType}>${o.mimeType}</option>`) 
+        })
+
+        // recorder.ondataavailable = (e) =>  console.log('dataavailable!', e, e.detail)
+        // recorder.onerror = (e) => console.log('error!', e, e.detail)
+        // recorder.onpause = (e) =>  console.log('pause!', e, e.detail)
+        // recorder.onresume = (e) =>  console.log('resume!', e, e.detail)
+        // recorder.onstart = (e) =>  console.log('start!', e, e.detail)
+        // recorder.onstop = (e) =>  console.log('stop!', e, e.detail)
     }
 
     // ------------- Set Button Functionality -------------
     const buttons = document.querySelector('#buttons')
     for (let button of buttons.querySelectorAll('button')) button.onclick = () => startAcquisition(button.id)
+
+
+    // ------------- Add Controls -------------
+    const start = document.getElementById('start')
+    const stop = document.getElementById('stop')
+    const pause = document.getElementById('pause')
+    const resume = document.getElementById('resume')
+    const save = document.getElementById('save')
+
+    stop.style.display = pause.style.display = resume.style.display = save.style.display = saveMethod.style.display = 'none'
+
+    start.style.opacity = '0.5'
+    start.style.pointerEvents = 'none'
+
+    start.onclick  = () => {
+        if (recorder) {
+            recorder.start()
+            start.style.display = 'none'
+            stop.style.display = 'inline-block'
+            pause.style.display = 'inline-block'
+            resume.style.display = 'inline-block'
+            save.style.display = 'inline-block'
+            saveMethod.style.display = 'inline-block'
+        }
+    }
+
+    stop.onclick  = () => {
+        if (recorder) {
+            recorder.stop()
+            start.style.display = 'inline-block'
+            stop.style.display = 'none'
+            pause.style.display = 'none'
+            resume.style.display = 'none'
+        }
+    }
+
+    pause.onclick  = () => {
+        if (recorder) {
+            recorder.pause()
+            pause.style.display = 'none'
+            resume.style.display = 'inline-block'
+        }
+    }
+
+    resume.onclick  = () => {
+        if (recorder) {
+            recorder.resume()
+            pause.style.display = 'inline-block'
+            resume.style.display = 'none'
+        }
+    }
+
+    save.onclick  = () => {
+        if (recorder) {
+            recorder.save('test', {
+                // filter: ['0'],
+                destination: 'file',
+                mimeType: saveMethod.value
+            })
+        }
+    }
 
 </script>
 

@@ -22,6 +22,7 @@ export * from './DataTrackCapabilities'
 export * from './DataTrackConstraints'
 export * from './DataTrackSettings'
 export * from './DataTrackSupportedConstraints'
+export * from './DataRecorder'
 
 // import * as core from "./core";
 // export default core
