@@ -5,80 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>datastreams-api</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/visualscript@0.0.2/dist/index.js" defer></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/datastreams-api"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/brainsatplay-ui@0.0.7/dist/index.esm.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.1/dist/index.esm.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.2/dist/index.esm.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/hegduino@0.0.4/dist/index.esm.js"></script> -->
+    <style>
 
+    :root {
+        color-scheme: light dark;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    
+    body, html {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    body * {
+        box-sizing: border-box;
+    }
+
+    h3 {
+        margin: 0px;
+        margin-top: 20px;
+    }
+
+    visualscript-sidebar > div {
+        padding: 0px 15px;
+    }
+
+    #content {
+        padding: 25px;
+    }
+
+    #timeseriesContainer {
+        max-width: 350px;
+        padding: 25px;
+        background: rgb(210,210,210);
+        border-radius: 10px;
+    }
+
+    </style>
 </head>
 
-<body style="padding: 10px;">
-    <h1>datastreams-api</h1>
-    <hr>
-    <br>
+<body>
+  <visualscript-app id="app" name="datastreams">
 
-    <h3 style="margin: 0px; margin-top: 20px;">Recording Controls</h3>
-    <div id="controls" style="padding: 10px; width: 100%;">
-        <button id="start">Start</button>
-        <button id="stop">Stop</button>
-        <button id="pause">Pause</button>
-        <button id="resume">Resume</button>
-        <button id="save">Save</button>
-        <select id="saveMethod"></select>
-    </div>
+    <!-- App Internal Dashboard -->
+    <visualscript-dashboard>
+    <visualscript-sidebar>
+        <div>
+        <h3>Device Connection</h3>
+        <visualscript-control id="device" type="select" label="Device"></visualscript-control>
+        <visualscript-control id="file-selector" type="file" label="File" multiple></visualscript-control>
 
-    <h3 style="margin: 0px; margin-top: 20px;">File Controls</h3>
-    <div id="fileControls" style="padding: 10px; width: 100%;">
-        <button id="fileStart">Start</button>
-        <button id="fileStop">Stop</button>
-        <button id="filePause">Pause</button>
-        <button id="fileResume">Resume</button>
-    </div>
+        <h3>Recording Controls</h3>
+        <div id="recordControls" style="padding: 10px; width: 100%;">
+            <visualscript-button id="start">Start</visualscript-button>
+            <visualscript-button id="stop">Stop</visualscript-button>
+            <visualscript-button id="pause">Pause</visualscript-button>
+            <visualscript-button id="resume">Resume</visualscript-button>
+            <visualscript-button id="save">Save</visualscript-button>
+            <visualscript-control id="saveMethod" type="select" label="Save Method" persist></visualscript-control>
+        </div>
 
-    <h3 style="margin: 0px; margin-top: 20px;">Device Connection</h3>
-    <div id="buttons" style="padding: 10px; width: 100%;">
-        <button id="device">Synthetic</button>
-        <button id="muse">Muse</button>
-        <button id="ganglion">Ganglion</button>
-        <button id="hegduino">HEGduino</button>
-        <input type="file" id="file-selector" multiple>
+        <h3>File Controls</h3>
+        <div id="fileControls" style="padding: 10px; width: 100%;">
+            <visualscript-button id="fileStart">Start</visualscript-button>
+            <visualscript-button id="fileStop">Stop</visualscript-button>
+            <visualscript-button id="filePause">Pause</visualscript-button>
+            <visualscript-button id="fileResume">Resume</visualscript-button>
+        </div>
     </div>
-    <div id="graph">
+    </visualscript-sidebar>
+    <visualscript-main>
+        <div id="content">
+            <div id="timeseriesContainer">
+                <visualscript-timeseries></visualscript-timeseries>
+            </div>
+        </div>
+    </visualscript-main>
+    </visualscript-dashboard>
+  </visualscript-app>
 
-    </div>
+  <!-- Hidden Dashboard -->
+  <visualscript-dashboard>
+    <visualscript-nav>Visualscript</visualscript-nav>
+  <visualscript-sidebar></visualscript-sidebar>
+  <visualscript-main id="main">
+    <visualscript-overlay></visualscript-overlay>
+    <visualscript-tab id="realtime" name="Stream Analysis">
+      Coming soon...
+    </visualscript-tab>
+
+    <visualscript-tab id="graph" name="Graph Editor">
+        Coming soon...
+    </visualscript-tab>
+
+  </visualscript-main>
+  <visualscript-footer>Garrett Flynn | May 2022</visualscript-footer>
+  </visualscript-dashboard>
 </body>
 
 <script type="module">
-
     // ------------- Import Libraries -------------
-
-    // User Interface
-    import * as components from "https://cdn.jsdelivr.net/npm/brainsatplay-ui@0.0.7/dist/index.esm.js"    
-
+    import * as visualscript from "https://cdn.jsdelivr.net/npm/visualscript@0.0.2/dist/index.esm.js"
     // Data Acquisition
     import * as datastreams from "./dist/index.esm.js"
     // import * as datastreams from "../src/index"
     // import * as datastreams from "https://cdn.jsdelivr.net/npm/datastreams-api@latest/dist/index.esm.js"
     const dataDevices = new datastreams.DataDevices()
 
-    // Device Drivers
-    import ganglion from "https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion@0.0.2/dist/index.esm.js"
-    import muse from "https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.1/dist/index.esm.js"
-    import device from "https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.3/dist/index.esm.js"
-    import hegduino from "https://cdn.jsdelivr.net/npm/@brainsatplay/hegduino@0.0.4/dist/index.esm.js"
+    // ------------- Load All Device Drivers -------------
+    const devices = [
+        "https://cdn.jsdelivr.net/npm/@brainsatplay/ganglion@0.0.2/dist/index.esm.js",
+        "https://cdn.jsdelivr.net/npm/@brainsatplay/muse@0.0.1/dist/index.esm.js",
+        "https://cdn.jsdelivr.net/npm/@brainsatplay/device@0.0.3/dist/index.esm.js",
+        "https://cdn.jsdelivr.net/npm/@brainsatplay/hegduino@0.0.4/dist/index.esm.js",
+        "https://cdn.jsdelivr.net/npm/@brainsatplay/blueberry@0.0.0/dist/index.esm.js",
+        "https://cdn.jsdelivr.net/npm/@brainsatplay/teensy@0.0.0/dist/index.esm.js",
+        "https://cdn.jsdelivr.net/npm/@brainsatplay/webgazer@0.0.0/dist/index.esm.js",
+        "https://cdn.jsdelivr.net/npm/@brainsatplay/audio@0.0.0/dist/index.esm.js" // TODO: Update the audio class to behave in interesting (and consistent) ways
+    ]
+    for (let i = 0; i < devices.length; i++) dataDevices.load((await import(devices[i])).default)
 
-    dataDevices.load(muse)
-    dataDevices.load(device)
-    dataDevices.load(ganglion)
-    dataDevices.load(hegduino)
+    // ------------- Setup Device Controls -------------
+    const deviceControl = document.querySelector('#device')
+    dataDevices.getSupportedDevices().then(res => { // TODO: Fix enumerateDevices
+        const options = []
+        res.forEach(o => {
+
+            // Skip audio / video for now
+            if (!['audioinput', 'audiooutput', 'videoinput'].includes(o.kind)){
+                if (o.protocols?.length > 0) {
+                    o.protocols.forEach(str => options.push({
+                        text: `${o.label} - ${str}`,
+                        value: `${o.label}_${str}`
+                    }))
+                } else options.push(o.label)
+            }
+        })
+
+        deviceControl.options = options
+        deviceControl.onChange = (ev) => {
+        startAcquisition(ev.target.value)
+    }
+    })
 
     // ------------- Setup Visualization (very rough) -------------
-    const graphDiv = document.getElementById('graph')
-    graphDiv.style.padding = '25px'
-    const timeseries = new components.streams.data.TimeSeries()
-    graphDiv.insertAdjacentElement('beforeend', timeseries)
+    const content = document.getElementById('content')
+    const timeseries = content.querySelector('visualscript-timeseries')
 
     // ------------- Declare Global Variables -------------
     const allData = []
@@ -132,9 +214,12 @@
     const startAcquisition = async (label) => {
 
         // ------------- Get Device Stream -------------
+        const split = label.split('_')
+        const constraints = {label: split[0]}
+        if (split.length > 1) constraints[split[1]] = true
 
         // Method #1: By Label
-        const dataDevice = await dataDevices.getUserDevice({label})
+        const dataDevice = await dataDevices.getUserDevice(constraints)
 
         // Method #2: By Class
         // const dataDevice = await dataDevices.getUserDevice(ganglion)
@@ -150,9 +235,7 @@
         objectsToWatch.recorder = new datastreams.DataRecorder(dataDevice)
         start.style = ''
 
-        recorder.encoders.forEach((o) => {
-            saveMethod.insertAdjacentHTML('beforeend', `<option value=${o.mimeType}>${o.mimeType}</option>`) 
-        })
+        saveMethod.options = Array.from(objectsToWatch.recorder.encoders.values()).map((o) => o.mimeType)
 
         // recorder.ondataavailable = (e) =>  console.log('dataavailable!', e, e.detail)
         // recorder.onerror = (e) => console.log('error!', e, e.detail)
@@ -161,11 +244,6 @@
         // recorder.onstart = (e) =>  console.log('start!', e, e.detail)
         // recorder.onstop = (e) =>  console.log('stop!', e, e.detail)
     }
-
-    // ------------- Set Button Functionality -------------
-    const buttons = document.querySelector('#buttons')
-    for (let button of buttons.querySelectorAll('button')) button.onclick = () => startAcquisition(button.id)
-
 
     // ------------- Add Controls -------------
     const start = document.getElementById('start')
@@ -263,7 +341,8 @@
 
     // File Loader
     const fileSelector = document.getElementById('file-selector');
-    fileSelector.addEventListener('change', (event) => {
+    
+    fileSelector.element.shadowRoot.querySelector('input[type="file"]').addEventListener('change', (event) => {
         const fileList = event.target.files;
         for (let blob of fileList) {
             const dataFile = new datastreams.DataFile(blob)
@@ -271,6 +350,15 @@
             dataFile.onaddtrack = e => handleTrack(e.track)
             objectsToWatch.datafile = dataFile // watch it!
             fileStart.style = ''
+
+            dataFile.onend = () => {
+                console.log('enDED')
+                // TODO: Make this work
+                o.start.style.display = 'inline-block'
+                o.stop.style.display = 'none'
+                o.pause.style.display = 'none'
+                o.resume.style.display = 'none'
+            }
         }
     });
 
