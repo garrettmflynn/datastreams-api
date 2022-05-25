@@ -62,16 +62,17 @@
     <visualscript-sidebar>
         <div>
         <h3>Device Connection</h3>
-        <visualscript-control id="device" type="select" label="Device"></visualscript-control>
+        <visualscript-control id="device" type="select" label="Device" persist></visualscript-control>
         <visualscript-control id="file-selector" type="file" label="File" multiple></visualscript-control>
 
-        <h3>Recording Controls</h3>
-        <div id="recordControls" style="padding: 10px; width: 100%;">
+        <h3>Device Controls</h3>
+        <div id="deviceControl" style="padding: 10px; width: 100%;">
             <visualscript-button id="start">Start</visualscript-button>
             <visualscript-button id="stop">Stop</visualscript-button>
             <visualscript-button id="pause">Pause</visualscript-button>
             <visualscript-button id="resume">Resume</visualscript-button>
             <visualscript-button id="save">Save</visualscript-button>
+            <visualscript-control id="record" type="switch" label="Record" persist></visualscript-control>
             <visualscript-control id="saveMethod" type="select" label="Save Method" persist></visualscript-control>
         </div>
 
@@ -137,6 +138,8 @@
 
     // ------------- Setup Device Controls -------------
     const deviceControl = document.querySelector('#device')
+    const recordSwitch = document.getElementById('record')
+
     dataDevices.getSupportedDevices().then(res => { // TODO: Fix enumerateDevices
         const options = []
         res.forEach(o => {
@@ -154,9 +157,21 @@
 
         deviceControl.options = options
         deviceControl.onChange = (ev) => {
-        startAcquisition(ev.target.value)
-    }
+            deviceLabel = ev.target.value
+        }
+        deviceLabel = deviceControl.element.value
     })
+
+    recordSwitch.onChange = (ev) => {
+        record = recordSwitch.element.value
+
+        if (!record) save.style.display = saveMethod.style.display = 'none'
+        else if (dataControlInfo.start.style.display === "none") {
+            save.style.display = saveMethod.style.display = 'inline-block'
+        }
+    }
+
+
 
     // ------------- Setup Visualization (very rough) -------------
     const content = document.getElementById('content')
@@ -167,6 +182,8 @@
     let channels = 0
     let trackMap = new Map()
     let contentHintToIndex = {}
+    let record = recordSwitch.element.value
+    let deviceLabel = ''
 
     // ------------- Declare Data Handler -------------
     const ondata = (data, timestamps, contentHint) => {
@@ -231,18 +248,7 @@
         stream.tracks.forEach(handleTrack)
         stream.onaddtrack = e => handleTrack(e.track)
         
-        // ------------- Manage Recording -------------
-        objectsToWatch.recorder = new datastreams.DataRecorder(dataDevice)
-        start.style = ''
-
-        saveMethod.options = Array.from(objectsToWatch.recorder.encoders.values()).map((o) => o.mimeType)
-
-        // recorder.ondataavailable = (e) =>  console.log('dataavailable!', e, e.detail)
-        // recorder.onerror = (e) => console.log('error!', e, e.detail)
-        // recorder.onpause = (e) =>  console.log('pause!', e, e.detail)
-        // recorder.onresume = (e) =>  console.log('resume!', e, e.detail)
-        // recorder.onstart = (e) =>  console.log('start!', e, e.detail)
-        // recorder.onstop = (e) =>  console.log('stop!', e, e.detail)
+        return dataDevice
     }
 
     // ------------- Add Controls -------------
@@ -265,7 +271,7 @@
         resume: fileResume
     }
 
-    const recorderInfo = {
+    const dataControlInfo = {
         name: 'recorder',
         start, 
         stop,
@@ -274,17 +280,44 @@
         save
     }
 
-    const controls = [recorderInfo, fileInfo]
+    const controls = [dataControlInfo, fileInfo]
     controls.forEach(o => {
 
     o.stop.style.display = o.pause.style.display = o.resume.style.display = 'none'
     if (o.save) o.save.style.display = saveMethod.style.display = 'none'
 
-    o.start.style.opacity = '0.5'
-    o.start.style.pointerEvents = 'none'
+    if (o === fileInfo){
+        o.start.style.opacity = '0.5'
+        o.start.style.pointerEvents = 'none'
+    }
 
-    o.start.onclick  = () => {
+    o.start.onclick  = async () => {
+
+        // startAcquisition(deviceLabel)
+
+        if (o.name === 'recorder') {
+            const device = await startAcquisition(deviceLabel) // Start acquisition if match
+                    
+            // ------------- Manage Recording -------------
+            console.log(record)
+            if (record) {
+                objectsToWatch.recorder = new datastreams.DataRecorder(device)
+                saveMethod.options = Array.from(objectsToWatch.recorder.encoders.values()).map((o) => o.mimeType)
+                o.save.style.display = 'inline-block'
+                saveMethod.style.display = 'inline-block'
+            }
+
+            // recorder.ondataavailable = (e) =>  console.log('dataavailable!', e, e.detail)
+            // recorder.onerror = (e) => console.log('error!', e, e.detail)
+            // recorder.onpause = (e) =>  console.log('pause!', e, e.detail)
+            // recorder.onresume = (e) =>  console.log('resume!', e, e.detail)
+            // recorder.onstart = (e) =>  console.log('start!', e, e.detail)
+            // recorder.onstop = (e) =>  console.log('stop!', e, e.detail)
+        }
+
+
         if (objectsToWatch[o.name]) {
+
             // const gl = timeseries.util.plot.webgl
             // gl.clear(gl.COLOR_BUFFER_BIT);
             timeseries.buffers = []
@@ -293,39 +326,41 @@
             timeseries.util.plot.clear()
 
             objectsToWatch[o.name].start()
-            o.start.style.display = 'none'
-            o.stop.style.display = 'inline-block'
-            o.pause.style.display = 'inline-block'
-            o.resume.style.display = 'inline-block'
-            if (o.save) o.save.style.display = 'inline-block'
-            saveMethod.style.display = 'inline-block'
         }
+        
+
+        o.start.style.display = 'none'
+        o.stop.style.display = 'inline-block'
+        o.pause.style.display = 'inline-block'
+        o.resume.style.display = 'inline-block'
     }
 
     o.stop.onclick  = () => {
         if (objectsToWatch[o.name]) {
             objectsToWatch[o.name].stop()
-            o.start.style.display = 'inline-block'
-            o.stop.style.display = 'none'
-            o.pause.style.display = 'none'
-            o.resume.style.display = 'none'
         }
+        o.start.style.display = 'inline-block'
+        o.stop.style.display = 'none'
+        o.pause.style.display = 'none'
+        o.resume.style.display = 'none'
     }
 
     o.pause.onclick  = () => {
         if (objectsToWatch[o.name]) {
             objectsToWatch[o.name].pause()
-            o.pause.style.display = 'none'
-            o.resume.style.display = 'inline-block'
         }
+
+        o.pause.style.display = 'none'
+        o.resume.style.display = 'inline-block'
     }
 
     o.resume.onclick  = () => {
         if (objectsToWatch[o.name]) {
             objectsToWatch[o.name].resume()
-            o.pause.style.display = 'inline-block'
-            o.resume.style.display = 'none'
         }
+
+        o.pause.style.display = 'inline-block'
+        o.resume.style.display = 'none'
     }
 
     if (o.save) o.save.onclick  = () => {
@@ -352,7 +387,6 @@
             fileStart.style = ''
 
             dataFile.onend = () => {
-                console.log('enDED')
                 // TODO: Make this work
                 o.start.style.display = 'inline-block'
                 o.stop.style.display = 'none'
