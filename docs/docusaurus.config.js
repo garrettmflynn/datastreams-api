@@ -29,10 +29,10 @@ const config = {
         tsconfig: '../tsconfig.json',
         entryPoints: [
           // "../src", 
-          "../src/frontend/core", 
-          "../src/frontend/devices", 
-          "../src/frontend/pipes", 
-          "../src/frontend/transforms", 
+          "../src/core", 
+          "../src/devices", 
+          "../src/old/pipes", 
+          "../src/old/transforms", 
         ],
         // entryPointStrategy: "Expand",
         exclude: [

@@ -1,7 +1,7 @@
-import * as core from "../../src/frontend/core";
-import * as devices from "../../src/frontend/devices";
-import * as pipes from "../../src/frontend/pipes";
-import * as transforms from "../../src/frontend/transforms";
+import * as core from "../../src/core";
+import * as devices from "../../src/devices";
+import * as pipes from "../../src/old/pipes";
+import * as transforms from "../../src/old/transforms";
 
 const datastreams = {
     core,

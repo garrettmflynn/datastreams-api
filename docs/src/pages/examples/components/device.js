@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom'
 import clsx from 'clsx';
-import * as api from '../../../../../src/frontend';
-import devices from '../../../../../src/frontend/devices/device.registry';
+import devices from '../../../../../src/devices/device.registry';
 import { WebglLinePlotUtils } from '../libraries/webgl-plot-utils';
-import { DataStream } from '../../../../../src/frontend';
 import styles from '../examples.module.css'
 import Radio from './radio.component';
 import Overlay from './overlay.component';
@@ -66,7 +64,7 @@ let initPlot = (currentTracks) => {
   // Run After Initialization
   useEffect(async () => {
 
-    const api = await import('../../../../../src/frontend/index')
+    const api = await import('../../../../../src/index')
     console.log(api)
     const dataDevices = new api.DataDevices()
     dataDevices.load(devices)

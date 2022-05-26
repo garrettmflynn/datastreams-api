@@ -101,6 +101,10 @@
   <visualscript-sidebar></visualscript-sidebar>
   <visualscript-main id="main">
     <visualscript-overlay></visualscript-overlay>
+    <visualscript-tab id="webrtc" name="WebRTC Test">
+        Chatroom and Conference Room Stream coming soon...
+    </visualscript-tab>
+
     <visualscript-tab id="realtime" name="Stream Analysis">
       Coming soon...
     </visualscript-tab>
@@ -146,12 +150,15 @@
 
             // Skip audio / video for now
             if (!['audioinput', 'audiooutput', 'videoinput'].includes(o.kind)){
-                if (o.protocols?.length > 0) {
-                    o.protocols.forEach(str => options.push({
-                        text: `${o.label} - ${str}`,
-                        value: `${o.label}_${str}`
-                    }))
-                } else options.push(o.label)
+                    const protocols = (o.protocols.length > 0) ? o.protocols : ['']
+                    const modes = o.modes ?? ['']
+
+                    modes.forEach(mode => {
+                        protocols.forEach(protocol => options.push({
+                            text: `${o.label}${mode ? ` ${mode}` : ''}${protocol ? ` - ${protocol}` : ''}`,
+                            value: `${o.label}_${protocol}_${mode}`
+                        }))
+                    })
             }
         })
 
@@ -233,7 +240,8 @@
         // ------------- Get Device Stream -------------
         const split = label.split('_')
         const constraints = {label: split[0]}
-        if (split.length > 1) constraints[split[1]] = true
+        if (split?.[1]) constraints[split[1]] = true // Protocol
+        if (split?.[2]) constraints.mode = split[2] // Mode
 
         // Method #1: By Label
         const dataDevice = await dataDevices.getUserDevice(constraints)
@@ -291,15 +299,16 @@
         o.start.style.pointerEvents = 'none'
     }
 
+
+    let device;
     o.start.onclick  = async () => {
 
-        // startAcquisition(deviceLabel)
+
 
         if (o.name === 'recorder') {
-            const device = await startAcquisition(deviceLabel) // Start acquisition if match
+            device = await startAcquisition(deviceLabel) // Start acquisition if match
                     
             // ------------- Manage Recording -------------
-            console.log(record)
             if (record) {
                 objectsToWatch.recorder = new datastreams.DataRecorder(device)
                 saveMethod.options = Array.from(objectsToWatch.recorder.encoders.values()).map((o) => o.mimeType)
@@ -343,6 +352,8 @@
         o.stop.style.display = 'none'
         o.pause.style.display = 'none'
         o.resume.style.display = 'none'
+
+        if (device) device.disconnect()
     }
 
     o.pause.onclick  = () => {

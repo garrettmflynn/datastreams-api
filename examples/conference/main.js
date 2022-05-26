@@ -1,7 +1,7 @@
 
-import {DataPipeline} from "../../src/frontend/core/DataPipeline.js"
-import { VideoSwirl } from '../../src/frontend/transforms/video/webgl.transforms.js';
-import {DataStream} from "../../src/frontend/core/DataStream.js";
+import {DataPipeline} from "../../src/core/DataPipeline.js"
+import { VideoSwirl } from '../../src/transforms/video/webgl.transforms.js';
+import {DataStream} from "../../src/core/DataStream.js";
 
 export const videoTransform = async (stream, video, context) => {
 
